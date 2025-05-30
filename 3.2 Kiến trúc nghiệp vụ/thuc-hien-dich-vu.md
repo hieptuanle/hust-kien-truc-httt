@@ -136,7 +136,7 @@ graph LR
 
 ### Các kênh trực tuyến
 
-#### 1. Website bán hàng (www.nguyenlieulambanh.com)
+#### 1. Website bán hàng (abby.vn)
 
 **Chức năng chính:**
 
