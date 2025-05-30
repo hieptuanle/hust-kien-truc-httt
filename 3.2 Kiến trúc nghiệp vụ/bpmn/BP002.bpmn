@@ -1,79 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn2:definitions xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:bpsim="http://www.bpsim.org/schemas/1.0" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:drools="http://www.jboss.org/drools" xmlns:xsi="xsi" id="_2UnkMB9vED6IGqtq83OcQQ" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd http://www.jboss.org/drools drools.xsd http://www.bpsim.org/schemas/1.0 bpsim.xsd http://www.omg.org/spec/DD/20100524/DC DC.xsd http://www.omg.org/spec/DD/20100524/DI DI.xsd " exporter="jBPM Process Modeler" exporterVersion="2.0" targetNamespace="http://www.omg.org/bpmn20">
+<bpmn2:definitions xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:bpsim="http://www.bpsim.org/schemas/1.0" xmlns:drools="http://www.jboss.org/drools" xmlns:xsi="xsi" id="_2UnkMB9vED6IGqtq83OcQQ" targetNamespace="http://www.omg.org/bpmn20" exporter="jBPM Process Modeler" exporterVersion="2.0">
   <bpmn2:collaboration id="_7A92D0A7-7B82-4B2F-8B02-F0FC3197E87F" name="Default Collaboration">
-    <bpmn2:participant id="_8168D29B-D5E1-4861-B8CE-B9C99555FA9A" name="Pool Participant" processRef="BP002"/>
+    <bpmn2:participant id="_8168D29B-D5E1-4861-B8CE-B9C99555FA9A" name="Pool Participant" processRef="BP002" />
   </bpmn2:collaboration>
-  <bpmn2:process id="BP002" drools:packageName="com.example" drools:version="1.0" drools:adHoc="false" name="BP002" processType="Public">
-    <bpmn2:sequenceFlow id="Flow_StartToCheck" sourceRef="StartEvent_ReceiveOnlineOrder" targetRef="Task_CheckOrderInfo"/>
-    <bpmn2:sequenceFlow id="Flow_CheckToValid" sourceRef="Task_CheckOrderInfo" targetRef="Gateway_OrderValid"/>
+  <bpmn2:process id="BP002" name="BP002" processType="Public" drools:packageName="com.example" drools:version="1.0" drools:adHoc="false">
+    <bpmn2:sequenceFlow id="Flow_StartToCheck" sourceRef="StartEvent_ReceiveOnlineOrder" targetRef="Task_CheckOrderInfo" />
+    <bpmn2:sequenceFlow id="Flow_CheckToValid" sourceRef="Task_CheckOrderInfo" targetRef="Gateway_OrderValid" />
     <bpmn2:sequenceFlow id="_020E5499-E00A-4140-B9E5-2B873BFAD88D" sourceRef="Task_ContactCustomer" targetRef="Gateway_OrderValid">
       <bpmn2:extensionElements>
         <drools:metaData name="isAutoConnection.target">
-          <drools:metaValue><![CDATA[true]]></drools:metaValue>
-        </drools:metaData>
-      </bpmn2:extensionElements>
-    </bpmn2:sequenceFlow>
-    <bpmn2:sequenceFlow id="Flow_ValidToContact" name="Không" sourceRef="Gateway_OrderValid" targetRef="Task_ContactCustomer">
-      <bpmn2:extensionElements>
-        <drools:metaData name="isAutoConnection.source">
-          <drools:metaValue><![CDATA[true]]></drools:metaValue>
-        </drools:metaData>
-        <drools:metaData name="elementname">
-          <drools:metaValue><![CDATA[Không]]></drools:metaValue>
+          <drools:metaValue>true</drools:metaValue>
         </drools:metaData>
       </bpmn2:extensionElements>
     </bpmn2:sequenceFlow>
     <bpmn2:sequenceFlow id="Flow_ValidToInventory" name="Có" sourceRef="Gateway_OrderValid" targetRef="Task_CheckInventory">
       <bpmn2:extensionElements>
         <drools:metaData name="elementname">
-          <drools:metaValue><![CDATA[Có]]></drools:metaValue>
+          <drools:metaValue>Có</drools:metaValue>
         </drools:metaData>
       </bpmn2:extensionElements>
     </bpmn2:sequenceFlow>
-    <bpmn2:sequenceFlow id="Flow_InventoryToStock" sourceRef="Task_CheckInventory" targetRef="Gateway_StockAvailable"/>
+    <bpmn2:sequenceFlow id="Flow_InventoryToStock" sourceRef="Task_CheckInventory" targetRef="Gateway_StockAvailable" />
     <bpmn2:sequenceFlow id="Flow_StockToNotify" name="Không" sourceRef="Gateway_StockAvailable" targetRef="Task_NotifyOutOfStock">
       <bpmn2:extensionElements>
         <drools:metaData name="elementname">
-          <drools:metaValue><![CDATA[Không]]></drools:metaValue>
+          <drools:metaValue>Không</drools:metaValue>
         </drools:metaData>
       </bpmn2:extensionElements>
     </bpmn2:sequenceFlow>
-    <bpmn2:sequenceFlow id="Flow_NotifyToAlternative" sourceRef="Task_NotifyOutOfStock" targetRef="Task_SuggestAlternative"/>
-    <bpmn2:sequenceFlow id="Flow_AlternativeToCustomerDecision" sourceRef="Task_SuggestAlternative" targetRef="Gateway_CustomerAgrees"/>
+    <bpmn2:sequenceFlow id="Flow_NotifyToAlternative" sourceRef="Task_NotifyOutOfStock" targetRef="Task_SuggestAlternative" />
+    <bpmn2:sequenceFlow id="Flow_AlternativeToCustomerDecision" sourceRef="Task_SuggestAlternative" targetRef="Gateway_CustomerAgrees" />
     <bpmn2:sequenceFlow id="Flow_CustomerDisagrees" name="Không" sourceRef="Gateway_CustomerAgrees" targetRef="Task_CancelOrder">
       <bpmn2:extensionElements>
         <drools:metaData name="elementname">
-          <drools:metaValue><![CDATA[Không]]></drools:metaValue>
+          <drools:metaValue>Không</drools:metaValue>
         </drools:metaData>
       </bpmn2:extensionElements>
     </bpmn2:sequenceFlow>
     <bpmn2:sequenceFlow id="Flow_StockToConfirm" name="Có" sourceRef="Gateway_StockAvailable" targetRef="Task_ConfirmOrder">
       <bpmn2:extensionElements>
         <drools:metaData name="elementname">
-          <drools:metaValue><![CDATA[Có]]></drools:metaValue>
+          <drools:metaValue>Có</drools:metaValue>
         </drools:metaData>
       </bpmn2:extensionElements>
     </bpmn2:sequenceFlow>
     <bpmn2:sequenceFlow id="Flow_CustomerAgrees" name="Có" sourceRef="Gateway_CustomerAgrees" targetRef="Task_ConfirmOrder">
       <bpmn2:extensionElements>
         <drools:metaData name="elementname">
-          <drools:metaValue><![CDATA[Có]]></drools:metaValue>
+          <drools:metaValue>Có</drools:metaValue>
         </drools:metaData>
       </bpmn2:extensionElements>
     </bpmn2:sequenceFlow>
-    <bpmn2:sequenceFlow id="Flow_ConfirmToPrepare" sourceRef="Task_ConfirmOrder" targetRef="Task_PrepareGoods"/>
-    <bpmn2:sequenceFlow id="Flow_PrepareToPackage" sourceRef="Task_PrepareGoods" targetRef="Task_PackageGoods"/>
-    <bpmn2:sequenceFlow id="Flow_PackageToSlip" sourceRef="Task_PackageGoods" targetRef="Task_CreateDeliverySlip"/>
-    <bpmn2:sequenceFlow id="Flow_SlipToTransport" sourceRef="Task_CreateDeliverySlip" targetRef="Task_HandToTransport"/>
-    <bpmn2:sequenceFlow id="Flow_TransportToDeliver" sourceRef="Task_HandToTransport" targetRef="Task_DeliverToCustomer"/>
-    <bpmn2:sequenceFlow id="Flow_DeliverToConfirmSuccess" sourceRef="Task_DeliverToCustomer" targetRef="Task_ConfirmDeliverySuccess"/>
-    <bpmn2:sequenceFlow id="Flow_ConfirmSuccessToPayment" sourceRef="Task_ConfirmDeliverySuccess" targetRef="Task_ProcessPayment"/>
-    <bpmn2:sequenceFlow id="Flow_PaymentToComplete" sourceRef="Task_ProcessPayment" targetRef="EndEvent_OrderComplete"/>
-    <bpmn2:sequenceFlow id="Flow_CancelToEnd" sourceRef="Task_CancelOrder" targetRef="EndEvent_OrderCancelled"/>
+    <bpmn2:sequenceFlow id="Flow_ConfirmToPrepare" sourceRef="Task_ConfirmOrder" targetRef="Task_PrepareGoods" />
+    <bpmn2:sequenceFlow id="Flow_PrepareToPackage" sourceRef="Task_PrepareGoods" targetRef="Task_PackageGoods" />
+    <bpmn2:sequenceFlow id="Flow_PackageToSlip" sourceRef="Task_PackageGoods" targetRef="Task_CreateDeliverySlip" />
+    <bpmn2:sequenceFlow id="Flow_SlipToTransport" sourceRef="Task_CreateDeliverySlip" targetRef="Task_HandToTransport" />
+    <bpmn2:sequenceFlow id="Flow_TransportToDeliver" sourceRef="Task_HandToTransport" targetRef="Task_DeliverToCustomer" />
+    <bpmn2:sequenceFlow id="Flow_DeliverToConfirmSuccess" sourceRef="Task_DeliverToCustomer" targetRef="Task_ConfirmDeliverySuccess" />
+    <bpmn2:sequenceFlow id="Flow_ConfirmSuccessToPayment" sourceRef="Task_ConfirmDeliverySuccess" targetRef="Task_ProcessPayment" />
+    <bpmn2:sequenceFlow id="Flow_PaymentToComplete" sourceRef="Task_ProcessPayment" targetRef="EndEvent_OrderComplete" />
+    <bpmn2:sequenceFlow id="Flow_CancelToEnd" sourceRef="Task_CancelOrder" targetRef="EndEvent_OrderCancelled" />
     <bpmn2:startEvent id="StartEvent_ReceiveOnlineOrder" name="Nhận đơn hàng online">
       <bpmn2:extensionElements>
         <drools:metaData name="elementname">
-          <drools:metaValue><![CDATA[Nhận đơn hàng online]]></drools:metaValue>
+          <drools:metaValue>Nhận đơn hàng online</drools:metaValue>
         </drools:metaData>
       </bpmn2:extensionElements>
       <bpmn2:outgoing>Flow_StartToCheck</bpmn2:outgoing>
@@ -81,7 +71,7 @@
     <bpmn2:task id="Task_CheckOrderInfo" name="Kiểm tra thông tin đơn hàng">
       <bpmn2:extensionElements>
         <drools:metaData name="elementname">
-          <drools:metaValue><![CDATA[Kiểm tra thông tin đơn hàng]]></drools:metaValue>
+          <drools:metaValue>Kiểm tra thông tin đơn hàng</drools:metaValue>
         </drools:metaData>
       </bpmn2:extensionElements>
       <bpmn2:incoming>Flow_StartToCheck</bpmn2:incoming>
@@ -90,27 +80,27 @@
     <bpmn2:exclusiveGateway id="Gateway_OrderValid" name="Đơn hàng hợp lệ?">
       <bpmn2:extensionElements>
         <drools:metaData name="elementname">
-          <drools:metaValue><![CDATA[Đơn hàng hợp lệ?]]></drools:metaValue>
+          <drools:metaValue>Đơn hàng hợp lệ?</drools:metaValue>
         </drools:metaData>
       </bpmn2:extensionElements>
       <bpmn2:incoming>_020E5499-E00A-4140-B9E5-2B873BFAD88D</bpmn2:incoming>
       <bpmn2:incoming>Flow_CheckToValid</bpmn2:incoming>
       <bpmn2:outgoing>Flow_ValidToInventory</bpmn2:outgoing>
-      <bpmn2:outgoing>Flow_ValidToContact</bpmn2:outgoing>
+      <bpmn2:outgoing>Flow_0w3quqe</bpmn2:outgoing>
     </bpmn2:exclusiveGateway>
     <bpmn2:task id="Task_ContactCustomer" name="Liên hệ KH để xác nhận">
       <bpmn2:extensionElements>
         <drools:metaData name="elementname">
-          <drools:metaValue><![CDATA[Liên hệ KH để xác nhận]]></drools:metaValue>
+          <drools:metaValue>Liên hệ KH để xác nhận</drools:metaValue>
         </drools:metaData>
       </bpmn2:extensionElements>
-      <bpmn2:incoming>Flow_ValidToContact</bpmn2:incoming>
+      <bpmn2:incoming>Flow_0w3quqe</bpmn2:incoming>
       <bpmn2:outgoing>_020E5499-E00A-4140-B9E5-2B873BFAD88D</bpmn2:outgoing>
     </bpmn2:task>
     <bpmn2:task id="Task_CheckInventory" name="Kiểm tra tồn kho">
       <bpmn2:extensionElements>
         <drools:metaData name="elementname">
-          <drools:metaValue><![CDATA[Kiểm tra tồn kho]]></drools:metaValue>
+          <drools:metaValue>Kiểm tra tồn kho</drools:metaValue>
         </drools:metaData>
       </bpmn2:extensionElements>
       <bpmn2:incoming>Flow_ValidToInventory</bpmn2:incoming>
@@ -119,7 +109,7 @@
     <bpmn2:exclusiveGateway id="Gateway_StockAvailable" name="Có đủ hàng?" gatewayDirection="Diverging">
       <bpmn2:extensionElements>
         <drools:metaData name="elementname">
-          <drools:metaValue><![CDATA[Có đủ hàng?]]></drools:metaValue>
+          <drools:metaValue>Có đủ hàng?</drools:metaValue>
         </drools:metaData>
       </bpmn2:extensionElements>
       <bpmn2:incoming>Flow_InventoryToStock</bpmn2:incoming>
@@ -129,7 +119,7 @@
     <bpmn2:task id="Task_NotifyOutOfStock" name="Thông báo hết hàng cho KH">
       <bpmn2:extensionElements>
         <drools:metaData name="elementname">
-          <drools:metaValue><![CDATA[Thông báo hết hàng cho KH]]></drools:metaValue>
+          <drools:metaValue>Thông báo hết hàng cho KH</drools:metaValue>
         </drools:metaData>
       </bpmn2:extensionElements>
       <bpmn2:incoming>Flow_StockToNotify</bpmn2:incoming>
@@ -138,7 +128,7 @@
     <bpmn2:task id="Task_SuggestAlternative" name="Đề xuất sản phẩm thay thế">
       <bpmn2:extensionElements>
         <drools:metaData name="elementname">
-          <drools:metaValue><![CDATA[Đề xuất sản phẩm thay thế]]></drools:metaValue>
+          <drools:metaValue>Đề xuất sản phẩm thay thế</drools:metaValue>
         </drools:metaData>
       </bpmn2:extensionElements>
       <bpmn2:incoming>Flow_NotifyToAlternative</bpmn2:incoming>
@@ -147,7 +137,7 @@
     <bpmn2:exclusiveGateway id="Gateway_CustomerAgrees" name="KH đồng ý?" gatewayDirection="Diverging">
       <bpmn2:extensionElements>
         <drools:metaData name="elementname">
-          <drools:metaValue><![CDATA[KH đồng ý?]]></drools:metaValue>
+          <drools:metaValue>KH đồng ý?</drools:metaValue>
         </drools:metaData>
       </bpmn2:extensionElements>
       <bpmn2:incoming>Flow_AlternativeToCustomerDecision</bpmn2:incoming>
@@ -157,7 +147,7 @@
     <bpmn2:task id="Task_CancelOrder" name="Hủy đơn hàng">
       <bpmn2:extensionElements>
         <drools:metaData name="elementname">
-          <drools:metaValue><![CDATA[Hủy đơn hàng]]></drools:metaValue>
+          <drools:metaValue>Hủy đơn hàng</drools:metaValue>
         </drools:metaData>
       </bpmn2:extensionElements>
       <bpmn2:incoming>Flow_CustomerDisagrees</bpmn2:incoming>
@@ -166,7 +156,7 @@
     <bpmn2:task id="Task_ConfirmOrder" name="Xác nhận đơn hàng với KH">
       <bpmn2:extensionElements>
         <drools:metaData name="elementname">
-          <drools:metaValue><![CDATA[Xác nhận đơn hàng với KH]]></drools:metaValue>
+          <drools:metaValue>Xác nhận đơn hàng với KH</drools:metaValue>
         </drools:metaData>
       </bpmn2:extensionElements>
       <bpmn2:incoming>Flow_CustomerAgrees</bpmn2:incoming>
@@ -176,7 +166,7 @@
     <bpmn2:task id="Task_PrepareGoods" name="Chuẩn bị hàng hóa">
       <bpmn2:extensionElements>
         <drools:metaData name="elementname">
-          <drools:metaValue><![CDATA[Chuẩn bị hàng hóa]]></drools:metaValue>
+          <drools:metaValue>Chuẩn bị hàng hóa</drools:metaValue>
         </drools:metaData>
       </bpmn2:extensionElements>
       <bpmn2:incoming>Flow_ConfirmToPrepare</bpmn2:incoming>
@@ -185,7 +175,7 @@
     <bpmn2:task id="Task_PackageGoods" name="Đóng gói">
       <bpmn2:extensionElements>
         <drools:metaData name="elementname">
-          <drools:metaValue><![CDATA[Đóng gói]]></drools:metaValue>
+          <drools:metaValue>Đóng gói</drools:metaValue>
         </drools:metaData>
       </bpmn2:extensionElements>
       <bpmn2:incoming>Flow_PrepareToPackage</bpmn2:incoming>
@@ -194,7 +184,7 @@
     <bpmn2:task id="Task_CreateDeliverySlip" name="Lập phiếu giao hàng">
       <bpmn2:extensionElements>
         <drools:metaData name="elementname">
-          <drools:metaValue><![CDATA[Lập phiếu giao hàng]]></drools:metaValue>
+          <drools:metaValue>Lập phiếu giao hàng</drools:metaValue>
         </drools:metaData>
       </bpmn2:extensionElements>
       <bpmn2:incoming>Flow_PackageToSlip</bpmn2:incoming>
@@ -203,7 +193,7 @@
     <bpmn2:task id="Task_HandToTransport" name="Giao cho vận tải">
       <bpmn2:extensionElements>
         <drools:metaData name="elementname">
-          <drools:metaValue><![CDATA[Giao cho vận tải]]></drools:metaValue>
+          <drools:metaValue>Giao cho vận tải</drools:metaValue>
         </drools:metaData>
       </bpmn2:extensionElements>
       <bpmn2:incoming>Flow_SlipToTransport</bpmn2:incoming>
@@ -212,7 +202,7 @@
     <bpmn2:task id="Task_DeliverToCustomer" name="Giao hàng cho KH">
       <bpmn2:extensionElements>
         <drools:metaData name="elementname">
-          <drools:metaValue><![CDATA[Giao hàng cho KH]]></drools:metaValue>
+          <drools:metaValue>Giao hàng cho KH</drools:metaValue>
         </drools:metaData>
       </bpmn2:extensionElements>
       <bpmn2:incoming>Flow_TransportToDeliver</bpmn2:incoming>
@@ -221,7 +211,7 @@
     <bpmn2:task id="Task_ConfirmDeliverySuccess" name="Xác nhận giao hàng thành công">
       <bpmn2:extensionElements>
         <drools:metaData name="elementname">
-          <drools:metaValue><![CDATA[Xác nhận giao hàng thành công]]></drools:metaValue>
+          <drools:metaValue>Xác nhận giao hàng thành công</drools:metaValue>
         </drools:metaData>
       </bpmn2:extensionElements>
       <bpmn2:incoming>Flow_DeliverToConfirmSuccess</bpmn2:incoming>
@@ -230,7 +220,7 @@
     <bpmn2:task id="Task_ProcessPayment" name="Thanh toán COD/CK">
       <bpmn2:extensionElements>
         <drools:metaData name="elementname">
-          <drools:metaValue><![CDATA[Thanh toán COD/CK]]></drools:metaValue>
+          <drools:metaValue>Thanh toán COD/CK</drools:metaValue>
         </drools:metaData>
       </bpmn2:extensionElements>
       <bpmn2:incoming>Flow_ConfirmSuccessToPayment</bpmn2:incoming>
@@ -239,7 +229,7 @@
     <bpmn2:endEvent id="EndEvent_OrderComplete" name="Hoàn thành đơn hàng">
       <bpmn2:extensionElements>
         <drools:metaData name="elementname">
-          <drools:metaValue><![CDATA[Hoàn thành đơn hàng]]></drools:metaValue>
+          <drools:metaValue>Hoàn thành đơn hàng</drools:metaValue>
         </drools:metaData>
       </bpmn2:extensionElements>
       <bpmn2:incoming>Flow_PaymentToComplete</bpmn2:incoming>
@@ -247,164 +237,177 @@
     <bpmn2:endEvent id="EndEvent_OrderCancelled" name="Đơn hàng bị hủy">
       <bpmn2:extensionElements>
         <drools:metaData name="elementname">
-          <drools:metaValue><![CDATA[Đơn hàng bị hủy]]></drools:metaValue>
+          <drools:metaValue>Đơn hàng bị hủy</drools:metaValue>
         </drools:metaData>
       </bpmn2:extensionElements>
       <bpmn2:incoming>Flow_CancelToEnd</bpmn2:incoming>
     </bpmn2:endEvent>
+    <bpmn2:sequenceFlow id="Flow_0w3quqe" name="Không" sourceRef="Gateway_OrderValid" targetRef="Task_ContactCustomer" />
   </bpmn2:process>
   <bpmndi:BPMNDiagram>
     <bpmndi:BPMNPlane bpmnElement="BP002">
-      <bpmndi:BPMNShape id="shape_EndEvent_OrderCancelled" bpmnElement="EndEvent_OrderCancelled">
-        <dc:Bounds height="56" width="56" x="922" y="433"/>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="shape_EndEvent_OrderComplete" bpmnElement="EndEvent_OrderComplete">
-        <dc:Bounds height="56" width="56" x="1740" y="150"/>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="shape_Task_ProcessPayment" bpmnElement="Task_ProcessPayment">
-        <dc:Bounds height="80" width="100" x="1600" y="138"/>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="shape_Task_ConfirmDeliverySuccess" bpmnElement="Task_ConfirmDeliverySuccess">
-        <dc:Bounds height="80" width="100" x="1460" y="138"/>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="shape_Task_DeliverToCustomer" bpmnElement="Task_DeliverToCustomer">
-        <dc:Bounds height="80" width="100" x="1320" y="138"/>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="shape_Task_HandToTransport" bpmnElement="Task_HandToTransport">
-        <dc:Bounds height="80" width="100" x="1180" y="138"/>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="shape_Task_CreateDeliverySlip" bpmnElement="Task_CreateDeliverySlip">
-        <dc:Bounds height="80" width="100" x="1040" y="138"/>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="shape_Task_PackageGoods" bpmnElement="Task_PackageGoods">
-        <dc:Bounds height="80" width="100" x="900" y="138"/>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="shape_Task_PrepareGoods" bpmnElement="Task_PrepareGoods">
-        <dc:Bounds height="80" width="100" x="760" y="138"/>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="shape_Task_ConfirmOrder" bpmnElement="Task_ConfirmOrder">
-        <dc:Bounds height="80" width="100" x="620" y="138"/>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="shape_Task_CancelOrder" bpmnElement="Task_CancelOrder">
-        <dc:Bounds height="80" width="100" x="778" y="421"/>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="shape_Gateway_CustomerAgrees" bpmnElement="Gateway_CustomerAgrees">
-        <dc:Bounds height="56" width="56" x="800" y="272"/>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="shape_Task_SuggestAlternative" bpmnElement="Task_SuggestAlternative">
-        <dc:Bounds height="80" width="100" x="650" y="310"/>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="shape_Task_NotifyOutOfStock" bpmnElement="Task_NotifyOutOfStock">
-        <dc:Bounds height="80" width="100" x="498" y="287"/>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="shape_Gateway_StockAvailable" bpmnElement="Gateway_StockAvailable">
-        <dc:Bounds height="56" width="56" x="520" y="150"/>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="shape_Task_CheckInventory" bpmnElement="Task_CheckInventory">
-        <dc:Bounds height="80" width="100" x="380" y="138"/>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="shape_Task_ContactCustomer" bpmnElement="Task_ContactCustomer">
-        <dc:Bounds height="80" width="100" x="222" y="24"/>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="shape_Gateway_OrderValid" bpmnElement="Gateway_OrderValid">
-        <dc:Bounds height="56" width="56" x="294" y="150"/>
+      <bpmndi:BPMNShape id="shape_StartEvent_ReceiveOnlineOrder" bpmnElement="StartEvent_ReceiveOnlineOrder">
+        <dc:Bounds x="50" y="150" width="56" height="56" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="shape_Task_CheckOrderInfo" bpmnElement="Task_CheckOrderInfo">
-        <dc:Bounds height="80" width="100" x="150" y="138"/>
+        <dc:Bounds x="150" y="138" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="shape_StartEvent_ReceiveOnlineOrder" bpmnElement="StartEvent_ReceiveOnlineOrder">
-        <dc:Bounds height="56" width="56" x="50" y="150"/>
+      <bpmndi:BPMNShape id="shape_Gateway_OrderValid" bpmnElement="Gateway_OrderValid" isMarkerVisible="true">
+        <dc:Bounds x="294" y="150" width="56" height="56" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="edge_shape_Task_CancelOrder_to_shape_EndEvent_OrderCancelled" bpmnElement="Flow_CancelToEnd">
-        <di:waypoint x="878" y="461"/>
-        <di:waypoint x="922" y="461"/>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="edge_shape_Task_ProcessPayment_to_shape_EndEvent_OrderComplete" bpmnElement="Flow_PaymentToComplete">
-        <di:waypoint x="1700" y="178"/>
-        <di:waypoint x="1740" y="178"/>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="edge_shape_Task_ConfirmDeliverySuccess_to_shape_Task_ProcessPayment" bpmnElement="Flow_ConfirmSuccessToPayment">
-        <di:waypoint x="1560" y="178"/>
-        <di:waypoint x="1600" y="178"/>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="edge_shape_Task_DeliverToCustomer_to_shape_Task_ConfirmDeliverySuccess" bpmnElement="Flow_DeliverToConfirmSuccess">
-        <di:waypoint x="1420" y="178"/>
-        <di:waypoint x="1460" y="178"/>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="edge_shape_Task_HandToTransport_to_shape_Task_DeliverToCustomer" bpmnElement="Flow_TransportToDeliver">
-        <di:waypoint x="1280" y="178"/>
-        <di:waypoint x="1320" y="178"/>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="edge_shape_Task_CreateDeliverySlip_to_shape_Task_HandToTransport" bpmnElement="Flow_SlipToTransport">
-        <di:waypoint x="1140" y="178"/>
-        <di:waypoint x="1180" y="178"/>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="edge_shape_Task_PackageGoods_to_shape_Task_CreateDeliverySlip" bpmnElement="Flow_PackageToSlip">
-        <di:waypoint x="1000" y="178"/>
-        <di:waypoint x="1040" y="178"/>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="edge_shape_Task_PrepareGoods_to_shape_Task_PackageGoods" bpmnElement="Flow_PrepareToPackage">
-        <di:waypoint x="860" y="178"/>
-        <di:waypoint x="900" y="178"/>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="edge_shape_Task_ConfirmOrder_to_shape_Task_PrepareGoods" bpmnElement="Flow_ConfirmToPrepare">
-        <di:waypoint x="720" y="178"/>
-        <di:waypoint x="760" y="178"/>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="edge_shape_Gateway_CustomerAgrees_to_shape_Task_ConfirmOrder" bpmnElement="Flow_CustomerAgrees">
-        <di:waypoint x="800" y="290"/>
-        <di:waypoint x="725" y="253"/>
-        <di:waypoint x="670" y="218"/>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="edge_shape_Gateway_StockAvailable_to_shape_Task_ConfirmOrder" bpmnElement="Flow_StockToConfirm">
-        <di:waypoint x="576" y="178"/>
-        <di:waypoint x="620" y="178"/>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="edge_shape_Gateway_CustomerAgrees_to_shape_Task_CancelOrder" bpmnElement="Flow_CustomerDisagrees">
-        <di:waypoint x="828" y="328"/>
-        <di:waypoint x="828" y="421"/>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="edge_shape_Task_SuggestAlternative_to_shape_Gateway_CustomerAgrees" bpmnElement="Flow_AlternativeToCustomerDecision">
-        <di:waypoint x="750" y="350"/>
-        <di:waypoint x="775" y="350"/>
-        <di:waypoint x="775" y="300"/>
-        <di:waypoint x="800" y="300"/>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="edge_shape_Task_NotifyOutOfStock_to_shape_Task_SuggestAlternative" bpmnElement="Flow_NotifyToAlternative">
-        <di:waypoint x="598" y="327"/>
-        <di:waypoint x="624" y="327"/>
-        <di:waypoint x="624" y="350"/>
-        <di:waypoint x="650" y="350"/>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="edge_shape_Gateway_StockAvailable_to_shape_Task_NotifyOutOfStock" bpmnElement="Flow_StockToNotify">
-        <di:waypoint x="548" y="206"/>
-        <di:waypoint x="548" y="287"/>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="edge_shape_Task_CheckInventory_to_shape_Gateway_StockAvailable" bpmnElement="Flow_InventoryToStock">
-        <di:waypoint x="480" y="178"/>
-        <di:waypoint x="520" y="178"/>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="edge_shape_Gateway_OrderValid_to_shape_Task_CheckInventory" bpmnElement="Flow_ValidToInventory">
-        <di:waypoint x="350" y="178"/>
-        <di:waypoint x="380" y="178"/>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="edge_shape_Gateway_OrderValid_to_shape_Task_ContactCustomer" bpmnElement="Flow_ValidToContact">
-        <di:waypoint x="322" y="150"/>
-        <di:waypoint x="334" y="121"/>
-        <di:waypoint x="342" y="105"/>
-        <di:waypoint x="322" y="64"/>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="edge_shape_Task_ContactCustomer_to_shape_Gateway_OrderValid" bpmnElement="_020E5499-E00A-4140-B9E5-2B873BFAD88D">
-        <di:waypoint x="272" y="64"/>
-        <di:waypoint x="322" y="150"/>
+      <bpmndi:BPMNShape id="shape_Task_CheckInventory" bpmnElement="Task_CheckInventory">
+        <dc:Bounds x="380" y="138" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_Gateway_StockAvailable" bpmnElement="Gateway_StockAvailable" isMarkerVisible="true">
+        <dc:Bounds x="520" y="150" width="56" height="56" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_Task_NotifyOutOfStock" bpmnElement="Task_NotifyOutOfStock">
+        <dc:Bounds x="498" y="287" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_Task_CancelOrder" bpmnElement="Task_CancelOrder">
+        <dc:Bounds x="778" y="421" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_Task_ConfirmOrder" bpmnElement="Task_ConfirmOrder">
+        <dc:Bounds x="620" y="138" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_Task_PrepareGoods" bpmnElement="Task_PrepareGoods">
+        <dc:Bounds x="760" y="138" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_Task_PackageGoods" bpmnElement="Task_PackageGoods">
+        <dc:Bounds x="900" y="138" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_Task_CreateDeliverySlip" bpmnElement="Task_CreateDeliverySlip">
+        <dc:Bounds x="1040" y="138" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_Task_HandToTransport" bpmnElement="Task_HandToTransport">
+        <dc:Bounds x="1180" y="138" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_EndEvent_OrderCancelled" bpmnElement="EndEvent_OrderCancelled">
+        <dc:Bounds x="922" y="433" width="56" height="56" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_Task_SuggestAlternative" bpmnElement="Task_SuggestAlternative">
+        <dc:Bounds x="650" y="287" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_Gateway_CustomerAgrees" bpmnElement="Gateway_CustomerAgrees" isMarkerVisible="true">
+        <dc:Bounds x="800" y="299" width="56" height="56" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="866" y="320" width="58" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_Task_DeliverToCustomer" bpmnElement="Task_DeliverToCustomer">
+        <dc:Bounds x="1180" y="280" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_Task_ConfirmDeliverySuccess" bpmnElement="Task_ConfirmDeliverySuccess">
+        <dc:Bounds x="1320" y="280" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_Task_ProcessPayment" bpmnElement="Task_ProcessPayment">
+        <dc:Bounds x="1460" y="280" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_EndEvent_OrderComplete" bpmnElement="EndEvent_OrderComplete">
+        <dc:Bounds x="1600" y="292" width="56" height="56" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1588" y="348" width="80" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_Task_ContactCustomer" bpmnElement="Task_ContactCustomer">
+        <dc:Bounds x="170" y="24" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="edge_shape_StartEvent_ReceiveOnlineOrder_to_shape_Task_CheckOrderInfo" bpmnElement="Flow_StartToCheck">
+        <di:waypoint x="106" y="178" />
+        <di:waypoint x="150" y="178" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="edge_shape_Task_CheckOrderInfo_to_shape_Gateway_OrderValid" bpmnElement="Flow_CheckToValid">
-        <di:waypoint x="250" y="178"/>
-        <di:waypoint x="294" y="178"/>
+        <di:waypoint x="250" y="178" />
+        <di:waypoint x="294" y="178" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="edge_shape_StartEvent_ReceiveOnlineOrder_to_shape_Task_CheckOrderInfo" bpmnElement="Flow_StartToCheck">
-        <di:waypoint x="106" y="178"/>
-        <di:waypoint x="150" y="178"/>
+      <bpmndi:BPMNEdge id="edge_shape_Task_ContactCustomer_to_shape_Gateway_OrderValid" bpmnElement="_020E5499-E00A-4140-B9E5-2B873BFAD88D">
+        <di:waypoint x="268" y="100" />
+        <di:waypoint x="300" y="100" />
+        <di:waypoint x="300" y="172" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_Gateway_OrderValid_to_shape_Task_CheckInventory" bpmnElement="Flow_ValidToInventory">
+        <di:waypoint x="350" y="178" />
+        <di:waypoint x="380" y="178" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_Task_CheckInventory_to_shape_Gateway_StockAvailable" bpmnElement="Flow_InventoryToStock">
+        <di:waypoint x="480" y="178" />
+        <di:waypoint x="520" y="178" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_Gateway_StockAvailable_to_shape_Task_NotifyOutOfStock" bpmnElement="Flow_StockToNotify">
+        <di:waypoint x="548" y="206" />
+        <di:waypoint x="548" y="287" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_Task_NotifyOutOfStock_to_shape_Task_SuggestAlternative" bpmnElement="Flow_NotifyToAlternative">
+        <di:waypoint x="598" y="327" />
+        <di:waypoint x="650" y="327" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_Task_SuggestAlternative_to_shape_Gateway_CustomerAgrees" bpmnElement="Flow_AlternativeToCustomerDecision">
+        <di:waypoint x="750" y="327" />
+        <di:waypoint x="800" y="327" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_Gateway_CustomerAgrees_to_shape_Task_CancelOrder" bpmnElement="Flow_CustomerDisagrees">
+        <di:waypoint x="828" y="355" />
+        <di:waypoint x="828" y="421" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="834" y="379" width="32" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_Gateway_StockAvailable_to_shape_Task_ConfirmOrder" bpmnElement="Flow_StockToConfirm">
+        <di:waypoint x="576" y="178" />
+        <di:waypoint x="620" y="178" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_Gateway_CustomerAgrees_to_shape_Task_ConfirmOrder" bpmnElement="Flow_CustomerAgrees">
+        <di:waypoint x="828" y="299" />
+        <di:waypoint x="828" y="260" />
+        <di:waypoint x="670" y="260" />
+        <di:waypoint x="670" y="218" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="727" y="237" width="15" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_Task_ConfirmOrder_to_shape_Task_PrepareGoods" bpmnElement="Flow_ConfirmToPrepare">
+        <di:waypoint x="720" y="178" />
+        <di:waypoint x="760" y="178" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_Task_PrepareGoods_to_shape_Task_PackageGoods" bpmnElement="Flow_PrepareToPackage">
+        <di:waypoint x="860" y="178" />
+        <di:waypoint x="900" y="178" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_Task_PackageGoods_to_shape_Task_CreateDeliverySlip" bpmnElement="Flow_PackageToSlip">
+        <di:waypoint x="1000" y="178" />
+        <di:waypoint x="1040" y="178" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_Task_CreateDeliverySlip_to_shape_Task_HandToTransport" bpmnElement="Flow_SlipToTransport">
+        <di:waypoint x="1140" y="178" />
+        <di:waypoint x="1180" y="178" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_Task_HandToTransport_to_shape_Task_DeliverToCustomer" bpmnElement="Flow_TransportToDeliver">
+        <di:waypoint x="1230" y="218" />
+        <di:waypoint x="1230" y="280" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_Task_CancelOrder_to_shape_EndEvent_OrderCancelled" bpmnElement="Flow_CancelToEnd">
+        <di:waypoint x="878" y="461" />
+        <di:waypoint x="922" y="461" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_Task_DeliverToCustomer_to_shape_Task_ConfirmDeliverySuccess" bpmnElement="Flow_DeliverToConfirmSuccess">
+        <di:waypoint x="1280" y="320" />
+        <di:waypoint x="1320" y="320" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_Task_ConfirmDeliverySuccess_to_shape_Task_ProcessPayment" bpmnElement="Flow_ConfirmSuccessToPayment">
+        <di:waypoint x="1420" y="320" />
+        <di:waypoint x="1460" y="320" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_Task_ProcessPayment_to_shape_EndEvent_OrderComplete" bpmnElement="Flow_PaymentToComplete">
+        <di:waypoint x="1560" y="320" />
+        <di:waypoint x="1600" y="320" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0w3quqe_di" bpmnElement="Flow_0w3quqe">
+        <di:waypoint x="322" y="150" />
+        <di:waypoint x="322" y="64" />
+        <di:waypoint x="270" y="64" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="306" y="43" width="32" height="14" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
@@ -412,291 +415,291 @@
     <bpmn2:extensionElements>
       <bpsim:BPSimData>
         <bpsim:Scenario id="default" name="Simulationscenario">
-          <bpsim:ScenarioParameters/>
+          <bpsim:ScenarioParameters />
           <bpsim:ElementParameters elementRef="Task_ProcessPayment">
             <bpsim:TimeParameters>
               <bpsim:ProcessingTime>
-                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0" />
               </bpsim:ProcessingTime>
             </bpsim:TimeParameters>
             <bpsim:ResourceParameters>
               <bpsim:Availability>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:Availability>
               <bpsim:Quantity>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:Quantity>
             </bpsim:ResourceParameters>
             <bpsim:CostParameters>
               <bpsim:UnitCost>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:UnitCost>
             </bpsim:CostParameters>
           </bpsim:ElementParameters>
           <bpsim:ElementParameters elementRef="Task_ConfirmDeliverySuccess">
             <bpsim:TimeParameters>
               <bpsim:ProcessingTime>
-                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0" />
               </bpsim:ProcessingTime>
             </bpsim:TimeParameters>
             <bpsim:ResourceParameters>
               <bpsim:Availability>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:Availability>
               <bpsim:Quantity>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:Quantity>
             </bpsim:ResourceParameters>
             <bpsim:CostParameters>
               <bpsim:UnitCost>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:UnitCost>
             </bpsim:CostParameters>
           </bpsim:ElementParameters>
           <bpsim:ElementParameters elementRef="Task_DeliverToCustomer">
             <bpsim:TimeParameters>
               <bpsim:ProcessingTime>
-                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0" />
               </bpsim:ProcessingTime>
             </bpsim:TimeParameters>
             <bpsim:ResourceParameters>
               <bpsim:Availability>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:Availability>
               <bpsim:Quantity>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:Quantity>
             </bpsim:ResourceParameters>
             <bpsim:CostParameters>
               <bpsim:UnitCost>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:UnitCost>
             </bpsim:CostParameters>
           </bpsim:ElementParameters>
           <bpsim:ElementParameters elementRef="Task_HandToTransport">
             <bpsim:TimeParameters>
               <bpsim:ProcessingTime>
-                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0" />
               </bpsim:ProcessingTime>
             </bpsim:TimeParameters>
             <bpsim:ResourceParameters>
               <bpsim:Availability>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:Availability>
               <bpsim:Quantity>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:Quantity>
             </bpsim:ResourceParameters>
             <bpsim:CostParameters>
               <bpsim:UnitCost>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:UnitCost>
             </bpsim:CostParameters>
           </bpsim:ElementParameters>
           <bpsim:ElementParameters elementRef="Task_CreateDeliverySlip">
             <bpsim:TimeParameters>
               <bpsim:ProcessingTime>
-                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0" />
               </bpsim:ProcessingTime>
             </bpsim:TimeParameters>
             <bpsim:ResourceParameters>
               <bpsim:Availability>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:Availability>
               <bpsim:Quantity>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:Quantity>
             </bpsim:ResourceParameters>
             <bpsim:CostParameters>
               <bpsim:UnitCost>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:UnitCost>
             </bpsim:CostParameters>
           </bpsim:ElementParameters>
           <bpsim:ElementParameters elementRef="Task_PackageGoods">
             <bpsim:TimeParameters>
               <bpsim:ProcessingTime>
-                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0" />
               </bpsim:ProcessingTime>
             </bpsim:TimeParameters>
             <bpsim:ResourceParameters>
               <bpsim:Availability>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:Availability>
               <bpsim:Quantity>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:Quantity>
             </bpsim:ResourceParameters>
             <bpsim:CostParameters>
               <bpsim:UnitCost>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:UnitCost>
             </bpsim:CostParameters>
           </bpsim:ElementParameters>
           <bpsim:ElementParameters elementRef="Task_PrepareGoods">
             <bpsim:TimeParameters>
               <bpsim:ProcessingTime>
-                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0" />
               </bpsim:ProcessingTime>
             </bpsim:TimeParameters>
             <bpsim:ResourceParameters>
               <bpsim:Availability>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:Availability>
               <bpsim:Quantity>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:Quantity>
             </bpsim:ResourceParameters>
             <bpsim:CostParameters>
               <bpsim:UnitCost>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:UnitCost>
             </bpsim:CostParameters>
           </bpsim:ElementParameters>
           <bpsim:ElementParameters elementRef="Task_ConfirmOrder">
             <bpsim:TimeParameters>
               <bpsim:ProcessingTime>
-                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0" />
               </bpsim:ProcessingTime>
             </bpsim:TimeParameters>
             <bpsim:ResourceParameters>
               <bpsim:Availability>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:Availability>
               <bpsim:Quantity>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:Quantity>
             </bpsim:ResourceParameters>
             <bpsim:CostParameters>
               <bpsim:UnitCost>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:UnitCost>
             </bpsim:CostParameters>
           </bpsim:ElementParameters>
           <bpsim:ElementParameters elementRef="Task_CancelOrder">
             <bpsim:TimeParameters>
               <bpsim:ProcessingTime>
-                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0" />
               </bpsim:ProcessingTime>
             </bpsim:TimeParameters>
             <bpsim:ResourceParameters>
               <bpsim:Availability>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:Availability>
               <bpsim:Quantity>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:Quantity>
             </bpsim:ResourceParameters>
             <bpsim:CostParameters>
               <bpsim:UnitCost>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:UnitCost>
             </bpsim:CostParameters>
           </bpsim:ElementParameters>
           <bpsim:ElementParameters elementRef="Task_SuggestAlternative">
             <bpsim:TimeParameters>
               <bpsim:ProcessingTime>
-                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0" />
               </bpsim:ProcessingTime>
             </bpsim:TimeParameters>
             <bpsim:ResourceParameters>
               <bpsim:Availability>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:Availability>
               <bpsim:Quantity>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:Quantity>
             </bpsim:ResourceParameters>
             <bpsim:CostParameters>
               <bpsim:UnitCost>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:UnitCost>
             </bpsim:CostParameters>
           </bpsim:ElementParameters>
           <bpsim:ElementParameters elementRef="Task_NotifyOutOfStock">
             <bpsim:TimeParameters>
               <bpsim:ProcessingTime>
-                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0" />
               </bpsim:ProcessingTime>
             </bpsim:TimeParameters>
             <bpsim:ResourceParameters>
               <bpsim:Availability>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:Availability>
               <bpsim:Quantity>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:Quantity>
             </bpsim:ResourceParameters>
             <bpsim:CostParameters>
               <bpsim:UnitCost>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:UnitCost>
             </bpsim:CostParameters>
           </bpsim:ElementParameters>
           <bpsim:ElementParameters elementRef="Task_CheckInventory">
             <bpsim:TimeParameters>
               <bpsim:ProcessingTime>
-                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0" />
               </bpsim:ProcessingTime>
             </bpsim:TimeParameters>
             <bpsim:ResourceParameters>
               <bpsim:Availability>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:Availability>
               <bpsim:Quantity>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:Quantity>
             </bpsim:ResourceParameters>
             <bpsim:CostParameters>
               <bpsim:UnitCost>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:UnitCost>
             </bpsim:CostParameters>
           </bpsim:ElementParameters>
           <bpsim:ElementParameters elementRef="Task_ContactCustomer">
             <bpsim:TimeParameters>
               <bpsim:ProcessingTime>
-                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0" />
               </bpsim:ProcessingTime>
             </bpsim:TimeParameters>
             <bpsim:ResourceParameters>
               <bpsim:Availability>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:Availability>
               <bpsim:Quantity>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:Quantity>
             </bpsim:ResourceParameters>
             <bpsim:CostParameters>
               <bpsim:UnitCost>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:UnitCost>
             </bpsim:CostParameters>
           </bpsim:ElementParameters>
           <bpsim:ElementParameters elementRef="Task_CheckOrderInfo">
             <bpsim:TimeParameters>
               <bpsim:ProcessingTime>
-                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0" />
               </bpsim:ProcessingTime>
             </bpsim:TimeParameters>
             <bpsim:ResourceParameters>
               <bpsim:Availability>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:Availability>
               <bpsim:Quantity>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:Quantity>
             </bpsim:ResourceParameters>
             <bpsim:CostParameters>
               <bpsim:UnitCost>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:UnitCost>
             </bpsim:CostParameters>
           </bpsim:ElementParameters>
           <bpsim:ElementParameters elementRef="StartEvent_ReceiveOnlineOrder">
             <bpsim:TimeParameters>
               <bpsim:ProcessingTime>
-                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0" />
               </bpsim:ProcessingTime>
             </bpsim:TimeParameters>
           </bpsim:ElementParameters>

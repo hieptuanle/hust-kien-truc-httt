@@ -1,43 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn2:definitions xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:bpsim="http://www.bpsim.org/schemas/1.0" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:drools="http://www.jboss.org/drools" xmlns:xsi="xsi" id="_2ticgB9ZED6QpI5KF2pa8w" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd http://www.jboss.org/drools drools.xsd http://www.bpsim.org/schemas/1.0 bpsim.xsd http://www.omg.org/spec/DD/20100524/DC DC.xsd http://www.omg.org/spec/DD/20100524/DI DI.xsd " exporter="jBPM Process Modeler" exporterVersion="2.0" targetNamespace="http://www.omg.org/bpmn20">
+<bpmn2:definitions xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:bpsim="http://www.bpsim.org/schemas/1.0" xmlns:drools="http://www.jboss.org/drools" xmlns:xsi="xsi" id="_2ticgB9ZED6QpI5KF2pa8w" targetNamespace="http://www.omg.org/bpmn20" exporter="jBPM Process Modeler" exporterVersion="2.0">
   <bpmn2:collaboration id="_625C4EFC-B57D-4DA9-8AC4-DEED56C7C735" name="Default Collaboration">
-    <bpmn2:participant id="_51756C90-55A0-4486-87C3-D3E2241BE7F9" name="Pool Participant" processRef="BP004"/>
+    <bpmn2:participant id="_51756C90-55A0-4486-87C3-D3E2241BE7F9" name="Pool Participant" processRef="BP004" />
   </bpmn2:collaboration>
-  <bpmn2:process id="BP004" drools:packageName="com.example" drools:version="1.0" drools:adHoc="false" name="BP004" processType="Public">
-    <bpmn2:sequenceFlow id="Flow_StartToInventoryCheck" sourceRef="StartEvent_BeginWorkDay" targetRef="Task_BeginningInventoryCheck"/>
-    <bpmn2:sequenceFlow id="Flow_InventoryToUpdate" sourceRef="Task_BeginningInventoryCheck" targetRef="Task_UpdateInventorySystem"/>
-    <bpmn2:sequenceFlow id="Flow_UpdateToProcessExit" sourceRef="Task_UpdateInventorySystem" targetRef="Task_ProcessExitSlips"/>
-    <bpmn2:sequenceFlow id="Flow_ExitSlipsToPrepareGoods" sourceRef="Task_ProcessExitSlips" targetRef="Task_PrepareGoods"/>
-    <bpmn2:sequenceFlow id="Flow_PrepareToQualityCheck" sourceRef="Task_PrepareGoods" targetRef="Task_QualityCheckOutgoing"/>
-    <bpmn2:sequenceFlow id="Flow_QualityCheckToPacking" sourceRef="Task_QualityCheckOutgoing" targetRef="Task_PackingAndHandover"/>
-    <bpmn2:sequenceFlow id="Flow_PackingToUpdateExit" sourceRef="Task_PackingAndHandover" targetRef="Task_UpdateWarehouseExit"/>
-    <bpmn2:sequenceFlow id="Flow_UpdateExitToProcessEntry" sourceRef="Task_UpdateWarehouseExit" targetRef="Task_ProcessNewEntries"/>
-    <bpmn2:sequenceFlow id="Flow_ProcessEntryToCheckIncoming" sourceRef="Task_ProcessNewEntries" targetRef="Task_CheckIncomingGoods"/>
-    <bpmn2:sequenceFlow id="Flow_CheckIncomingToArrange" sourceRef="Task_CheckIncomingGoods" targetRef="Task_ArrangeWarehousePositions"/>
-    <bpmn2:sequenceFlow id="Flow_ArrangeToUpdateEntry" sourceRef="Task_ArrangeWarehousePositions" targetRef="Task_UpdateWarehouseEntry"/>
-    <bpmn2:sequenceFlow id="Flow_UpdateEntryToCheckLevels" sourceRef="Task_UpdateWarehouseEntry" targetRef="Task_CheckInventoryLevels"/>
-    <bpmn2:sequenceFlow id="Flow_CheckLevelsToGateway" sourceRef="Task_CheckInventoryLevels" targetRef="Gateway_BelowMinimumLevel"/>
+  <bpmn2:process id="BP004" name="BP004" processType="Public" drools:packageName="com.example" drools:version="1.0" drools:adHoc="false">
+    <bpmn2:sequenceFlow id="Flow_StartToInventoryCheck" sourceRef="StartEvent_BeginWorkDay" targetRef="Task_BeginningInventoryCheck" />
+    <bpmn2:sequenceFlow id="Flow_InventoryToUpdate" sourceRef="Task_BeginningInventoryCheck" targetRef="Task_UpdateInventorySystem" />
+    <bpmn2:sequenceFlow id="Flow_UpdateToProcessExit" sourceRef="Task_UpdateInventorySystem" targetRef="Task_ProcessExitSlips" />
+    <bpmn2:sequenceFlow id="Flow_ExitSlipsToPrepareGoods" sourceRef="Task_ProcessExitSlips" targetRef="Task_PrepareGoods" />
+    <bpmn2:sequenceFlow id="Flow_PrepareToQualityCheck" sourceRef="Task_PrepareGoods" targetRef="Task_QualityCheckOutgoing" />
+    <bpmn2:sequenceFlow id="Flow_QualityCheckToPacking" sourceRef="Task_QualityCheckOutgoing" targetRef="Task_PackingAndHandover" />
+    <bpmn2:sequenceFlow id="Flow_PackingToUpdateExit" sourceRef="Task_PackingAndHandover" targetRef="Task_UpdateWarehouseExit" />
+    <bpmn2:sequenceFlow id="Flow_UpdateExitToProcessEntry" sourceRef="Task_UpdateWarehouseExit" targetRef="Task_ProcessNewEntries" />
+    <bpmn2:sequenceFlow id="Flow_ProcessEntryToCheckIncoming" sourceRef="Task_ProcessNewEntries" targetRef="Task_CheckIncomingGoods" />
+    <bpmn2:sequenceFlow id="Flow_CheckIncomingToArrange" sourceRef="Task_CheckIncomingGoods" targetRef="Task_ArrangeWarehousePositions" />
+    <bpmn2:sequenceFlow id="Flow_ArrangeToUpdateEntry" sourceRef="Task_ArrangeWarehousePositions" targetRef="Task_UpdateWarehouseEntry" />
+    <bpmn2:sequenceFlow id="Flow_UpdateEntryToCheckLevels" sourceRef="Task_UpdateWarehouseEntry" targetRef="Task_CheckInventoryLevels" />
+    <bpmn2:sequenceFlow id="Flow_CheckLevelsToGateway" sourceRef="Task_CheckInventoryLevels" targetRef="Gateway_BelowMinimumLevel" />
     <bpmn2:sequenceFlow id="Flow_GatewayToNotifyPurchasing" name="Có" sourceRef="Gateway_BelowMinimumLevel" targetRef="Task_NotifyPurchasing">
       <bpmn2:extensionElements>
         <drools:metaData name="elementname">
-          <drools:metaValue><![CDATA[Có]]></drools:metaValue>
+          <drools:metaValue>Có</drools:metaValue>
         </drools:metaData>
       </bpmn2:extensionElements>
     </bpmn2:sequenceFlow>
-    <bpmn2:sequenceFlow id="Flow_NotifyToEndInventoryCheck" sourceRef="Task_NotifyPurchasing" targetRef="Task_EndInventoryCheck"/>
+    <bpmn2:sequenceFlow id="Flow_NotifyToEndInventoryCheck" sourceRef="Task_NotifyPurchasing" targetRef="Task_EndInventoryCheck" />
     <bpmn2:sequenceFlow id="Flow_GatewayToEndInventoryCheck" name="Không" sourceRef="Gateway_BelowMinimumLevel" targetRef="Task_EndInventoryCheck">
       <bpmn2:extensionElements>
         <drools:metaData name="elementname">
-          <drools:metaValue><![CDATA[Không]]></drools:metaValue>
+          <drools:metaValue>Không</drools:metaValue>
         </drools:metaData>
       </bpmn2:extensionElements>
     </bpmn2:sequenceFlow>
-    <bpmn2:sequenceFlow id="Flow_1jn64kn" sourceRef="Task_EndInventoryCheck" targetRef="Task_EndOfDayReport"/>
-    <bpmn2:sequenceFlow id="Flow_1eskado" sourceRef="Task_EndOfDayReport" targetRef="EndEvent_CompleteWorkShift"/>
+    <bpmn2:sequenceFlow id="Flow_1jn64kn" sourceRef="Task_EndInventoryCheck" targetRef="Task_EndOfDayReport" />
     <bpmn2:startEvent id="StartEvent_BeginWorkDay" name="Bắt đầu ngày làm việc">
       <bpmn2:extensionElements>
         <drools:metaData name="elementname">
-          <drools:metaValue><![CDATA[Bắt đầu ngày làm việc]]></drools:metaValue>
+          <drools:metaValue>Bắt đầu ngày làm việc</drools:metaValue>
         </drools:metaData>
       </bpmn2:extensionElements>
       <bpmn2:outgoing>Flow_StartToInventoryCheck</bpmn2:outgoing>
@@ -45,7 +44,7 @@
     <bpmn2:task id="Task_BeginningInventoryCheck" name="Kiểm kê đầu ca">
       <bpmn2:extensionElements>
         <drools:metaData name="elementname">
-          <drools:metaValue><![CDATA[Kiểm kê đầu ca]]></drools:metaValue>
+          <drools:metaValue>Kiểm kê đầu ca</drools:metaValue>
         </drools:metaData>
       </bpmn2:extensionElements>
       <bpmn2:incoming>Flow_StartToInventoryCheck</bpmn2:incoming>
@@ -54,7 +53,7 @@
     <bpmn2:task id="Task_UpdateInventorySystem" name="Cập nhật tồn kho vào hệ thống">
       <bpmn2:extensionElements>
         <drools:metaData name="elementname">
-          <drools:metaValue><![CDATA[Cập nhật tồn kho vào hệ thống]]></drools:metaValue>
+          <drools:metaValue>Cập nhật tồn kho vào hệ thống</drools:metaValue>
         </drools:metaData>
       </bpmn2:extensionElements>
       <bpmn2:incoming>Flow_InventoryToUpdate</bpmn2:incoming>
@@ -63,7 +62,7 @@
     <bpmn2:task id="Task_ProcessExitSlips" name="Xử lý phiếu xuất kho">
       <bpmn2:extensionElements>
         <drools:metaData name="elementname">
-          <drools:metaValue><![CDATA[Xử lý phiếu xuất kho]]></drools:metaValue>
+          <drools:metaValue>Xử lý phiếu xuất kho</drools:metaValue>
         </drools:metaData>
       </bpmn2:extensionElements>
       <bpmn2:incoming>Flow_UpdateToProcessExit</bpmn2:incoming>
@@ -72,7 +71,7 @@
     <bpmn2:task id="Task_PrepareGoods" name="Chuẩn bị hàng theo đơn">
       <bpmn2:extensionElements>
         <drools:metaData name="elementname">
-          <drools:metaValue><![CDATA[Chuẩn bị hàng theo đơn]]></drools:metaValue>
+          <drools:metaValue>Chuẩn bị hàng theo đơn</drools:metaValue>
         </drools:metaData>
       </bpmn2:extensionElements>
       <bpmn2:incoming>Flow_ExitSlipsToPrepareGoods</bpmn2:incoming>
@@ -81,7 +80,7 @@
     <bpmn2:task id="Task_QualityCheckOutgoing" name="Kiểm tra chất lượng hàng xuất">
       <bpmn2:extensionElements>
         <drools:metaData name="elementname">
-          <drools:metaValue><![CDATA[Kiểm tra chất lượng hàng xuất]]></drools:metaValue>
+          <drools:metaValue>Kiểm tra chất lượng hàng xuất</drools:metaValue>
         </drools:metaData>
       </bpmn2:extensionElements>
       <bpmn2:incoming>Flow_PrepareToQualityCheck</bpmn2:incoming>
@@ -90,7 +89,7 @@
     <bpmn2:task id="Task_PackingAndHandover" name="Đóng gói và giao cho vận tải">
       <bpmn2:extensionElements>
         <drools:metaData name="elementname">
-          <drools:metaValue><![CDATA[Đóng gói và giao cho vận tải]]></drools:metaValue>
+          <drools:metaValue>Đóng gói và giao cho vận tải</drools:metaValue>
         </drools:metaData>
       </bpmn2:extensionElements>
       <bpmn2:incoming>Flow_QualityCheckToPacking</bpmn2:incoming>
@@ -99,7 +98,7 @@
     <bpmn2:task id="Task_UpdateWarehouseExit" name="Cập nhật xuất kho">
       <bpmn2:extensionElements>
         <drools:metaData name="elementname">
-          <drools:metaValue><![CDATA[Cập nhật xuất kho]]></drools:metaValue>
+          <drools:metaValue>Cập nhật xuất kho</drools:metaValue>
         </drools:metaData>
       </bpmn2:extensionElements>
       <bpmn2:incoming>Flow_PackingToUpdateExit</bpmn2:incoming>
@@ -108,7 +107,7 @@
     <bpmn2:task id="Task_ProcessNewEntries" name="Xử lý nhập kho mới">
       <bpmn2:extensionElements>
         <drools:metaData name="elementname">
-          <drools:metaValue><![CDATA[Xử lý nhập kho mới]]></drools:metaValue>
+          <drools:metaValue>Xử lý nhập kho mới</drools:metaValue>
         </drools:metaData>
       </bpmn2:extensionElements>
       <bpmn2:incoming>Flow_UpdateExitToProcessEntry</bpmn2:incoming>
@@ -117,7 +116,7 @@
     <bpmn2:task id="Task_CheckIncomingGoods" name="Kiểm tra hàng nhập">
       <bpmn2:extensionElements>
         <drools:metaData name="elementname">
-          <drools:metaValue><![CDATA[Kiểm tra hàng nhập]]></drools:metaValue>
+          <drools:metaValue>Kiểm tra hàng nhập</drools:metaValue>
         </drools:metaData>
       </bpmn2:extensionElements>
       <bpmn2:incoming>Flow_ProcessEntryToCheckIncoming</bpmn2:incoming>
@@ -126,7 +125,7 @@
     <bpmn2:task id="Task_ArrangeWarehousePositions" name="Sắp xếp vào vị trí kho">
       <bpmn2:extensionElements>
         <drools:metaData name="elementname">
-          <drools:metaValue><![CDATA[Sắp xếp vào vị trí kho]]></drools:metaValue>
+          <drools:metaValue>Sắp xếp vào vị trí kho</drools:metaValue>
         </drools:metaData>
       </bpmn2:extensionElements>
       <bpmn2:incoming>Flow_CheckIncomingToArrange</bpmn2:incoming>
@@ -135,7 +134,7 @@
     <bpmn2:task id="Task_UpdateWarehouseEntry" name="Cập nhật nhập kho">
       <bpmn2:extensionElements>
         <drools:metaData name="elementname">
-          <drools:metaValue><![CDATA[Cập nhật nhập kho]]></drools:metaValue>
+          <drools:metaValue>Cập nhật nhập kho</drools:metaValue>
         </drools:metaData>
       </bpmn2:extensionElements>
       <bpmn2:incoming>Flow_ArrangeToUpdateEntry</bpmn2:incoming>
@@ -144,7 +143,7 @@
     <bpmn2:task id="Task_CheckInventoryLevels" name="Kiểm tra mức tồn kho">
       <bpmn2:extensionElements>
         <drools:metaData name="elementname">
-          <drools:metaValue><![CDATA[Kiểm tra mức tồn kho]]></drools:metaValue>
+          <drools:metaValue>Kiểm tra mức tồn kho</drools:metaValue>
         </drools:metaData>
       </bpmn2:extensionElements>
       <bpmn2:incoming>Flow_UpdateEntryToCheckLevels</bpmn2:incoming>
@@ -153,7 +152,7 @@
     <bpmn2:exclusiveGateway id="Gateway_BelowMinimumLevel" name="Có hàng dưới mức tối thiểu?" gatewayDirection="Diverging">
       <bpmn2:extensionElements>
         <drools:metaData name="elementname">
-          <drools:metaValue><![CDATA[Có hàng dưới mức tối thiểu?]]></drools:metaValue>
+          <drools:metaValue>Có hàng dưới mức tối thiểu?</drools:metaValue>
         </drools:metaData>
       </bpmn2:extensionElements>
       <bpmn2:incoming>Flow_CheckLevelsToGateway</bpmn2:incoming>
@@ -163,7 +162,7 @@
     <bpmn2:task id="Task_NotifyPurchasing" name="Thông báo bộ phận mua hàng">
       <bpmn2:extensionElements>
         <drools:metaData name="elementname">
-          <drools:metaValue><![CDATA[Thông báo bộ phận mua hàng]]></drools:metaValue>
+          <drools:metaValue>Thông báo bộ phận mua hàng</drools:metaValue>
         </drools:metaData>
       </bpmn2:extensionElements>
       <bpmn2:incoming>Flow_GatewayToNotifyPurchasing</bpmn2:incoming>
@@ -172,7 +171,7 @@
     <bpmn2:task id="Task_EndInventoryCheck" name="Kiểm kê cuối ca">
       <bpmn2:extensionElements>
         <drools:metaData name="elementname">
-          <drools:metaValue><![CDATA[Kiểm kê cuối ca]]></drools:metaValue>
+          <drools:metaValue>Kiểm kê cuối ca</drools:metaValue>
         </drools:metaData>
       </bpmn2:extensionElements>
       <bpmn2:incoming>Flow_GatewayToEndInventoryCheck</bpmn2:incoming>
@@ -182,149 +181,165 @@
     <bpmn2:task id="Task_EndOfDayReport" name="Báo cáo tồn kho cuối ngày">
       <bpmn2:extensionElements>
         <drools:metaData name="elementname">
-          <drools:metaValue><![CDATA[Báo cáo tồn kho cuối ngày]]></drools:metaValue>
+          <drools:metaValue>Báo cáo tồn kho cuối ngày</drools:metaValue>
         </drools:metaData>
       </bpmn2:extensionElements>
       <bpmn2:incoming>Flow_1jn64kn</bpmn2:incoming>
-      <bpmn2:outgoing>Flow_1eskado</bpmn2:outgoing>
+      <bpmn2:outgoing>Flow_0fc06yx</bpmn2:outgoing>
     </bpmn2:task>
     <bpmn2:endEvent id="EndEvent_CompleteWorkShift" name="Hoàn thành ca làm việc">
       <bpmn2:extensionElements>
         <drools:metaData name="elementname">
-          <drools:metaValue><![CDATA[Hoàn thành ca làm việc]]></drools:metaValue>
+          <drools:metaValue>Hoàn thành ca làm việc</drools:metaValue>
         </drools:metaData>
       </bpmn2:extensionElements>
-      <bpmn2:incoming>Flow_1eskado</bpmn2:incoming>
+      <bpmn2:incoming>Flow_0fc06yx</bpmn2:incoming>
     </bpmn2:endEvent>
+    <bpmn2:sequenceFlow id="Flow_0fc06yx" sourceRef="Task_EndOfDayReport" targetRef="EndEvent_CompleteWorkShift" />
   </bpmn2:process>
   <bpmndi:BPMNDiagram>
     <bpmndi:BPMNPlane bpmnElement="BP004">
-      <bpmndi:BPMNShape id="shape_EndEvent_CompleteWorkShift" bpmnElement="EndEvent_CompleteWorkShift">
-        <dc:Bounds height="56" width="56" x="142" y="371"/>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="shape_Task_EndOfDayReport" bpmnElement="Task_EndOfDayReport">
-        <dc:Bounds height="80" width="100" x="120" y="200"/>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="shape_Task_EndInventoryCheck" bpmnElement="Task_EndInventoryCheck">
-        <dc:Bounds height="80" width="100" x="250" y="200"/>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="shape_Task_NotifyPurchasing" bpmnElement="Task_NotifyPurchasing">
-        <dc:Bounds height="80" width="100" x="399" y="340"/>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="shape_Gateway_BelowMinimumLevel" bpmnElement="Gateway_BelowMinimumLevel">
-        <dc:Bounds height="56" width="56" x="421" y="212"/>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="shape_Task_CheckInventoryLevels" bpmnElement="Task_CheckInventoryLevels">
-        <dc:Bounds height="80" width="100" x="550" y="200"/>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="shape_Task_UpdateWarehouseEntry" bpmnElement="Task_UpdateWarehouseEntry">
-        <dc:Bounds height="80" width="100" x="700" y="200"/>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="shape_Task_ArrangeWarehousePositions" bpmnElement="Task_ArrangeWarehousePositions">
-        <dc:Bounds height="80" width="100" x="850" y="200"/>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="shape_Task_CheckIncomingGoods" bpmnElement="Task_CheckIncomingGoods">
-        <dc:Bounds height="80" width="100" x="1000" y="200"/>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="shape_Task_ProcessNewEntries" bpmnElement="Task_ProcessNewEntries">
-        <dc:Bounds height="80" width="100" x="1150" y="200"/>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="shape_Task_UpdateWarehouseExit" bpmnElement="Task_UpdateWarehouseExit">
-        <dc:Bounds height="80" width="100" x="1150" y="60"/>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="shape_Task_PackingAndHandover" bpmnElement="Task_PackingAndHandover">
-        <dc:Bounds height="80" width="100" x="1000" y="60"/>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="shape_Task_QualityCheckOutgoing" bpmnElement="Task_QualityCheckOutgoing">
-        <dc:Bounds height="80" width="100" x="850" y="60"/>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="shape_Task_PrepareGoods" bpmnElement="Task_PrepareGoods">
-        <dc:Bounds height="80" width="100" x="700" y="60"/>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="shape_Task_ProcessExitSlips" bpmnElement="Task_ProcessExitSlips">
-        <dc:Bounds height="80" width="100" x="550" y="60"/>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="shape_Task_UpdateInventorySystem" bpmnElement="Task_UpdateInventorySystem">
-        <dc:Bounds height="80" width="100" x="400" y="60"/>
+      <bpmndi:BPMNShape id="shape_StartEvent_BeginWorkDay" bpmnElement="StartEvent_BeginWorkDay">
+        <dc:Bounds x="144" y="79" width="56" height="56" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="129" y="146" width="86" height="27" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="shape_Task_BeginningInventoryCheck" bpmnElement="Task_BeginningInventoryCheck">
-        <dc:Bounds height="80" width="100" x="250" y="60"/>
+        <dc:Bounds x="250" y="60" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="shape_StartEvent_BeginWorkDay" bpmnElement="StartEvent_BeginWorkDay">
-        <dc:Bounds height="56" width="56" x="144" y="72"/>
+      <bpmndi:BPMNShape id="shape_Task_UpdateInventorySystem" bpmnElement="Task_UpdateInventorySystem">
+        <dc:Bounds x="400" y="60" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="edge_shape_Task_EndOfDayReport_to_shape_EndEvent_CompleteWorkShift" bpmnElement="Flow_1eskado">
-        <di:waypoint x="170" y="280"/>
-        <di:waypoint x="160" y="371"/>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="edge_shape_Task_EndInventoryCheck_to_shape_Task_EndOfDayReport" bpmnElement="Flow_1jn64kn">
-        <di:waypoint x="250" y="240"/>
-        <di:waypoint x="220" y="240"/>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="edge_shape_Gateway_BelowMinimumLevel_to_shape_Task_EndInventoryCheck" bpmnElement="Flow_GatewayToEndInventoryCheck">
-        <di:waypoint x="421" y="237"/>
-        <di:waypoint x="350" y="240"/>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="edge_shape_Task_NotifyPurchasing_to_shape_Task_EndInventoryCheck" bpmnElement="Flow_NotifyToEndInventoryCheck">
-        <di:waypoint x="399" y="380"/>
-        <di:waypoint x="300" y="380"/>
-        <di:waypoint x="300" y="280"/>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="edge_shape_Gateway_BelowMinimumLevel_to_shape_Task_NotifyPurchasing" bpmnElement="Flow_GatewayToNotifyPurchasing">
-        <di:waypoint x="446" y="262"/>
-        <di:waypoint x="449" y="340"/>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="edge_shape_Task_CheckInventoryLevels_to_shape_Gateway_BelowMinimumLevel" bpmnElement="Flow_CheckLevelsToGateway">
-        <di:waypoint x="550" y="240"/>
-        <di:waypoint x="471" y="237"/>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="edge_shape_Task_UpdateWarehouseEntry_to_shape_Task_CheckInventoryLevels" bpmnElement="Flow_UpdateEntryToCheckLevels">
-        <di:waypoint x="700" y="240"/>
-        <di:waypoint x="650" y="240"/>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="edge_shape_Task_ArrangeWarehousePositions_to_shape_Task_UpdateWarehouseEntry" bpmnElement="Flow_ArrangeToUpdateEntry">
-        <di:waypoint x="850" y="240"/>
-        <di:waypoint x="800" y="240"/>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="edge_shape_Task_CheckIncomingGoods_to_shape_Task_ArrangeWarehousePositions" bpmnElement="Flow_CheckIncomingToArrange">
-        <di:waypoint x="1000" y="240"/>
-        <di:waypoint x="950" y="240"/>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="edge_shape_Task_ProcessNewEntries_to_shape_Task_CheckIncomingGoods" bpmnElement="Flow_ProcessEntryToCheckIncoming">
-        <di:waypoint x="1150" y="240"/>
-        <di:waypoint x="1100" y="240"/>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="edge_shape_Task_UpdateWarehouseExit_to_shape_Task_ProcessNewEntries" bpmnElement="Flow_UpdateExitToProcessEntry">
-        <di:waypoint x="1200" y="140"/>
-        <di:waypoint x="1200" y="200"/>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="edge_shape_Task_PackingAndHandover_to_shape_Task_UpdateWarehouseExit" bpmnElement="Flow_PackingToUpdateExit">
-        <di:waypoint x="1100" y="100"/>
-        <di:waypoint x="1150" y="100"/>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="edge_shape_Task_QualityCheckOutgoing_to_shape_Task_PackingAndHandover" bpmnElement="Flow_QualityCheckToPacking">
-        <di:waypoint x="950" y="100"/>
-        <di:waypoint x="1000" y="100"/>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="edge_shape_Task_PrepareGoods_to_shape_Task_QualityCheckOutgoing" bpmnElement="Flow_PrepareToQualityCheck">
-        <di:waypoint x="800" y="100"/>
-        <di:waypoint x="850" y="100"/>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="edge_shape_Task_ProcessExitSlips_to_shape_Task_PrepareGoods" bpmnElement="Flow_ExitSlipsToPrepareGoods">
-        <di:waypoint x="650" y="100"/>
-        <di:waypoint x="700" y="100"/>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="edge_shape_Task_UpdateInventorySystem_to_shape_Task_ProcessExitSlips" bpmnElement="Flow_UpdateToProcessExit">
-        <di:waypoint x="500" y="100"/>
-        <di:waypoint x="550" y="100"/>
+      <bpmndi:BPMNShape id="shape_Task_ProcessExitSlips" bpmnElement="Task_ProcessExitSlips">
+        <dc:Bounds x="550" y="60" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_Task_PrepareGoods" bpmnElement="Task_PrepareGoods">
+        <dc:Bounds x="700" y="60" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_Task_QualityCheckOutgoing" bpmnElement="Task_QualityCheckOutgoing">
+        <dc:Bounds x="850" y="60" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_Task_PackingAndHandover" bpmnElement="Task_PackingAndHandover">
+        <dc:Bounds x="1000" y="60" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_Task_UpdateWarehouseExit" bpmnElement="Task_UpdateWarehouseExit">
+        <dc:Bounds x="1150" y="60" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_Task_ProcessNewEntries" bpmnElement="Task_ProcessNewEntries">
+        <dc:Bounds x="1150" y="200" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_Task_CheckIncomingGoods" bpmnElement="Task_CheckIncomingGoods">
+        <dc:Bounds x="1000" y="200" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_Task_ArrangeWarehousePositions" bpmnElement="Task_ArrangeWarehousePositions">
+        <dc:Bounds x="850" y="200" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_Task_UpdateWarehouseEntry" bpmnElement="Task_UpdateWarehouseEntry">
+        <dc:Bounds x="700" y="200" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_Task_CheckInventoryLevels" bpmnElement="Task_CheckInventoryLevels">
+        <dc:Bounds x="550" y="200" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_Gateway_BelowMinimumLevel" bpmnElement="Gateway_BelowMinimumLevel" isMarkerVisible="true">
+        <dc:Bounds x="422" y="218" width="56" height="56" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="415" y="180.5" width="70" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_Task_NotifyPurchasing" bpmnElement="Task_NotifyPurchasing">
+        <dc:Bounds x="394" y="340" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_Task_EndInventoryCheck" bpmnElement="Task_EndInventoryCheck">
+        <dc:Bounds x="250" y="200" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_Task_EndOfDayReport" bpmnElement="Task_EndOfDayReport">
+        <dc:Bounds x="120" y="200" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_EndEvent_CompleteWorkShift" bpmnElement="EndEvent_CompleteWorkShift">
+        <dc:Bounds x="142" y="352" width="56" height="56" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="134" y="426" width="72" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="edge_shape_StartEvent_BeginWorkDay_to_shape_Task_BeginningInventoryCheck" bpmnElement="Flow_StartToInventoryCheck">
+        <di:waypoint x="200" y="107" />
+        <di:waypoint x="250" y="107" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="edge_shape_Task_BeginningInventoryCheck_to_shape_Task_UpdateInventorySystem" bpmnElement="Flow_InventoryToUpdate">
-        <di:waypoint x="350" y="100"/>
-        <di:waypoint x="400" y="100"/>
+        <di:waypoint x="350" y="100" />
+        <di:waypoint x="400" y="100" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="edge_shape_StartEvent_BeginWorkDay_to_shape_Task_BeginningInventoryCheck" bpmnElement="Flow_StartToInventoryCheck">
-        <di:waypoint x="180" y="90"/>
-        <di:waypoint x="250" y="100"/>
+      <bpmndi:BPMNEdge id="edge_shape_Task_UpdateInventorySystem_to_shape_Task_ProcessExitSlips" bpmnElement="Flow_UpdateToProcessExit">
+        <di:waypoint x="500" y="100" />
+        <di:waypoint x="550" y="100" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_Task_ProcessExitSlips_to_shape_Task_PrepareGoods" bpmnElement="Flow_ExitSlipsToPrepareGoods">
+        <di:waypoint x="650" y="100" />
+        <di:waypoint x="700" y="100" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_Task_PrepareGoods_to_shape_Task_QualityCheckOutgoing" bpmnElement="Flow_PrepareToQualityCheck">
+        <di:waypoint x="800" y="100" />
+        <di:waypoint x="850" y="100" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_Task_QualityCheckOutgoing_to_shape_Task_PackingAndHandover" bpmnElement="Flow_QualityCheckToPacking">
+        <di:waypoint x="950" y="100" />
+        <di:waypoint x="1000" y="100" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_Task_PackingAndHandover_to_shape_Task_UpdateWarehouseExit" bpmnElement="Flow_PackingToUpdateExit">
+        <di:waypoint x="1100" y="100" />
+        <di:waypoint x="1150" y="100" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_Task_UpdateWarehouseExit_to_shape_Task_ProcessNewEntries" bpmnElement="Flow_UpdateExitToProcessEntry">
+        <di:waypoint x="1200" y="140" />
+        <di:waypoint x="1200" y="200" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_Task_ProcessNewEntries_to_shape_Task_CheckIncomingGoods" bpmnElement="Flow_ProcessEntryToCheckIncoming">
+        <di:waypoint x="1150" y="240" />
+        <di:waypoint x="1100" y="240" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_Task_CheckIncomingGoods_to_shape_Task_ArrangeWarehousePositions" bpmnElement="Flow_CheckIncomingToArrange">
+        <di:waypoint x="1000" y="240" />
+        <di:waypoint x="950" y="240" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_Task_ArrangeWarehousePositions_to_shape_Task_UpdateWarehouseEntry" bpmnElement="Flow_ArrangeToUpdateEntry">
+        <di:waypoint x="850" y="240" />
+        <di:waypoint x="800" y="240" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_Task_UpdateWarehouseEntry_to_shape_Task_CheckInventoryLevels" bpmnElement="Flow_UpdateEntryToCheckLevels">
+        <di:waypoint x="700" y="240" />
+        <di:waypoint x="650" y="240" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_Task_CheckInventoryLevels_to_shape_Gateway_BelowMinimumLevel" bpmnElement="Flow_CheckLevelsToGateway">
+        <di:waypoint x="550" y="242" />
+        <di:waypoint x="474" y="242" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_Gateway_BelowMinimumLevel_to_shape_Task_NotifyPurchasing" bpmnElement="Flow_GatewayToNotifyPurchasing">
+        <di:waypoint x="446" y="270" />
+        <di:waypoint x="446" y="340" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="452" y="282" width="15" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_Task_NotifyPurchasing_to_shape_Task_EndInventoryCheck" bpmnElement="Flow_NotifyToEndInventoryCheck">
+        <di:waypoint x="394" y="380" />
+        <di:waypoint x="300" y="380" />
+        <di:waypoint x="300" y="280" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_Gateway_BelowMinimumLevel_to_shape_Task_EndInventoryCheck" bpmnElement="Flow_GatewayToEndInventoryCheck">
+        <di:waypoint x="426" y="242" />
+        <di:waypoint x="350" y="242" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="374" y="218" width="32" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_Task_EndInventoryCheck_to_shape_Task_EndOfDayReport" bpmnElement="Flow_1jn64kn">
+        <di:waypoint x="250" y="240" />
+        <di:waypoint x="220" y="240" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0fc06yx_di" bpmnElement="Flow_0fc06yx">
+        <di:waypoint x="170" y="280" />
+        <di:waypoint x="170" y="352" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
@@ -332,311 +347,311 @@
     <bpmn2:extensionElements>
       <bpsim:BPSimData>
         <bpsim:Scenario id="default" name="Simulationscenario">
-          <bpsim:ScenarioParameters/>
+          <bpsim:ScenarioParameters />
           <bpsim:ElementParameters elementRef="Task_EndOfDayReport">
             <bpsim:TimeParameters>
               <bpsim:ProcessingTime>
-                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0" />
               </bpsim:ProcessingTime>
             </bpsim:TimeParameters>
             <bpsim:ResourceParameters>
               <bpsim:Availability>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:Availability>
               <bpsim:Quantity>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:Quantity>
             </bpsim:ResourceParameters>
             <bpsim:CostParameters>
               <bpsim:UnitCost>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:UnitCost>
             </bpsim:CostParameters>
           </bpsim:ElementParameters>
           <bpsim:ElementParameters elementRef="Task_EndInventoryCheck">
             <bpsim:TimeParameters>
               <bpsim:ProcessingTime>
-                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0" />
               </bpsim:ProcessingTime>
             </bpsim:TimeParameters>
             <bpsim:ResourceParameters>
               <bpsim:Availability>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:Availability>
               <bpsim:Quantity>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:Quantity>
             </bpsim:ResourceParameters>
             <bpsim:CostParameters>
               <bpsim:UnitCost>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:UnitCost>
             </bpsim:CostParameters>
           </bpsim:ElementParameters>
           <bpsim:ElementParameters elementRef="Task_NotifyPurchasing">
             <bpsim:TimeParameters>
               <bpsim:ProcessingTime>
-                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0" />
               </bpsim:ProcessingTime>
             </bpsim:TimeParameters>
             <bpsim:ResourceParameters>
               <bpsim:Availability>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:Availability>
               <bpsim:Quantity>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:Quantity>
             </bpsim:ResourceParameters>
             <bpsim:CostParameters>
               <bpsim:UnitCost>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:UnitCost>
             </bpsim:CostParameters>
           </bpsim:ElementParameters>
           <bpsim:ElementParameters elementRef="Task_CheckInventoryLevels">
             <bpsim:TimeParameters>
               <bpsim:ProcessingTime>
-                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0" />
               </bpsim:ProcessingTime>
             </bpsim:TimeParameters>
             <bpsim:ResourceParameters>
               <bpsim:Availability>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:Availability>
               <bpsim:Quantity>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:Quantity>
             </bpsim:ResourceParameters>
             <bpsim:CostParameters>
               <bpsim:UnitCost>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:UnitCost>
             </bpsim:CostParameters>
           </bpsim:ElementParameters>
           <bpsim:ElementParameters elementRef="Task_UpdateWarehouseEntry">
             <bpsim:TimeParameters>
               <bpsim:ProcessingTime>
-                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0" />
               </bpsim:ProcessingTime>
             </bpsim:TimeParameters>
             <bpsim:ResourceParameters>
               <bpsim:Availability>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:Availability>
               <bpsim:Quantity>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:Quantity>
             </bpsim:ResourceParameters>
             <bpsim:CostParameters>
               <bpsim:UnitCost>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:UnitCost>
             </bpsim:CostParameters>
           </bpsim:ElementParameters>
           <bpsim:ElementParameters elementRef="Task_ArrangeWarehousePositions">
             <bpsim:TimeParameters>
               <bpsim:ProcessingTime>
-                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0" />
               </bpsim:ProcessingTime>
             </bpsim:TimeParameters>
             <bpsim:ResourceParameters>
               <bpsim:Availability>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:Availability>
               <bpsim:Quantity>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:Quantity>
             </bpsim:ResourceParameters>
             <bpsim:CostParameters>
               <bpsim:UnitCost>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:UnitCost>
             </bpsim:CostParameters>
           </bpsim:ElementParameters>
           <bpsim:ElementParameters elementRef="Task_CheckIncomingGoods">
             <bpsim:TimeParameters>
               <bpsim:ProcessingTime>
-                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0" />
               </bpsim:ProcessingTime>
             </bpsim:TimeParameters>
             <bpsim:ResourceParameters>
               <bpsim:Availability>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:Availability>
               <bpsim:Quantity>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:Quantity>
             </bpsim:ResourceParameters>
             <bpsim:CostParameters>
               <bpsim:UnitCost>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:UnitCost>
             </bpsim:CostParameters>
           </bpsim:ElementParameters>
           <bpsim:ElementParameters elementRef="Task_ProcessNewEntries">
             <bpsim:TimeParameters>
               <bpsim:ProcessingTime>
-                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0" />
               </bpsim:ProcessingTime>
             </bpsim:TimeParameters>
             <bpsim:ResourceParameters>
               <bpsim:Availability>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:Availability>
               <bpsim:Quantity>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:Quantity>
             </bpsim:ResourceParameters>
             <bpsim:CostParameters>
               <bpsim:UnitCost>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:UnitCost>
             </bpsim:CostParameters>
           </bpsim:ElementParameters>
           <bpsim:ElementParameters elementRef="Task_UpdateWarehouseExit">
             <bpsim:TimeParameters>
               <bpsim:ProcessingTime>
-                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0" />
               </bpsim:ProcessingTime>
             </bpsim:TimeParameters>
             <bpsim:ResourceParameters>
               <bpsim:Availability>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:Availability>
               <bpsim:Quantity>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:Quantity>
             </bpsim:ResourceParameters>
             <bpsim:CostParameters>
               <bpsim:UnitCost>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:UnitCost>
             </bpsim:CostParameters>
           </bpsim:ElementParameters>
           <bpsim:ElementParameters elementRef="Task_PackingAndHandover">
             <bpsim:TimeParameters>
               <bpsim:ProcessingTime>
-                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0" />
               </bpsim:ProcessingTime>
             </bpsim:TimeParameters>
             <bpsim:ResourceParameters>
               <bpsim:Availability>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:Availability>
               <bpsim:Quantity>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:Quantity>
             </bpsim:ResourceParameters>
             <bpsim:CostParameters>
               <bpsim:UnitCost>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:UnitCost>
             </bpsim:CostParameters>
           </bpsim:ElementParameters>
           <bpsim:ElementParameters elementRef="Task_QualityCheckOutgoing">
             <bpsim:TimeParameters>
               <bpsim:ProcessingTime>
-                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0" />
               </bpsim:ProcessingTime>
             </bpsim:TimeParameters>
             <bpsim:ResourceParameters>
               <bpsim:Availability>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:Availability>
               <bpsim:Quantity>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:Quantity>
             </bpsim:ResourceParameters>
             <bpsim:CostParameters>
               <bpsim:UnitCost>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:UnitCost>
             </bpsim:CostParameters>
           </bpsim:ElementParameters>
           <bpsim:ElementParameters elementRef="Task_PrepareGoods">
             <bpsim:TimeParameters>
               <bpsim:ProcessingTime>
-                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0" />
               </bpsim:ProcessingTime>
             </bpsim:TimeParameters>
             <bpsim:ResourceParameters>
               <bpsim:Availability>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:Availability>
               <bpsim:Quantity>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:Quantity>
             </bpsim:ResourceParameters>
             <bpsim:CostParameters>
               <bpsim:UnitCost>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:UnitCost>
             </bpsim:CostParameters>
           </bpsim:ElementParameters>
           <bpsim:ElementParameters elementRef="Task_ProcessExitSlips">
             <bpsim:TimeParameters>
               <bpsim:ProcessingTime>
-                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0" />
               </bpsim:ProcessingTime>
             </bpsim:TimeParameters>
             <bpsim:ResourceParameters>
               <bpsim:Availability>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:Availability>
               <bpsim:Quantity>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:Quantity>
             </bpsim:ResourceParameters>
             <bpsim:CostParameters>
               <bpsim:UnitCost>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:UnitCost>
             </bpsim:CostParameters>
           </bpsim:ElementParameters>
           <bpsim:ElementParameters elementRef="Task_UpdateInventorySystem">
             <bpsim:TimeParameters>
               <bpsim:ProcessingTime>
-                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0" />
               </bpsim:ProcessingTime>
             </bpsim:TimeParameters>
             <bpsim:ResourceParameters>
               <bpsim:Availability>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:Availability>
               <bpsim:Quantity>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:Quantity>
             </bpsim:ResourceParameters>
             <bpsim:CostParameters>
               <bpsim:UnitCost>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:UnitCost>
             </bpsim:CostParameters>
           </bpsim:ElementParameters>
           <bpsim:ElementParameters elementRef="Task_BeginningInventoryCheck">
             <bpsim:TimeParameters>
               <bpsim:ProcessingTime>
-                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0" />
               </bpsim:ProcessingTime>
             </bpsim:TimeParameters>
             <bpsim:ResourceParameters>
               <bpsim:Availability>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:Availability>
               <bpsim:Quantity>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:Quantity>
             </bpsim:ResourceParameters>
             <bpsim:CostParameters>
               <bpsim:UnitCost>
-                <bpsim:FloatingParameter value="0"/>
+                <bpsim:FloatingParameter value="0" />
               </bpsim:UnitCost>
             </bpsim:CostParameters>
           </bpsim:ElementParameters>
           <bpsim:ElementParameters elementRef="StartEvent_BeginWorkDay">
             <bpsim:TimeParameters>
               <bpsim:ProcessingTime>
-                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0" />
               </bpsim:ProcessingTime>
             </bpsim:TimeParameters>
           </bpsim:ElementParameters>

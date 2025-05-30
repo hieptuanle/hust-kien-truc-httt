@@ -15,17 +15,19 @@ graph TD
     B --> B2[Tư vấn face-to-face]
     B --> B3[Bán hàng tại quầy]
 
-    C --> C1[Website bán hàng]
-    C --> C2[Facebook Business]
+    C --> C1[WordPress + WooCommerce]
+    C --> C2[Facebook Business + Pancake]
     C --> C3[Zalo Business]
+    C --> C4[FPT ZNS]
+    C --> C5[Mailgun Email]
 
     D --> D1[Giao hàng nội thành]
     D --> D2[Giao hàng liên tỉnh]
     D --> D3[Giao hàng COD]
 
-    E --> E1[Hỗ trợ qua điện thoại]
-    E --> E2[Chat online]
-    E --> E3[Email support]
+    E --> E1[Matbao Call Center]
+    E --> E2[Pancake + Mattermost]
+    E --> E3[Mailgun Email support]
 
     style A fill:#ff6b6b,stroke:#333,stroke-width:3px,color:#fff
     style B fill:#4ecdc4,stroke:#333,stroke-width:2px,color:#fff
@@ -136,7 +138,7 @@ graph LR
 
 ### Các kênh trực tuyến
 
-#### 1. Website bán hàng (abby.vn)
+#### 1. WordPress + WooCommerce Website
 
 **Chức năng chính:**
 
@@ -165,30 +167,30 @@ graph TD
     I --> J[Chuẩn bị và giao hàng]
 ```
 
-#### 2. Facebook Business
+#### 2. Facebook Business + Pancake
 
 **Chức năng:**
 
 - Đăng sản phẩm mới và khuyến mãi
-- Tương tác với khách hàng qua comment/message
+- Tương tác với khách hàng qua Pancake (Messenger integration)
 - Live stream giới thiệu sản phẩm
-- Nhận đơn hàng qua Messenger
+- Nhận đơn hàng qua Pancake automation
 
 **Đặc điểm:**
 
-- Tương tác trực tiếp với khách hàng
+- Tương tác trực tiếp với khách hàng qua Pancake
 - Chia sẻ hình ảnh và video sản phẩm
-- Phản hồi nhanh qua Messenger
+- Tự động phản hồi và phân loại tin nhắn
 - Thích hợp cho khách hàng trẻ tuổi
 
-#### 3. Zalo Business
+#### 3. Zalo Business + FPT ZNS
 
 **Chức năng:**
 
 - Tư vấn 1-1 với khách hàng
 - Gửi catalog sản phẩm
 - Nhận và xử lý đơn hàng
-- Thông báo trạng thái đơn hàng
+- Gửi ZNS thông báo trạng thái đơn hàng qua FPT ZNS
 
 **Đặc điểm:**
 
@@ -227,12 +229,12 @@ graph TD
 
 ### Hiệu suất dịch vụ trực tuyến
 
-| Kênh          | Lượt truy cập/tháng | Đơn hàng/tháng | Tỷ lệ chuyển đổi | Giá trị TB/đơn |
-| ------------- | ------------------- | -------------- | ---------------- | -------------- |
-| **Website**   | 2,000               | 150            | 7.5%             | 850,000 VNĐ    |
-| **Facebook**  | 5,000               | 80             | 1.6%             | 450,000 VNĐ    |
-| **Zalo**      | 1,500               | 120            | 8.0%             | 1,200,000 VNĐ  |
-| **Tổng cộng** | 8,500               | 350            | 4.1%             | 780,000 VNĐ    |
+| Kênh              | Lượt truy cập/tháng | Đơn hàng/tháng | Tỷ lệ chuyển đổi | Giá trị TB/đơn |
+| ----------------- | ------------------- | -------------- | ---------------- | -------------- |
+| **WooCommerce**   | 2,000               | 150            | 7.5%             | 850,000 VNĐ    |
+| **Pancake (FB)**  | 5,000               | 80             | 1.6%             | 450,000 VNĐ    |
+| **Zalo + ZNS**    | 1,500               | 120            | 8.0%             | 1,200,000 VNĐ  |
+| **Tổng cộng**     | 8,500               | 350            | 4.1%             | 780,000 VNĐ    |
 
 ## Dịch vụ giao hàng
 
@@ -302,14 +304,14 @@ graph TD
 
 ### Các kênh hỗ trợ
 
-#### 1. Hỗ trợ qua điện thoại
+#### 1. Matbao Call Center
 
 **Thông tin:**
 
-- **Hotline**: 0123.456.789
+- **Hotline**: 0123.456.789 (qua Matbao)
 - **Thời gian**: 8:00 - 17:30 (Thứ 2-7)
 - **Ngôn ngữ**: Tiếng Việt
-- **Nhân lực**: 1-2 nhân viên CSKH
+- **Tính năng**: Ghi âm cuộc gọi, báo cáo chi tiết
 
 **Dịch vụ cung cấp:**
 
@@ -318,13 +320,13 @@ graph TD
 - Xử lý khiếu nại và hoàn trả
 - Theo dõi trạng thái đơn hàng
 
-#### 2. Chat online
+#### 2. Chat tích hợp
 
 **Nền tảng:**
 
-- Chat widget trên website
-- Facebook Messenger
+- Pancake cho Facebook Messenger
 - Zalo Chat
+- Mattermost cho giao tiếp nội bộ
 
 **Đặc điểm:**
 
@@ -333,13 +335,13 @@ graph TD
 - Có thể gửi hình ảnh và file
 - Lưu trữ lịch sử tương tác
 
-#### 3. Email support
+#### 3. Mailgun Email Support
 
 **Thông tin:**
 
-- **Email**: support@nguyenlieulambanh.com
+- **Email**: support@nguyenlieulambanh.com (qua Mailgun)
 - **Thời gian phản hồi**: 2-6 giờ trong giờ làm việc
-- **Định dạng**: Template chuyên nghiệp
+- **Tính năng**: Tracking email, template tự động, analytics
 
 **Ứng dụng:**
 
