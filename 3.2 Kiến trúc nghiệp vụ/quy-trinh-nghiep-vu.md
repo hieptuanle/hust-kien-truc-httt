@@ -337,6 +337,10 @@ graph TD
     style R fill:#2ecc71
 ```
 
+**Biểu đồ BPMN**
+
+![Biểu đồ BPMN](./bpmn/BP006.svg)
+
 ### Thông tin chi tiết
 
 - **Thời gian**: 1-5 ngày tùy mức độ phức tạp
@@ -356,6 +360,8 @@ graph TD
 - **Dịch vụ nghiệp vụ**: BS001 (Nghiên cứu thị trường), BS002 (Sáng tạo nội dung)
 
 ### Quy trình chi tiết
+
+**Biểu đồ flow chart**
 
 ```mermaid
 graph TD
@@ -383,6 +389,10 @@ graph TD
     style R fill:#2ecc71
 ```
 
+**Biểu đồ BPMN**
+
+![Biểu đồ BPMN](./bpmn/BP007.svg)
+
 ### Thông tin chi tiết
 
 - **Thời gian**: 1-4 tuần/chiến dịch
@@ -403,6 +413,8 @@ graph TD
 - **Dịch vụ nghiệp vụ**: BS005 (Thanh toán), BS014 (Kế toán thuế)
 
 ### Quy trình chi tiết
+
+**Biểu đồ flow chart**
 
 ```mermaid
 graph TD
@@ -425,6 +437,10 @@ graph TD
     style A fill:#f39c12
     style N fill:#2ecc71
 ```
+
+**Biểu đồ BPMN**
+
+![Biểu đồ BPMN](./bpmn/BP008.svg)
 
 ### Thông tin chi tiết
 
