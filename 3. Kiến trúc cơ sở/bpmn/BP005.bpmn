@@ -1,0 +1,548 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn2:definitions xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:bpsim="http://www.bpsim.org/schemas/1.0" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:drools="http://www.jboss.org/drools" xmlns:xsi="xsi" id="_KgAE8B9bED6Nh5V3nSn2Xw" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd http://www.jboss.org/drools drools.xsd http://www.bpsim.org/schemas/1.0 bpsim.xsd http://www.omg.org/spec/DD/20100524/DC DC.xsd http://www.omg.org/spec/DD/20100524/DI DI.xsd " exporter="jBPM Process Modeler" exporterVersion="2.0" targetNamespace="http://www.omg.org/bpmn20">
+  <bpmn2:collaboration id="_2EE6E1F1-4C00-41BF-BB73-D6F4C3BCF3CD" name="Default Collaboration">
+    <bpmn2:participant id="_FFCD7F76-0BA5-4816-8F2D-3C424B8EB1D2" name="Pool Participant" processRef="BP005"/>
+  </bpmn2:collaboration>
+  <bpmn2:process id="BP005" drools:packageName="com.example" drools:version="1.0" drools:adHoc="false" name="BP005" processType="Public">
+    <bpmn2:sequenceFlow id="Flow_StartToClassifyCustomer" sourceRef="StartEvent_ReceiveConsultationRequest" targetRef="Task_ClassifyCustomerType"/>
+    <bpmn2:sequenceFlow id="Flow_ClassifyToGateway" sourceRef="Task_ClassifyCustomerType" targetRef="Gateway_CustomerType"/>
+    <bpmn2:sequenceFlow id="Flow_GatewayToBasicConsultation" name="Cá nhân/Hobby" sourceRef="Gateway_CustomerType" targetRef="Task_BasicConsultation">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Cá nhân/Hobby]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="Flow_BasicToProductGuidance" sourceRef="Task_BasicConsultation" targetRef="Task_ProductGuidance"/>
+    <bpmn2:sequenceFlow id="Flow_GatewayToAdvancedConsultation" name="Chuyên nghiệp" sourceRef="Gateway_CustomerType" targetRef="Task_AdvancedConsultation">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Chuyên nghiệp]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="Flow_AdvancedToNeedsAnalysis" sourceRef="Task_AdvancedConsultation" targetRef="Task_DetailedNeedsAnalysis"/>
+    <bpmn2:sequenceFlow id="Flow_NeedsAnalysisToComprehensiveSolution" sourceRef="Task_DetailedNeedsAnalysis" targetRef="Task_ComprehensiveSolution"/>
+    <bpmn2:sequenceFlow id="Flow_ComprehensiveSolutionToPricing" sourceRef="Task_ComprehensiveSolution" targetRef="Task_PresentPricing"/>
+    <bpmn2:sequenceFlow id="Flow_ProductGuidanceToPricing" sourceRef="Task_ProductGuidance" targetRef="Task_PresentPricing"/>
+    <bpmn2:sequenceFlow id="Flow_PricingToInterestGateway" sourceRef="Task_PresentPricing" targetRef="Gateway_CustomerInterest"/>
+    <bpmn2:sequenceFlow id="Flow_InterestToSalesProcess" name="Có" sourceRef="Gateway_CustomerInterest" targetRef="Task_TransferToSalesProcess">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Có]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="Flow_InterestToReferenceInfo" name="Không" sourceRef="Gateway_CustomerInterest" targetRef="Task_ProvideReferenceInfo">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Không]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="Flow_ReferenceInfoToSaveCustomer" sourceRef="Task_ProvideReferenceInfo" targetRef="Task_SavePotentialCustomer"/>
+    <bpmn2:sequenceFlow id="Flow_SaveCustomerToFollowUp" sourceRef="Task_SavePotentialCustomer" targetRef="Task_RegularFollowUpCare"/>
+    <bpmn2:sequenceFlow id="Flow_FollowUpToComplete" sourceRef="Task_RegularFollowUpCare" targetRef="EndEvent_CompleteConsultation"/>
+    <bpmn2:sequenceFlow id="Flow_SalesProcessToComplete" sourceRef="Task_TransferToSalesProcess" targetRef="EndEvent_CompleteConsultation"/>
+    <bpmn2:startEvent id="StartEvent_ReceiveConsultationRequest" name="Nhận yêu cầu tư vấn">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Nhận yêu cầu tư vấn]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:outgoing>Flow_StartToClassifyCustomer</bpmn2:outgoing>
+    </bpmn2:startEvent>
+    <bpmn2:task id="Task_ClassifyCustomerType" name="Phân loại loại khách hàng">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Phân loại loại khách hàng]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>Flow_StartToClassifyCustomer</bpmn2:incoming>
+      <bpmn2:outgoing>Flow_ClassifyToGateway</bpmn2:outgoing>
+    </bpmn2:task>
+    <bpmn2:exclusiveGateway id="Gateway_CustomerType" name="Loại KH" gatewayDirection="Diverging">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Loại KH]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>Flow_ClassifyToGateway</bpmn2:incoming>
+      <bpmn2:outgoing>Flow_GatewayToAdvancedConsultation</bpmn2:outgoing>
+      <bpmn2:outgoing>Flow_GatewayToBasicConsultation</bpmn2:outgoing>
+    </bpmn2:exclusiveGateway>
+    <bpmn2:task id="Task_BasicConsultation" name="Tư vấn cơ bản">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Tư vấn cơ bản]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>Flow_GatewayToBasicConsultation</bpmn2:incoming>
+      <bpmn2:outgoing>Flow_BasicToProductGuidance</bpmn2:outgoing>
+    </bpmn2:task>
+    <bpmn2:task id="Task_ProductGuidance" name="Hướng dẫn sản phẩm phù hợp">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Hướng dẫn sản phẩm phù hợp]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>Flow_BasicToProductGuidance</bpmn2:incoming>
+      <bpmn2:outgoing>Flow_ProductGuidanceToPricing</bpmn2:outgoing>
+    </bpmn2:task>
+    <bpmn2:task id="Task_AdvancedConsultation" name="Tư vấn chuyên sâu">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Tư vấn chuyên sâu]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>Flow_GatewayToAdvancedConsultation</bpmn2:incoming>
+      <bpmn2:outgoing>Flow_AdvancedToNeedsAnalysis</bpmn2:outgoing>
+    </bpmn2:task>
+    <bpmn2:task id="Task_DetailedNeedsAnalysis" name="Phân tích nhu cầu chi tiết">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Phân tích nhu cầu chi tiết]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>Flow_AdvancedToNeedsAnalysis</bpmn2:incoming>
+      <bpmn2:outgoing>Flow_NeedsAnalysisToComprehensiveSolution</bpmn2:outgoing>
+    </bpmn2:task>
+    <bpmn2:task id="Task_ComprehensiveSolution" name="Đề xuất giải pháp toàn diện">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Đề xuất giải pháp toàn diện]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>Flow_NeedsAnalysisToComprehensiveSolution</bpmn2:incoming>
+      <bpmn2:outgoing>Flow_ComprehensiveSolutionToPricing</bpmn2:outgoing>
+    </bpmn2:task>
+    <bpmn2:task id="Task_PresentPricing" name="Trình bày giá cả">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Trình bày giá cả]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>Flow_ProductGuidanceToPricing</bpmn2:incoming>
+      <bpmn2:incoming>Flow_ComprehensiveSolutionToPricing</bpmn2:incoming>
+      <bpmn2:outgoing>Flow_PricingToInterestGateway</bpmn2:outgoing>
+    </bpmn2:task>
+    <bpmn2:exclusiveGateway id="Gateway_CustomerInterest" name="KH quan tâm?" gatewayDirection="Diverging">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[KH quan tâm?]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>Flow_PricingToInterestGateway</bpmn2:incoming>
+      <bpmn2:outgoing>Flow_InterestToReferenceInfo</bpmn2:outgoing>
+      <bpmn2:outgoing>Flow_InterestToSalesProcess</bpmn2:outgoing>
+    </bpmn2:exclusiveGateway>
+    <bpmn2:task id="Task_TransferToSalesProcess" name="Chuyển sang quy trình bán hàng">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Chuyển sang quy trình bán hàng]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>Flow_InterestToSalesProcess</bpmn2:incoming>
+      <bpmn2:outgoing>Flow_SalesProcessToComplete</bpmn2:outgoing>
+    </bpmn2:task>
+    <bpmn2:task id="Task_ProvideReferenceInfo" name="Cung cấp thông tin tham khảo">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Cung cấp thông tin tham khảo]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>Flow_InterestToReferenceInfo</bpmn2:incoming>
+      <bpmn2:outgoing>Flow_ReferenceInfoToSaveCustomer</bpmn2:outgoing>
+    </bpmn2:task>
+    <bpmn2:task id="Task_SavePotentialCustomer" name="Lưu thông tin KH tiềm năng">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Lưu thông tin KH tiềm năng]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>Flow_ReferenceInfoToSaveCustomer</bpmn2:incoming>
+      <bpmn2:outgoing>Flow_SaveCustomerToFollowUp</bpmn2:outgoing>
+    </bpmn2:task>
+    <bpmn2:task id="Task_RegularFollowUpCare" name="Theo dõi chăm sóc định kỳ">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Theo dõi chăm sóc định kỳ]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>Flow_SaveCustomerToFollowUp</bpmn2:incoming>
+      <bpmn2:outgoing>Flow_FollowUpToComplete</bpmn2:outgoing>
+    </bpmn2:task>
+    <bpmn2:endEvent id="EndEvent_CompleteConsultation" name="Hoàn thành tư vấn">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Hoàn thành tư vấn]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>Flow_SalesProcessToComplete</bpmn2:incoming>
+      <bpmn2:incoming>Flow_FollowUpToComplete</bpmn2:incoming>
+    </bpmn2:endEvent>
+  </bpmn2:process>
+  <bpmndi:BPMNDiagram>
+    <bpmndi:BPMNPlane bpmnElement="BP005">
+      <bpmndi:BPMNShape id="shape_EndEvent_CompleteConsultation" bpmnElement="EndEvent_CompleteConsultation">
+        <dc:Bounds height="56" width="56" x="1482" y="102"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_Task_RegularFollowUpCare" bpmnElement="Task_RegularFollowUpCare">
+        <dc:Bounds height="80" width="100" x="1150" y="300"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_Task_SavePotentialCustomer" bpmnElement="Task_SavePotentialCustomer">
+        <dc:Bounds height="80" width="100" x="1300" y="300"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_Task_ProvideReferenceInfo" bpmnElement="Task_ProvideReferenceInfo">
+        <dc:Bounds height="80" width="100" x="1300" y="180"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_Task_TransferToSalesProcess" bpmnElement="Task_TransferToSalesProcess">
+        <dc:Bounds height="80" width="100" x="1300" y="40"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_Gateway_CustomerInterest" bpmnElement="Gateway_CustomerInterest">
+        <dc:Bounds height="56" width="56" x="1175" y="95"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_Task_PresentPricing" bpmnElement="Task_PresentPricing">
+        <dc:Bounds height="80" width="100" x="1000" y="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_Task_ComprehensiveSolution" bpmnElement="Task_ComprehensiveSolution">
+        <dc:Bounds height="80" width="100" x="840" y="160"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_Task_DetailedNeedsAnalysis" bpmnElement="Task_DetailedNeedsAnalysis">
+        <dc:Bounds height="80" width="100" x="680" y="160"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_Task_AdvancedConsultation" bpmnElement="Task_AdvancedConsultation">
+        <dc:Bounds height="80" width="100" x="520" y="160"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_Task_ProductGuidance" bpmnElement="Task_ProductGuidance">
+        <dc:Bounds height="80" width="100" x="680" y="40"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_Task_BasicConsultation" bpmnElement="Task_BasicConsultation">
+        <dc:Bounds height="80" width="100" x="545" y="40"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_Gateway_CustomerType" bpmnElement="Gateway_CustomerType">
+        <dc:Bounds height="56" width="56" x="415" y="95"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_Task_ClassifyCustomerType" bpmnElement="Task_ClassifyCustomerType">
+        <dc:Bounds height="80" width="100" x="250" y="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_StartEvent_ReceiveConsultationRequest" bpmnElement="StartEvent_ReceiveConsultationRequest">
+        <dc:Bounds height="56" width="56" x="150" y="92"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="edge_shape_Task_TransferToSalesProcess_to_shape_EndEvent_CompleteConsultation" bpmnElement="Flow_SalesProcessToComplete">
+        <di:waypoint x="1400" y="80"/>
+        <di:waypoint x="1441" y="80"/>
+        <di:waypoint x="1441" y="120"/>
+        <di:waypoint x="1482" y="120"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_Task_RegularFollowUpCare_to_shape_EndEvent_CompleteConsultation" bpmnElement="Flow_FollowUpToComplete">
+        <di:waypoint x="1200" y="300"/>
+        <di:waypoint x="1200" y="250"/>
+        <di:waypoint x="1500" y="250"/>
+        <di:waypoint x="1500" y="138"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_Task_SavePotentialCustomer_to_shape_Task_RegularFollowUpCare" bpmnElement="Flow_SaveCustomerToFollowUp">
+        <di:waypoint x="1300" y="340"/>
+        <di:waypoint x="1250" y="340"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_Task_ProvideReferenceInfo_to_shape_Task_SavePotentialCustomer" bpmnElement="Flow_ReferenceInfoToSaveCustomer">
+        <di:waypoint x="1350" y="260"/>
+        <di:waypoint x="1350" y="300"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_Gateway_CustomerInterest_to_shape_Task_ProvideReferenceInfo" bpmnElement="Flow_InterestToReferenceInfo">
+        <di:waypoint x="1200" y="145"/>
+        <di:waypoint x="1200" y="220"/>
+        <di:waypoint x="1300" y="220"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_Gateway_CustomerInterest_to_shape_Task_TransferToSalesProcess" bpmnElement="Flow_InterestToSalesProcess">
+        <di:waypoint x="1200" y="95"/>
+        <di:waypoint x="1200" y="80"/>
+        <di:waypoint x="1300" y="80"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_Task_PresentPricing_to_shape_Gateway_CustomerInterest" bpmnElement="Flow_PricingToInterestGateway">
+        <di:waypoint x="1100" y="120"/>
+        <di:waypoint x="1175" y="120"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_Task_ProductGuidance_to_shape_Task_PresentPricing" bpmnElement="Flow_ProductGuidanceToPricing">
+        <di:waypoint x="780" y="80"/>
+        <di:waypoint x="890" y="80"/>
+        <di:waypoint x="890" y="120"/>
+        <di:waypoint x="1000" y="120"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_Task_ComprehensiveSolution_to_shape_Task_PresentPricing" bpmnElement="Flow_ComprehensiveSolutionToPricing">
+        <di:waypoint x="940" y="200"/>
+        <di:waypoint x="970" y="200"/>
+        <di:waypoint x="970" y="120"/>
+        <di:waypoint x="1000" y="120"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_Task_DetailedNeedsAnalysis_to_shape_Task_ComprehensiveSolution" bpmnElement="Flow_NeedsAnalysisToComprehensiveSolution">
+        <di:waypoint x="780" y="200"/>
+        <di:waypoint x="840" y="200"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_Task_AdvancedConsultation_to_shape_Task_DetailedNeedsAnalysis" bpmnElement="Flow_AdvancedToNeedsAnalysis">
+        <di:waypoint x="620" y="200"/>
+        <di:waypoint x="680" y="200"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_Gateway_CustomerType_to_shape_Task_AdvancedConsultation" bpmnElement="Flow_GatewayToAdvancedConsultation">
+        <di:waypoint x="440" y="145"/>
+        <di:waypoint x="440" y="200"/>
+        <di:waypoint x="520" y="200"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_Task_BasicConsultation_to_shape_Task_ProductGuidance" bpmnElement="Flow_BasicToProductGuidance">
+        <di:waypoint x="645" y="80"/>
+        <di:waypoint x="680" y="80"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_Gateway_CustomerType_to_shape_Task_BasicConsultation" bpmnElement="Flow_GatewayToBasicConsultation">
+        <di:waypoint x="440" y="95"/>
+        <di:waypoint x="440" y="80"/>
+        <di:waypoint x="545" y="80"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_Task_ClassifyCustomerType_to_shape_Gateway_CustomerType" bpmnElement="Flow_ClassifyToGateway">
+        <di:waypoint x="350" y="120"/>
+        <di:waypoint x="415" y="120"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_StartEvent_ReceiveConsultationRequest_to_shape_Task_ClassifyCustomerType" bpmnElement="Flow_StartToClassifyCustomer">
+        <di:waypoint x="186" y="110"/>
+        <di:waypoint x="250" y="120"/>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+  <bpmn2:relationship type="BPSimData">
+    <bpmn2:extensionElements>
+      <bpsim:BPSimData>
+        <bpsim:Scenario id="default" name="Simulationscenario">
+          <bpsim:ScenarioParameters/>
+          <bpsim:ElementParameters elementRef="Task_RegularFollowUpCare">
+            <bpsim:TimeParameters>
+              <bpsim:ProcessingTime>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+              </bpsim:ProcessingTime>
+            </bpsim:TimeParameters>
+            <bpsim:ResourceParameters>
+              <bpsim:Availability>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Availability>
+              <bpsim:Quantity>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Quantity>
+            </bpsim:ResourceParameters>
+            <bpsim:CostParameters>
+              <bpsim:UnitCost>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:UnitCost>
+            </bpsim:CostParameters>
+          </bpsim:ElementParameters>
+          <bpsim:ElementParameters elementRef="Task_SavePotentialCustomer">
+            <bpsim:TimeParameters>
+              <bpsim:ProcessingTime>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+              </bpsim:ProcessingTime>
+            </bpsim:TimeParameters>
+            <bpsim:ResourceParameters>
+              <bpsim:Availability>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Availability>
+              <bpsim:Quantity>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Quantity>
+            </bpsim:ResourceParameters>
+            <bpsim:CostParameters>
+              <bpsim:UnitCost>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:UnitCost>
+            </bpsim:CostParameters>
+          </bpsim:ElementParameters>
+          <bpsim:ElementParameters elementRef="Task_ProvideReferenceInfo">
+            <bpsim:TimeParameters>
+              <bpsim:ProcessingTime>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+              </bpsim:ProcessingTime>
+            </bpsim:TimeParameters>
+            <bpsim:ResourceParameters>
+              <bpsim:Availability>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Availability>
+              <bpsim:Quantity>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Quantity>
+            </bpsim:ResourceParameters>
+            <bpsim:CostParameters>
+              <bpsim:UnitCost>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:UnitCost>
+            </bpsim:CostParameters>
+          </bpsim:ElementParameters>
+          <bpsim:ElementParameters elementRef="Task_TransferToSalesProcess">
+            <bpsim:TimeParameters>
+              <bpsim:ProcessingTime>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+              </bpsim:ProcessingTime>
+            </bpsim:TimeParameters>
+            <bpsim:ResourceParameters>
+              <bpsim:Availability>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Availability>
+              <bpsim:Quantity>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Quantity>
+            </bpsim:ResourceParameters>
+            <bpsim:CostParameters>
+              <bpsim:UnitCost>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:UnitCost>
+            </bpsim:CostParameters>
+          </bpsim:ElementParameters>
+          <bpsim:ElementParameters elementRef="Task_PresentPricing">
+            <bpsim:TimeParameters>
+              <bpsim:ProcessingTime>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+              </bpsim:ProcessingTime>
+            </bpsim:TimeParameters>
+            <bpsim:ResourceParameters>
+              <bpsim:Availability>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Availability>
+              <bpsim:Quantity>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Quantity>
+            </bpsim:ResourceParameters>
+            <bpsim:CostParameters>
+              <bpsim:UnitCost>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:UnitCost>
+            </bpsim:CostParameters>
+          </bpsim:ElementParameters>
+          <bpsim:ElementParameters elementRef="Task_ComprehensiveSolution">
+            <bpsim:TimeParameters>
+              <bpsim:ProcessingTime>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+              </bpsim:ProcessingTime>
+            </bpsim:TimeParameters>
+            <bpsim:ResourceParameters>
+              <bpsim:Availability>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Availability>
+              <bpsim:Quantity>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Quantity>
+            </bpsim:ResourceParameters>
+            <bpsim:CostParameters>
+              <bpsim:UnitCost>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:UnitCost>
+            </bpsim:CostParameters>
+          </bpsim:ElementParameters>
+          <bpsim:ElementParameters elementRef="Task_DetailedNeedsAnalysis">
+            <bpsim:TimeParameters>
+              <bpsim:ProcessingTime>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+              </bpsim:ProcessingTime>
+            </bpsim:TimeParameters>
+            <bpsim:ResourceParameters>
+              <bpsim:Availability>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Availability>
+              <bpsim:Quantity>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Quantity>
+            </bpsim:ResourceParameters>
+            <bpsim:CostParameters>
+              <bpsim:UnitCost>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:UnitCost>
+            </bpsim:CostParameters>
+          </bpsim:ElementParameters>
+          <bpsim:ElementParameters elementRef="Task_AdvancedConsultation">
+            <bpsim:TimeParameters>
+              <bpsim:ProcessingTime>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+              </bpsim:ProcessingTime>
+            </bpsim:TimeParameters>
+            <bpsim:ResourceParameters>
+              <bpsim:Availability>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Availability>
+              <bpsim:Quantity>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Quantity>
+            </bpsim:ResourceParameters>
+            <bpsim:CostParameters>
+              <bpsim:UnitCost>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:UnitCost>
+            </bpsim:CostParameters>
+          </bpsim:ElementParameters>
+          <bpsim:ElementParameters elementRef="Task_ProductGuidance">
+            <bpsim:TimeParameters>
+              <bpsim:ProcessingTime>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+              </bpsim:ProcessingTime>
+            </bpsim:TimeParameters>
+            <bpsim:ResourceParameters>
+              <bpsim:Availability>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Availability>
+              <bpsim:Quantity>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Quantity>
+            </bpsim:ResourceParameters>
+            <bpsim:CostParameters>
+              <bpsim:UnitCost>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:UnitCost>
+            </bpsim:CostParameters>
+          </bpsim:ElementParameters>
+          <bpsim:ElementParameters elementRef="Task_BasicConsultation">
+            <bpsim:TimeParameters>
+              <bpsim:ProcessingTime>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+              </bpsim:ProcessingTime>
+            </bpsim:TimeParameters>
+            <bpsim:ResourceParameters>
+              <bpsim:Availability>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Availability>
+              <bpsim:Quantity>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Quantity>
+            </bpsim:ResourceParameters>
+            <bpsim:CostParameters>
+              <bpsim:UnitCost>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:UnitCost>
+            </bpsim:CostParameters>
+          </bpsim:ElementParameters>
+          <bpsim:ElementParameters elementRef="Task_ClassifyCustomerType">
+            <bpsim:TimeParameters>
+              <bpsim:ProcessingTime>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+              </bpsim:ProcessingTime>
+            </bpsim:TimeParameters>
+            <bpsim:ResourceParameters>
+              <bpsim:Availability>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Availability>
+              <bpsim:Quantity>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Quantity>
+            </bpsim:ResourceParameters>
+            <bpsim:CostParameters>
+              <bpsim:UnitCost>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:UnitCost>
+            </bpsim:CostParameters>
+          </bpsim:ElementParameters>
+          <bpsim:ElementParameters elementRef="StartEvent_ReceiveConsultationRequest">
+            <bpsim:TimeParameters>
+              <bpsim:ProcessingTime>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+              </bpsim:ProcessingTime>
+            </bpsim:TimeParameters>
+          </bpsim:ElementParameters>
+        </bpsim:Scenario>
+      </bpsim:BPSimData>
+    </bpmn2:extensionElements>
+    <bpmn2:source>_KgAE8B9bED6Nh5V3nSn2Xw</bpmn2:source>
+    <bpmn2:target>_KgAE8B9bED6Nh5V3nSn2Xw</bpmn2:target>
+  </bpmn2:relationship>
+</bpmn2:definitions>
