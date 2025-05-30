@@ -14,25 +14,25 @@ Giảng viên: TS Nguyễn Hữu Đức
 
 2. Phương pháp
 
-- 2.1. Kiến trúc nghiệp vụ
-- 2.2. Kiến trúc ứng dụng
-- 2.3. Kiến trúc công nghệ
+- [2.1. Kiến trúc nghiệp vụ](2.%20Phương%20pháp/2.1.%20Kiến%20trúc%20nghiệp%20vụ.md)
+- [2.2. Kiến trúc ứng dụng](2.%20Phương%20pháp/2.2.%20Kiến%20trúc%20ứng%20dụng.md)
+- [2.3. Kiến trúc công nghệ](2.%20Phương%20pháp/2.3.%20Kiến%20trúc%20công%20nghệ.md)
 
 3. Kiến trúc cơ sở
 
-- 3.1. Mô hình nghiệp vụ
-- 3.2. Kiến trúc nghiệp vụ
-- 3.3. Kiến trúc ứng dụng
-- 3.4. Kiến trúc công nghệ
+- [3.1. Mô hình nghiệp vụ](3.%20Kiến%20trúc%20cơ%20sở/3.1.%20Mô%20hình%20nghiệp%20vụ.md)
+- [3.2. Kiến trúc nghiệp vụ](3.%20Kiến%20trúc%20cơ%20sở/3.2.%20Kiến%20trúc%20nghiệp%20vụ.md)
+- [3.3. Kiến trúc ứng dụng](3.%20Kiến%20trúc%20cơ%20sở/3.3.%20Kiến%20trúc%20ứng%20dụng.md)
+- [3.4. Kiến trúc công nghệ](3.%20Kiến%20trúc%20cơ%20sở/3.4.%20Kiến%20trúc%20công%20nghệ.md)
 
 4. Kiến trúc mục tiêu
 
-- 4.1. Mô hình nghiệp vụ
+- [4.1. Mô hình nghiệp vụ](4.%20Kiến%20trúc%20mục%20tiêu/4.1.%20Mô%20hình%20nghiệp%20vụ.md)
 - 4.2. Kiến trúc nghiệp vụ
 - 4.3. Kiến trúc ứng dụng
 - 4.4. Kiến trúc công nghệ
 
-5. Kết luận
+5. [Kết luận](5.%20Kết%20luận/Kết%20luận.md)
 
 ## Hướng dẫn nội dung từng phần
 
