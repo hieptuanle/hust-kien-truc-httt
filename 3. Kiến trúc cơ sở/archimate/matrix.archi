@@ -1,0 +1,499 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<archimate:model xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:archimate="http://www.opengroup.org/xsd/archimate/3.0/" identifier="id-matrix-model-001"
+  xsi:schemaLocation="http://www.opengroup.org/xsd/archimate/3.0/ http://www.opengroup.org/xsd/archimate/3.1/archimate3_Diagram.xsd">
+  <archimate:name>Ma trận tương tác nghiệp vụ</archimate:name>
+  <archimate:documentation>Ma trận tương tác giữa các bộ phận nghiệp vụ trong công ty nguyên liệu
+    làm bánh</archimate:documentation>
+  <archimate:elements>
+    <!-- Các bộ phận nghiệp vụ chính -->
+    <archimate:baseElement id="id-marketing-kd-001" type="BusinessActor">
+      <archimate:name>Marketing &amp; Kinh doanh</archimate:name>
+      <archimate:documentation>Phụ trách marketing, nghiên cứu thị trường và phát triển kinh doanh</archimate:documentation>
+    </archimate:baseElement>
+
+    <archimate:baseElement id="id-nhan-su-001" type="BusinessActor">
+      <archimate:name>Nhân sự</archimate:name>
+      <archimate:documentation>Quản lý nhân sự, tuyển dụng và phát triển nhân lực</archimate:documentation>
+    </archimate:baseElement>
+
+    <archimate:baseElement id="id-tai-chinh-kt-001" type="BusinessActor">
+      <archimate:name>Tài chính &amp; Kế toán</archimate:name>
+      <archimate:documentation>Quản lý tài chính, kế toán và báo cáo tài chính</archimate:documentation>
+    </archimate:baseElement>
+
+    <archimate:baseElement id="id-cong-nghe-001" type="BusinessActor">
+      <archimate:name>Công nghệ</archimate:name>
+      <archimate:documentation>Phát triển và duy trì hệ thống công nghệ thông tin</archimate:documentation>
+    </archimate:baseElement>
+
+    <archimate:baseElement id="id-kiem-toan-001" type="BusinessActor">
+      <archimate:name>Kiểm toán</archimate:name>
+      <archimate:documentation>Kiểm toán nội bộ và đảm bảo tuân thủ quy trình</archimate:documentation>
+    </archimate:baseElement>
+
+    <archimate:baseElement id="id-mua-hang-001" type="BusinessActor">
+      <archimate:name>Mua hàng</archimate:name>
+      <archimate:documentation>Mua sắm nguyên liệu và quản lý nhà cung cấp</archimate:documentation>
+    </archimate:baseElement>
+
+    <archimate:baseElement id="id-van-hanh-001" type="BusinessActor">
+      <archimate:name>Vận hành</archimate:name>
+      <archimate:documentation>Sản xuất, bán hàng và vận hành hoạt động kinh doanh</archimate:documentation>
+    </archimate:baseElement>
+
+    <archimate:baseElement id="id-kho-001" type="BusinessActor">
+      <archimate:name>Kho</archimate:name>
+      <archimate:documentation>Quản lý kho hàng và logistics</archimate:documentation>
+    </archimate:baseElement>
+
+    <!-- Các dịch vụ nghiệp vụ -->
+    <archimate:baseElement id="id-service-marketing-001" type="BusinessService">
+      <archimate:name>Dịch vụ Marketing</archimate:name>
+      <archimate:documentation>Các dịch vụ marketing và phát triển khách hàng</archimate:documentation>
+    </archimate:baseElement>
+
+    <archimate:baseElement id="id-service-hr-001" type="BusinessService">
+      <archimate:name>Dịch vụ Nhân sự</archimate:name>
+      <archimate:documentation>Các dịch vụ quản lý nhân sự</archimate:documentation>
+    </archimate:baseElement>
+
+    <archimate:baseElement id="id-service-finance-001" type="BusinessService">
+      <archimate:name>Dịch vụ Tài chính</archimate:name>
+      <archimate:documentation>Các dịch vụ tài chính và kế toán</archimate:documentation>
+    </archimate:baseElement>
+
+    <archimate:baseElement id="id-service-it-001" type="BusinessService">
+      <archimate:name>Dịch vụ Công nghệ</archimate:name>
+      <archimate:documentation>Các dịch vụ công nghệ thông tin</archimate:documentation>
+    </archimate:baseElement>
+
+    <archimate:baseElement id="id-service-audit-001" type="BusinessService">
+      <archimate:name>Dịch vụ Kiểm toán</archimate:name>
+      <archimate:documentation>Các dịch vụ kiểm toán và tuân thủ</archimate:documentation>
+    </archimate:baseElement>
+
+    <archimate:baseElement id="id-service-purchase-001" type="BusinessService">
+      <archimate:name>Dịch vụ Mua hàng</archimate:name>
+      <archimate:documentation>Các dịch vụ mua sắm và quản lý nhà cung cấp</archimate:documentation>
+    </archimate:baseElement>
+
+    <archimate:baseElement id="id-service-operation-001" type="BusinessService">
+      <archimate:name>Dịch vụ Vận hành</archimate:name>
+      <archimate:documentation>Các dịch vụ vận hành và sản xuất</archimate:documentation>
+    </archimate:baseElement>
+
+    <archimate:baseElement id="id-service-warehouse-001" type="BusinessService">
+      <archimate:name>Dịch vụ Kho</archimate:name>
+      <archimate:documentation>Các dịch vụ quản lý kho và logistics</archimate:documentation>
+    </archimate:baseElement>
+
+    <!-- Các đối tượng thông tin được trao đổi -->
+    <archimate:baseElement id="id-info-ngan-sach-001" type="BusinessObject">
+      <archimate:name>Ngân sách Marketing</archimate:name>
+    </archimate:baseElement>
+
+    <archimate:baseElement id="id-info-nhan-su-yc-001" type="BusinessObject">
+      <archimate:name>Yêu cầu nhân sự</archimate:name>
+    </archimate:baseElement>
+
+    <archimate:baseElement id="id-info-he-thong-001" type="BusinessObject">
+      <archimate:name>Hệ thống CRM/Website</archimate:name>
+    </archimate:baseElement>
+
+    <archimate:baseElement id="id-info-bao-cao-tc-001" type="BusinessObject">
+      <archimate:name>Báo cáo tài chính</archimate:name>
+    </archimate:baseElement>
+
+    <archimate:baseElement id="id-info-ton-kho-001" type="BusinessObject">
+      <archimate:name>Thông tin tồn kho</archimate:name>
+    </archimate:baseElement>
+
+    <archimate:baseElement id="id-info-khach-hang-001" type="BusinessObject">
+      <archimate:name>Thông tin khách hàng</archimate:name>
+    </archimate:baseElement>
+
+    <archimate:baseElement id="id-info-don-hang-001" type="BusinessObject">
+      <archimate:name>Thông tin đơn hàng</archimate:name>
+    </archimate:baseElement>
+
+    <archimate:baseElement id="id-info-ncc-001" type="BusinessObject">
+      <archimate:name>Thông tin nhà cung cấp</archimate:name>
+    </archimate:baseElement>
+
+  </archimate:elements>
+
+  <archimate:views>
+    <archimate:diagrams>
+      <archimate:view identifier="id-matrix-view-001">
+        <archimate:name>Ma trận tương tác nghiệp vụ</archimate:name>
+        <archimate:documentation>Sơ đồ ma trận tương tác giữa các bộ phận nghiệp vụ</archimate:documentation>
+
+        <!-- Positioning các bộ phận trong ma trận -->
+        <archimate:node identifier="id-node-marketing-001" elementRef="id-marketing-kd-001"
+          x="50" y="50" w="150" h="80">
+          <archimate:style>
+            <archimate:font />
+            <archimate:fillColor r="255" g="182" b="193" a="100" />
+            <archimate:lineColor r="0" g="0" b="0" a="40" />
+          </archimate:style>
+        </archimate:node>
+
+        <archimate:node identifier="id-node-nhansu-001" elementRef="id-nhan-su-001" x="220"
+          y="50" w="150" h="80">
+          <archimate:style>
+            <archimate:font />
+            <archimate:fillColor r="255" g="218" b="185" a="100" />
+            <archimate:lineColor r="0" g="0" b="0" a="40" />
+          </archimate:style>
+        </archimate:node>
+
+        <archimate:node identifier="id-node-taichinh-001" elementRef="id-tai-chinh-kt-001"
+          x="390" y="50" w="150" h="80">
+          <archimate:style>
+            <archimate:font />
+            <archimate:fillColor r="255" g="255" b="186" a="100" />
+            <archimate:lineColor r="0" g="0" b="0" a="40" />
+          </archimate:style>
+        </archimate:node>
+
+        <archimate:node identifier="id-node-congnghe-001" elementRef="id-cong-nghe-001"
+          x="560" y="50" w="150" h="80">
+          <archimate:style>
+            <archimate:font />
+            <archimate:fillColor r="186" g="255" b="201" a="100" />
+            <archimate:lineColor r="0" g="0" b="0" a="40" />
+          </archimate:style>
+        </archimate:node>
+
+        <archimate:node identifier="id-node-kiemtoan-001" elementRef="id-kiem-toan-001"
+          x="50" y="150" w="150" h="80">
+          <archimate:style>
+            <archimate:font />
+            <archimate:fillColor r="186" g="225" b="255" a="100" />
+            <archimate:lineColor r="0" g="0" b="0" a="40" />
+          </archimate:style>
+        </archimate:node>
+
+        <archimate:node identifier="id-node-muahang-001" elementRef="id-mua-hang-001" x="220"
+          y="150" w="150" h="80">
+          <archimate:style>
+            <archimate:font />
+            <archimate:fillColor r="221" g="160" b="221" a="100" />
+            <archimate:lineColor r="0" g="0" b="0" a="40" />
+          </archimate:style>
+        </archimate:node>
+
+        <archimate:node identifier="id-node-vanhanh-001" elementRef="id-van-hanh-001" x="390"
+          y="150" w="150" h="80">
+          <archimate:style>
+            <archimate:font />
+            <archimate:fillColor r="255" g="160" b="122" a="100" />
+            <archimate:lineColor r="0" g="0" b="0" a="40" />
+          </archimate:style>
+        </archimate:node>
+
+        <archimate:node identifier="id-node-kho-001" elementRef="id-kho-001" x="560" y="150"
+          w="150" h="80">
+          <archimate:style>
+            <archimate:font />
+            <archimate:fillColor r="144" g="238" b="144" a="100" />
+            <archimate:lineColor r="0" g="0" b="0" a="40" />
+          </archimate:style>
+        </archimate:node>
+
+        <!-- Các kết nối quan trọng từ ma trận -->
+
+        <!-- Marketing ↔ Nhân sự: Yêu cầu nhân sự cho Marketing -->
+        <archimate:connection identifier="id-conn-marketing-nhansu-001"
+          relationshipRef="id-rel-marketing-nhansu-001" source="id-node-marketing-001"
+          target="id-node-nhansu-001">
+          <archimate:style lineWidth="2">
+            <archimate:font />
+            <archimate:lineColor r="255" g="0" b="0" a="80" />
+          </archimate:style>
+        </archimate:connection>
+
+        <!-- Marketing ↔ Tài chính: Yêu cầu ngân sách Marketing -->
+        <archimate:connection identifier="id-conn-marketing-taichinh-001"
+          relationshipRef="id-rel-marketing-taichinh-001" source="id-node-marketing-001"
+          target="id-node-taichinh-001">
+          <archimate:style lineWidth="2">
+            <archimate:font />
+            <archimate:lineColor r="0" g="255" b="0" a="80" />
+          </archimate:style>
+        </archimate:connection>
+
+        <!-- Marketing ↔ Công nghệ: Yêu cầu hệ thống CRM -->
+        <archimate:connection identifier="id-conn-marketing-congnghe-001"
+          relationshipRef="id-rel-marketing-congnghe-001" source="id-node-marketing-001"
+          target="id-node-congnghe-001">
+          <archimate:style lineWidth="2">
+            <archimate:font />
+            <archimate:lineColor r="0" g="0" b="255" a="80" />
+          </archimate:style>
+        </archimate:connection>
+
+        <!-- Marketing ↔ Vận hành: Thông tin khách hàng -->
+        <archimate:connection identifier="id-conn-marketing-vanhanh-001"
+          relationshipRef="id-rel-marketing-vanhanh-001" source="id-node-marketing-001"
+          target="id-node-vanhanh-001">
+          <archimate:style lineWidth="2">
+            <archimate:font />
+            <archimate:lineColor r="255" g="165" b="0" a="80" />
+          </archimate:style>
+        </archimate:connection>
+
+        <!-- Marketing ↔ Kho: Thông tin tồn kho -->
+        <archimate:connection identifier="id-conn-marketing-kho-001"
+          relationshipRef="id-rel-marketing-kho-001" source="id-node-marketing-001"
+          target="id-node-kho-001">
+          <archimate:style lineWidth="2">
+            <archimate:font />
+            <archimate:lineColor r="128" g="0" b="128" a="80" />
+          </archimate:style>
+        </archimate:connection>
+
+        <!-- Tài chính ↔ Mua hàng: Thanh toán NCC -->
+        <archimate:connection identifier="id-conn-taichinh-muahang-001"
+          relationshipRef="id-rel-taichinh-muahang-001" source="id-node-taichinh-001"
+          target="id-node-muahang-001">
+          <archimate:style lineWidth="2">
+            <archimate:font />
+            <archimate:lineColor r="0" g="128" b="0" a="80" />
+          </archimate:style>
+        </archimate:connection>
+
+        <!-- Tài chính ↔ Vận hành: Xử lý doanh thu -->
+        <archimate:connection identifier="id-conn-taichinh-vanhanh-001"
+          relationshipRef="id-rel-taichinh-vanhanh-001" source="id-node-taichinh-001"
+          target="id-node-vanhanh-001">
+          <archimate:style lineWidth="2">
+            <archimate:font />
+            <archimate:lineColor r="255" g="20" b="147" a="80" />
+          </archimate:style>
+        </archimate:connection>
+
+        <!-- Vận hành ↔ Kho: Yêu cầu xuất kho -->
+        <archimate:connection identifier="id-conn-vanhanh-kho-001"
+          relationshipRef="id-rel-vanhanh-kho-001" source="id-node-vanhanh-001"
+          target="id-node-kho-001">
+          <archimate:style lineWidth="3">
+            <archimate:font />
+            <archimate:lineColor r="255" g="69" b="0" a="100" />
+          </archimate:style>
+        </archimate:connection>
+
+        <!-- Mua hàng ↔ Kho: Phối hợp nhập kho -->
+        <archimate:connection identifier="id-conn-muahang-kho-001"
+          relationshipRef="id-rel-muahang-kho-001" source="id-node-muahang-001"
+          target="id-node-kho-001">
+          <archimate:style lineWidth="3">
+            <archimate:font />
+            <archimate:lineColor r="34" g="139" b="34" a="100" />
+          </archimate:style>
+        </archimate:connection>
+
+        <!-- Kiểm toán với tất cả bộ phận -->
+        <archimate:connection identifier="id-conn-kiemtoan-taichinh-001"
+          relationshipRef="id-rel-kiemtoan-taichinh-001" source="id-node-kiemtoan-001"
+          target="id-node-taichinh-001">
+          <archimate:style lineWidth="1">
+            <archimate:font />
+            <archimate:lineColor r="70" g="130" b="180" a="80" />
+          </archimate:style>
+        </archimate:connection>
+
+        <archimate:connection identifier="id-conn-kiemtoan-kho-001"
+          relationshipRef="id-rel-kiemtoan-kho-001" source="id-node-kiemtoan-001"
+          target="id-node-kho-001">
+          <archimate:style lineWidth="1">
+            <archimate:font />
+            <archimate:lineColor r="70" g="130" b="180" a="80" />
+          </archimate:style>
+        </archimate:connection>
+
+        <!-- Công nghệ hỗ trợ tất cả bộ phận -->
+        <archimate:connection identifier="id-conn-congnghe-taichinh-001"
+          relationshipRef="id-rel-congnghe-taichinh-001" source="id-node-congnghe-001"
+          target="id-node-taichinh-001">
+          <archimate:style lineWidth="1">
+            <archimate:font />
+            <archimate:lineColor r="60" g="179" b="113" a="80" />
+          </archimate:style>
+        </archimate:connection>
+
+        <archimate:connection identifier="id-conn-congnghe-vanhanh-001"
+          relationshipRef="id-rel-congnghe-vanhanh-001" source="id-node-congnghe-001"
+          target="id-node-vanhanh-001">
+          <archimate:style lineWidth="1">
+            <archimate:font />
+            <archimate:lineColor r="60" g="179" b="113" a="80" />
+          </archimate:style>
+        </archimate:connection>
+
+        <archimate:connection identifier="id-conn-congnghe-kho-001"
+          relationshipRef="id-rel-congnghe-kho-001" source="id-node-congnghe-001"
+          target="id-node-kho-001">
+          <archimate:style lineWidth="1">
+            <archimate:font />
+            <archimate:lineColor r="60" g="179" b="113" a="80" />
+          </archimate:style>
+        </archimate:connection>
+
+      </archimate:view>
+    </archimate:diagrams>
+  </archimate:views>
+
+  <archimate:relationships>
+    <!-- Quan hệ tương tác giữa các bộ phận -->
+
+    <!-- Marketing ↔ Nhân sự -->
+    <archimate:relationship id="id-rel-marketing-nhansu-001" type="Flow"
+      source="id-marketing-kd-001" target="id-nhan-su-001">
+      <archimate:name>Yêu cầu nhân sự cho Marketing</archimate:name>
+      <archimate:documentation>Marketing yêu cầu Nhân sự tuyển dụng nhân viên cho các hoạt động
+        marketing và kinh doanh</archimate:documentation>
+    </archimate:relationship>
+
+    <!-- Marketing ↔ Tài chính -->
+    <archimate:relationship id="id-rel-marketing-taichinh-001" type="Flow"
+      source="id-marketing-kd-001" target="id-tai-chinh-kt-001">
+      <archimate:name>Yêu cầu ngân sách Marketing, báo cáo ROI</archimate:name>
+      <archimate:documentation>Marketing yêu cầu ngân sách cho các chiến dịch và báo cáo hiệu quả
+        đầu tư</archimate:documentation>
+    </archimate:relationship>
+
+    <!-- Marketing ↔ Công nghệ -->
+    <archimate:relationship id="id-rel-marketing-congnghe-001" type="Flow"
+      source="id-marketing-kd-001" target="id-cong-nghe-001">
+      <archimate:name>Yêu cầu hệ thống CRM, website</archimate:name>
+      <archimate:documentation>Marketing yêu cầu Công nghệ phát triển và duy trì hệ thống CRM và
+        website</archimate:documentation>
+    </archimate:relationship>
+
+    <!-- Marketing ↔ Vận hành -->
+    <archimate:relationship id="id-rel-marketing-vanhanh-001" type="Flow"
+      source="id-marketing-kd-001" target="id-van-hanh-001">
+      <archimate:name>Yêu cầu thông tin khách hàng</archimate:name>
+      <archimate:documentation>Marketing cần thông tin khách hàng từ Vận hành để phát triển chiến
+        lược marketing</archimate:documentation>
+    </archimate:relationship>
+
+    <!-- Marketing ↔ Kho -->
+    <archimate:relationship id="id-rel-marketing-kho-001" type="Flow" source="id-marketing-kd-001"
+      target="id-kho-001">
+      <archimate:name>Yêu cầu thông tin tồn kho</archimate:name>
+      <archimate:documentation>Marketing cần thông tin tồn kho để lập kế hoạch marketing và khuyến
+        mãi</archimate:documentation>
+    </archimate:relationship>
+
+    <!-- Tài chính ↔ Mua hàng -->
+    <archimate:relationship id="id-rel-taichinh-muahang-001" type="Flow"
+      source="id-tai-chinh-kt-001" target="id-mua-hang-001">
+      <archimate:name>Thanh toán nhà cung cấp</archimate:name>
+      <archimate:documentation>Tài chính xử lý thanh toán cho các đơn hàng mua từ nhà cung cấp</archimate:documentation>
+    </archimate:relationship>
+
+    <!-- Tài chính ↔ Vận hành -->
+    <archimate:relationship id="id-rel-taichinh-vanhanh-001" type="Flow"
+      source="id-tai-chinh-kt-001" target="id-van-hanh-001">
+      <archimate:name>Xử lý doanh thu bán hàng</archimate:name>
+      <archimate:documentation>Tài chính ghi nhận và xử lý doanh thu từ hoạt động bán hàng</archimate:documentation>
+    </archimate:relationship>
+
+    <!-- Vận hành ↔ Kho -->
+    <archimate:relationship id="id-rel-vanhanh-kho-001" type="Flow" source="id-van-hanh-001"
+      target="id-kho-001">
+      <archimate:name>Yêu cầu xuất kho</archimate:name>
+      <archimate:documentation>Vận hành yêu cầu Kho xuất hàng để phục vụ khách hàng - tương tác hàng
+        ngày quan trọng</archimate:documentation>
+    </archimate:relationship>
+
+    <!-- Mua hàng ↔ Kho -->
+    <archimate:relationship id="id-rel-muahang-kho-001" type="Flow" source="id-mua-hang-001"
+      target="id-kho-001">
+      <archimate:name>Phối hợp nhập kho</archimate:name>
+      <archimate:documentation>Mua hàng phối hợp với Kho để nhập hàng từ nhà cung cấp</archimate:documentation>
+    </archimate:relationship>
+
+    <!-- Kiểm toán ↔ Tài chính -->
+    <archimate:relationship id="id-rel-kiemtoan-taichinh-001" type="Access"
+      source="id-kiem-toan-001" target="id-tai-chinh-kt-001">
+      <archimate:name>Kiểm toán báo cáo tài chính</archimate:name>
+      <archimate:documentation>Kiểm toán thực hiện kiểm tra và đánh giá các báo cáo tài chính</archimate:documentation>
+    </archimate:relationship>
+
+    <!-- Kiểm toán ↔ Kho -->
+    <archimate:relationship id="id-rel-kiemtoan-kho-001" type="Access" source="id-kiem-toan-001"
+      target="id-kho-001">
+      <archimate:name>Kiểm kê và đối chiếu kho</archimate:name>
+      <archimate:documentation>Kiểm toán thực hiện kiểm kê tồn kho và đối chiếu với sổ sách</archimate:documentation>
+    </archimate:relationship>
+
+    <!-- Công nghệ ↔ Tài chính -->
+    <archimate:relationship id="id-rel-congnghe-taichinh-001" type="Serving"
+      source="id-cong-nghe-001" target="id-tai-chinh-kt-001">
+      <archimate:name>Cung cấp hệ thống kế toán</archimate:name>
+      <archimate:documentation>Công nghệ cung cấp và duy trì hệ thống kế toán cho bộ phận Tài chính</archimate:documentation>
+    </archimate:relationship>
+
+    <!-- Công nghệ ↔ Vận hành -->
+    <archimate:relationship id="id-rel-congnghe-vanhanh-001" type="Serving"
+      source="id-cong-nghe-001" target="id-van-hanh-001">
+      <archimate:name>Cung cấp hệ thống POS</archimate:name>
+      <archimate:documentation>Công nghệ cung cấp hệ thống bán hàng (POS) cho Vận hành</archimate:documentation>
+    </archimate:relationship>
+
+    <!-- Công nghệ ↔ Kho -->
+    <archimate:relationship id="id-rel-congnghe-kho-001" type="Serving" source="id-cong-nghe-001"
+      target="id-kho-001">
+      <archimate:name>Cung cấp hệ thống quản lý kho</archimate:name>
+      <archimate:documentation>Công nghệ cung cấp hệ thống quản lý kho cho bộ phận Kho</archimate:documentation>
+    </archimate:relationship>
+
+    <!-- Quan hệ cung cấp dịch vụ -->
+    <archimate:relationship id="id-rel-marketing-service-001" type="Realization"
+      source="id-marketing-kd-001" target="id-service-marketing-001">
+      <archimate:name></archimate:name>
+    </archimate:relationship>
+
+    <archimate:relationship id="id-rel-nhansu-service-001" type="Realization"
+      source="id-nhan-su-001" target="id-service-hr-001">
+      <archimate:name></archimate:name>
+    </archimate:relationship>
+
+    <archimate:relationship id="id-rel-taichinh-service-001" type="Realization"
+      source="id-tai-chinh-kt-001" target="id-service-finance-001">
+      <archimate:name></archimate:name>
+    </archimate:relationship>
+
+    <archimate:relationship id="id-rel-congnghe-service-001" type="Realization"
+      source="id-cong-nghe-001" target="id-service-it-001">
+      <archimate:name></archimate:name>
+    </archimate:relationship>
+
+    <archimate:relationship id="id-rel-kiemtoan-service-001" type="Realization"
+      source="id-kiem-toan-001" target="id-service-audit-001">
+      <archimate:name></archimate:name>
+    </archimate:relationship>
+
+    <archimate:relationship id="id-rel-muahang-service-001" type="Realization"
+      source="id-mua-hang-001" target="id-service-purchase-001">
+      <archimate:name></archimate:name>
+    </archimate:relationship>
+
+    <archimate:relationship id="id-rel-vanhanh-service-001" type="Realization"
+      source="id-van-hanh-001" target="id-service-operation-001">
+      <archimate:name></archimate:name>
+    </archimate:relationship>
+
+    <archimate:relationship id="id-rel-kho-service-001" type="Realization" source="id-kho-001"
+      target="id-service-warehouse-001">
+      <archimate:name></archimate:name>
+    </archimate:relationship>
+
+  </archimate:relationships>
+
+  <archimate:propertyDefinitions />
+</archimate:model>

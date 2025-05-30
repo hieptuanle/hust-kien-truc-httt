@@ -1,0 +1,751 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:bpsim="http://www.bpsim.org/schemas/1.0" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:drools="http://www.jboss.org/drools" id="_WTvZ8B91ED62MrjtXcZQeg" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd http://www.jboss.org/drools drools.xsd http://www.bpsim.org/schemas/1.0 bpsim.xsd http://www.omg.org/spec/DD/20100524/DC DC.xsd http://www.omg.org/spec/DD/20100524/DI DI.xsd " exporter="jBPM Process Modeler" exporterVersion="2.0" targetNamespace="http://www.omg.org/bpmn20">
+  <bpmn2:itemDefinition id="__7_SkippableInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__7_PriorityInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__7_CommentInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__7_DescriptionInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__7_CreatedByInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__7_TaskNameInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__7_GroupIdInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__7_ContentInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__7_NotStartedReassignInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__7_NotCompletedReassignInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__7_NotStartedNotifyInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__7_NotCompletedNotifyInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__5_SkippableInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__5_PriorityInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__5_CommentInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__5_DescriptionInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__5_CreatedByInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__5_TaskNameInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__5_GroupIdInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__5_ContentInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__5_NotStartedReassignInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__5_NotCompletedReassignInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__5_NotStartedNotifyInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__5_NotCompletedNotifyInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__reject_SkippableInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__reject_PriorityInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__reject_CommentInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__reject_DescriptionInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__reject_CreatedByInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__reject_TaskNameInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__reject_GroupIdInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__reject_ContentInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__reject_NotStartedReassignInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__reject_NotCompletedReassignInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__reject_NotStartedNotifyInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__reject_NotCompletedNotifyInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__6_SkippableInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__6_PriorityInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__6_CommentInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__6_DescriptionInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__6_CreatedByInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__6_TaskNameInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__6_GroupIdInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__6_ContentInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__6_NotStartedReassignInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__6_NotCompletedReassignInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__6_NotStartedNotifyInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__6_NotCompletedNotifyInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__1_SkippableInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__1_PriorityInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__1_CommentInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__1_DescriptionInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__1_CreatedByInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__1_TaskNameInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__1_GroupIdInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__1_ContentInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__1_NotStartedReassignInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__1_NotCompletedReassignInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__1_NotStartedNotifyInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__1_NotCompletedNotifyInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__2_SkippableInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__2_PriorityInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__2_CommentInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__2_DescriptionInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__2_CreatedByInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__2_TaskNameInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__2_GroupIdInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__2_ContentInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__2_NotStartedReassignInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__2_NotCompletedReassignInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__2_NotStartedNotifyInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__2_NotCompletedNotifyInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__3_SkippableInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__3_PriorityInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__3_CommentInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__3_DescriptionInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__3_CreatedByInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__3_TaskNameInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__3_GroupIdInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__3_ContentInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__3_NotStartedReassignInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__3_NotCompletedReassignInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__3_NotStartedNotifyInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__3_NotCompletedNotifyInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__4_SkippableInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__4_PriorityInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__4_CommentInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__4_DescriptionInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__4_CreatedByInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__4_TaskNameInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__4_GroupIdInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__4_ContentInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__4_NotStartedReassignInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__4_NotCompletedReassignInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__4_NotStartedNotifyInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__4_NotCompletedNotifyInputXItem" structureRef="Object"/>
+  <bpmn2:collaboration id="_310FE93B-95C5-4E52-87C9-CF86BCED385F" name="Default Collaboration">
+    <bpmn2:participant id="_885A1180-5B8C-4CE0-95F3-4FA422E840B6" name="Pool Participant" processRef="BP003"/>
+  </bpmn2:collaboration>
+  <bpmn2:process id="BP003" drools:packageName="com.example" drools:version="1.0" drools:adHoc="false" name="BP003 - Mua hàng và nhập kho" isExecutable="true" processType="Public">
+    <bpmn2:laneSet>
+      <bpmn2:lane id="_lane_accounting" name="Phòng Kế toán">
+        <bpmn2:extensionElements>
+          <drools:metaData name="elementname">
+            <drools:metaValue><![CDATA[Phòng Kế toán]]></drools:metaValue>
+          </drools:metaData>
+        </bpmn2:extensionElements>
+        <bpmn2:flowNodeRef>_7</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>_event1</bpmn2:flowNodeRef>
+      </bpmn2:lane>
+      <bpmn2:lane id="_lane_warehouse" name="Khối Kho">
+        <bpmn2:extensionElements>
+          <drools:metaData name="elementname">
+            <drools:metaValue><![CDATA[Khối Kho]]></drools:metaValue>
+          </drools:metaData>
+        </bpmn2:extensionElements>
+        <bpmn2:flowNodeRef>_5</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>_gateway2</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>_reject</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>_6</bpmn2:flowNodeRef>
+      </bpmn2:lane>
+      <bpmn2:lane id="_lane_purchase" name="Phòng Mua hàng">
+        <bpmn2:extensionElements>
+          <drools:metaData name="elementname">
+            <drools:metaValue><![CDATA[Phòng Mua hàng]]></drools:metaValue>
+          </drools:metaData>
+        </bpmn2:extensionElements>
+        <bpmn2:flowNodeRef>_start</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>_1</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>_2</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>_3</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>_gateway1</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>_4</bpmn2:flowNodeRef>
+      </bpmn2:lane>
+    </bpmn2:laneSet>
+    <bpmn2:sequenceFlow id="_flow5" name="Phê duyệt" sourceRef="_gateway1" targetRef="_4">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Phê duyệt]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:conditionExpression xsi:type="bpmn2:tFormalExpression" language="http://www.java.com/java"><![CDATA[approved == true]]></bpmn2:conditionExpression>
+    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="_flow4" sourceRef="_3" targetRef="_gateway1"/>
+    <bpmn2:sequenceFlow id="_flow3" sourceRef="_2" targetRef="_3"/>
+    <bpmn2:sequenceFlow id="_flow2" sourceRef="_1" targetRef="_2"/>
+    <bpmn2:sequenceFlow id="_flow1" sourceRef="_start" targetRef="_1"/>
+    <bpmn2:sequenceFlow id="_flow11" sourceRef="_6" targetRef="_event1"/>
+    <bpmn2:sequenceFlow id="_flow10" sourceRef="_reject" targetRef="_4"/>
+    <bpmn2:sequenceFlow id="_flow9" name="Không đạt" sourceRef="_gateway2" targetRef="_reject">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Không đạt]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:conditionExpression xsi:type="bpmn2:tFormalExpression" language="http://www.java.com/java"><![CDATA[quality_ok == false]]></bpmn2:conditionExpression>
+    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="_flow8" name="Đạt yêu cầu" sourceRef="_gateway2" targetRef="_6">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Đạt yêu cầu]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:conditionExpression xsi:type="bpmn2:tFormalExpression" language="http://www.java.com/java"><![CDATA[quality_ok == true]]></bpmn2:conditionExpression>
+    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="_flow7" sourceRef="_5" targetRef="_gateway2"/>
+    <bpmn2:sequenceFlow id="_flow6" sourceRef="_4" targetRef="_5"/>
+    <bpmn2:sequenceFlow id="_flow13" sourceRef="_7" targetRef="_end"/>
+    <bpmn2:sequenceFlow id="_flow12" sourceRef="_event1" targetRef="_7"/>
+    <bpmn2:userTask id="_4" name="Gửi đơn hàng cho NCC">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Gửi đơn hàng cho NCC]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>_flow10</bpmn2:incoming>
+      <bpmn2:incoming>_flow5</bpmn2:incoming>
+      <bpmn2:outgoing>_flow6</bpmn2:outgoing>
+      <bpmn2:ioSpecification>
+        <bpmn2:dataInput id="_4_TaskNameInputX" drools:dtype="Object" itemSubjectRef="__4_TaskNameInputXItem" name="TaskName"/>
+        <bpmn2:dataInput id="_4_SkippableInputX" drools:dtype="Object" itemSubjectRef="__4_SkippableInputXItem" name="Skippable"/>
+        <bpmn2:inputSet>
+          <bpmn2:dataInputRefs>_4_TaskNameInputX</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>_4_SkippableInputX</bpmn2:dataInputRefs>
+        </bpmn2:inputSet>
+      </bpmn2:ioSpecification>
+      <bpmn2:dataInputAssociation>
+        <bpmn2:targetRef>_4_TaskNameInputX</bpmn2:targetRef>
+        <bpmn2:assignment>
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression"><![CDATA[Task]]></bpmn2:from>
+          <bpmn2:to xsi:type="bpmn2:tFormalExpression"><![CDATA[_4_TaskNameInputX]]></bpmn2:to>
+        </bpmn2:assignment>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation>
+        <bpmn2:targetRef>_4_SkippableInputX</bpmn2:targetRef>
+        <bpmn2:assignment>
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression"><![CDATA[false]]></bpmn2:from>
+          <bpmn2:to xsi:type="bpmn2:tFormalExpression"><![CDATA[_4_SkippableInputX]]></bpmn2:to>
+        </bpmn2:assignment>
+      </bpmn2:dataInputAssociation>
+    </bpmn2:userTask>
+    <bpmn2:exclusiveGateway id="_gateway1" name="Phê duyệt đơn hàng">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Phê duyệt đơn hàng]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>_flow4</bpmn2:incoming>
+      <bpmn2:outgoing>_flow5</bpmn2:outgoing>
+    </bpmn2:exclusiveGateway>
+    <bpmn2:userTask id="_3" name="Lập đơn đặt hàng">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Lập đơn đặt hàng]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>_flow3</bpmn2:incoming>
+      <bpmn2:outgoing>_flow4</bpmn2:outgoing>
+      <bpmn2:ioSpecification>
+        <bpmn2:dataInput id="_3_TaskNameInputX" drools:dtype="Object" itemSubjectRef="__3_TaskNameInputXItem" name="TaskName"/>
+        <bpmn2:dataInput id="_3_SkippableInputX" drools:dtype="Object" itemSubjectRef="__3_SkippableInputXItem" name="Skippable"/>
+        <bpmn2:inputSet>
+          <bpmn2:dataInputRefs>_3_TaskNameInputX</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>_3_SkippableInputX</bpmn2:dataInputRefs>
+        </bpmn2:inputSet>
+      </bpmn2:ioSpecification>
+      <bpmn2:dataInputAssociation>
+        <bpmn2:targetRef>_3_TaskNameInputX</bpmn2:targetRef>
+        <bpmn2:assignment>
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression"><![CDATA[Task]]></bpmn2:from>
+          <bpmn2:to xsi:type="bpmn2:tFormalExpression"><![CDATA[_3_TaskNameInputX]]></bpmn2:to>
+        </bpmn2:assignment>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation>
+        <bpmn2:targetRef>_3_SkippableInputX</bpmn2:targetRef>
+        <bpmn2:assignment>
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression"><![CDATA[false]]></bpmn2:from>
+          <bpmn2:to xsi:type="bpmn2:tFormalExpression"><![CDATA[_3_SkippableInputX]]></bpmn2:to>
+        </bpmn2:assignment>
+      </bpmn2:dataInputAssociation>
+    </bpmn2:userTask>
+    <bpmn2:userTask id="_2" name="Lựa chọn nhà cung cấp &amp; so sánh giá">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Lựa chọn nhà cung cấp & so sánh giá]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>_flow2</bpmn2:incoming>
+      <bpmn2:outgoing>_flow3</bpmn2:outgoing>
+      <bpmn2:ioSpecification>
+        <bpmn2:dataInput id="_2_TaskNameInputX" drools:dtype="Object" itemSubjectRef="__2_TaskNameInputXItem" name="TaskName"/>
+        <bpmn2:dataInput id="_2_SkippableInputX" drools:dtype="Object" itemSubjectRef="__2_SkippableInputXItem" name="Skippable"/>
+        <bpmn2:inputSet>
+          <bpmn2:dataInputRefs>_2_TaskNameInputX</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>_2_SkippableInputX</bpmn2:dataInputRefs>
+        </bpmn2:inputSet>
+      </bpmn2:ioSpecification>
+      <bpmn2:dataInputAssociation>
+        <bpmn2:targetRef>_2_TaskNameInputX</bpmn2:targetRef>
+        <bpmn2:assignment>
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression"><![CDATA[Task]]></bpmn2:from>
+          <bpmn2:to xsi:type="bpmn2:tFormalExpression"><![CDATA[_2_TaskNameInputX]]></bpmn2:to>
+        </bpmn2:assignment>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation>
+        <bpmn2:targetRef>_2_SkippableInputX</bpmn2:targetRef>
+        <bpmn2:assignment>
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression"><![CDATA[false]]></bpmn2:from>
+          <bpmn2:to xsi:type="bpmn2:tFormalExpression"><![CDATA[_2_SkippableInputX]]></bpmn2:to>
+        </bpmn2:assignment>
+      </bpmn2:dataInputAssociation>
+    </bpmn2:userTask>
+    <bpmn2:userTask id="_1" name="Phân tích tồn kho &amp; xác định hàng cần nhập">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Phân tích tồn kho & xác định hàng cần nhập]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>_flow1</bpmn2:incoming>
+      <bpmn2:outgoing>_flow2</bpmn2:outgoing>
+      <bpmn2:ioSpecification>
+        <bpmn2:dataInput id="_1_TaskNameInputX" drools:dtype="Object" itemSubjectRef="__1_TaskNameInputXItem" name="TaskName"/>
+        <bpmn2:dataInput id="_1_SkippableInputX" drools:dtype="Object" itemSubjectRef="__1_SkippableInputXItem" name="Skippable"/>
+        <bpmn2:inputSet>
+          <bpmn2:dataInputRefs>_1_TaskNameInputX</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>_1_SkippableInputX</bpmn2:dataInputRefs>
+        </bpmn2:inputSet>
+      </bpmn2:ioSpecification>
+      <bpmn2:dataInputAssociation>
+        <bpmn2:targetRef>_1_TaskNameInputX</bpmn2:targetRef>
+        <bpmn2:assignment>
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression"><![CDATA[Task]]></bpmn2:from>
+          <bpmn2:to xsi:type="bpmn2:tFormalExpression"><![CDATA[_1_TaskNameInputX]]></bpmn2:to>
+        </bpmn2:assignment>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation>
+        <bpmn2:targetRef>_1_SkippableInputX</bpmn2:targetRef>
+        <bpmn2:assignment>
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression"><![CDATA[false]]></bpmn2:from>
+          <bpmn2:to xsi:type="bpmn2:tFormalExpression"><![CDATA[_1_SkippableInputX]]></bpmn2:to>
+        </bpmn2:assignment>
+      </bpmn2:dataInputAssociation>
+    </bpmn2:userTask>
+    <bpmn2:startEvent id="_start" name="Dự báo nhu cầu hàng hóa">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Dự báo nhu cầu hàng hóa]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:outgoing>_flow1</bpmn2:outgoing>
+    </bpmn2:startEvent>
+    <bpmn2:intermediateCatchEvent id="_event1" name="Hoàn thành nhập kho">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Hoàn thành nhập kho]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>_flow11</bpmn2:incoming>
+      <bpmn2:outgoing>_flow12</bpmn2:outgoing>
+      <bpmn2:signalEventDefinition/>
+    </bpmn2:intermediateCatchEvent>
+    <bpmn2:userTask id="_6" name="Nhập kho &amp; cập nhật tồn kho">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Nhập kho & cập nhật tồn kho]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>_flow8</bpmn2:incoming>
+      <bpmn2:outgoing>_flow11</bpmn2:outgoing>
+      <bpmn2:ioSpecification>
+        <bpmn2:dataInput id="_6_TaskNameInputX" drools:dtype="Object" itemSubjectRef="__6_TaskNameInputXItem" name="TaskName"/>
+        <bpmn2:dataInput id="_6_SkippableInputX" drools:dtype="Object" itemSubjectRef="__6_SkippableInputXItem" name="Skippable"/>
+        <bpmn2:inputSet>
+          <bpmn2:dataInputRefs>_6_TaskNameInputX</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>_6_SkippableInputX</bpmn2:dataInputRefs>
+        </bpmn2:inputSet>
+      </bpmn2:ioSpecification>
+      <bpmn2:dataInputAssociation>
+        <bpmn2:targetRef>_6_TaskNameInputX</bpmn2:targetRef>
+        <bpmn2:assignment>
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression"><![CDATA[Task]]></bpmn2:from>
+          <bpmn2:to xsi:type="bpmn2:tFormalExpression"><![CDATA[_6_TaskNameInputX]]></bpmn2:to>
+        </bpmn2:assignment>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation>
+        <bpmn2:targetRef>_6_SkippableInputX</bpmn2:targetRef>
+        <bpmn2:assignment>
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression"><![CDATA[false]]></bpmn2:from>
+          <bpmn2:to xsi:type="bpmn2:tFormalExpression"><![CDATA[_6_SkippableInputX]]></bpmn2:to>
+        </bpmn2:assignment>
+      </bpmn2:dataInputAssociation>
+    </bpmn2:userTask>
+    <bpmn2:userTask id="_reject" name="Từ chối &amp; yêu cầu giao lại">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Từ chối & yêu cầu giao lại]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>_flow9</bpmn2:incoming>
+      <bpmn2:outgoing>_flow10</bpmn2:outgoing>
+      <bpmn2:ioSpecification>
+        <bpmn2:dataInput id="_reject_TaskNameInputX" drools:dtype="Object" itemSubjectRef="__reject_TaskNameInputXItem" name="TaskName"/>
+        <bpmn2:dataInput id="_reject_SkippableInputX" drools:dtype="Object" itemSubjectRef="__reject_SkippableInputXItem" name="Skippable"/>
+        <bpmn2:inputSet>
+          <bpmn2:dataInputRefs>_reject_TaskNameInputX</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>_reject_SkippableInputX</bpmn2:dataInputRefs>
+        </bpmn2:inputSet>
+      </bpmn2:ioSpecification>
+      <bpmn2:dataInputAssociation>
+        <bpmn2:targetRef>_reject_TaskNameInputX</bpmn2:targetRef>
+        <bpmn2:assignment>
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression"><![CDATA[Task]]></bpmn2:from>
+          <bpmn2:to xsi:type="bpmn2:tFormalExpression"><![CDATA[_reject_TaskNameInputX]]></bpmn2:to>
+        </bpmn2:assignment>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation>
+        <bpmn2:targetRef>_reject_SkippableInputX</bpmn2:targetRef>
+        <bpmn2:assignment>
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression"><![CDATA[false]]></bpmn2:from>
+          <bpmn2:to xsi:type="bpmn2:tFormalExpression"><![CDATA[_reject_SkippableInputX]]></bpmn2:to>
+        </bpmn2:assignment>
+      </bpmn2:dataInputAssociation>
+    </bpmn2:userTask>
+    <bpmn2:exclusiveGateway id="_gateway2" name="Hàng đúng quy cách?" gatewayDirection="Diverging">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Hàng đúng quy cách?]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>_flow7</bpmn2:incoming>
+      <bpmn2:outgoing>_flow8</bpmn2:outgoing>
+      <bpmn2:outgoing>_flow9</bpmn2:outgoing>
+    </bpmn2:exclusiveGateway>
+    <bpmn2:userTask id="_5" name="Nhận &amp; kiểm tra hàng">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Nhận & kiểm tra hàng]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>_flow6</bpmn2:incoming>
+      <bpmn2:outgoing>_flow7</bpmn2:outgoing>
+      <bpmn2:ioSpecification>
+        <bpmn2:dataInput id="_5_TaskNameInputX" drools:dtype="Object" itemSubjectRef="__5_TaskNameInputXItem" name="TaskName"/>
+        <bpmn2:dataInput id="_5_SkippableInputX" drools:dtype="Object" itemSubjectRef="__5_SkippableInputXItem" name="Skippable"/>
+        <bpmn2:inputSet>
+          <bpmn2:dataInputRefs>_5_TaskNameInputX</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>_5_SkippableInputX</bpmn2:dataInputRefs>
+        </bpmn2:inputSet>
+      </bpmn2:ioSpecification>
+      <bpmn2:dataInputAssociation>
+        <bpmn2:targetRef>_5_TaskNameInputX</bpmn2:targetRef>
+        <bpmn2:assignment>
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression"><![CDATA[Task]]></bpmn2:from>
+          <bpmn2:to xsi:type="bpmn2:tFormalExpression"><![CDATA[_5_TaskNameInputX]]></bpmn2:to>
+        </bpmn2:assignment>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation>
+        <bpmn2:targetRef>_5_SkippableInputX</bpmn2:targetRef>
+        <bpmn2:assignment>
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression"><![CDATA[false]]></bpmn2:from>
+          <bpmn2:to xsi:type="bpmn2:tFormalExpression"><![CDATA[_5_SkippableInputX]]></bpmn2:to>
+        </bpmn2:assignment>
+      </bpmn2:dataInputAssociation>
+    </bpmn2:userTask>
+    <bpmn2:endEvent id="_end" name="Hoàn thành mua hàng">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Hoàn thành mua hàng]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>_flow13</bpmn2:incoming>
+    </bpmn2:endEvent>
+    <bpmn2:userTask id="_7" name="Thanh toán cho NCC">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Thanh toán cho NCC]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>_flow12</bpmn2:incoming>
+      <bpmn2:outgoing>_flow13</bpmn2:outgoing>
+      <bpmn2:ioSpecification>
+        <bpmn2:dataInput id="_7_TaskNameInputX" drools:dtype="Object" itemSubjectRef="__7_TaskNameInputXItem" name="TaskName"/>
+        <bpmn2:dataInput id="_7_SkippableInputX" drools:dtype="Object" itemSubjectRef="__7_SkippableInputXItem" name="Skippable"/>
+        <bpmn2:inputSet>
+          <bpmn2:dataInputRefs>_7_TaskNameInputX</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>_7_SkippableInputX</bpmn2:dataInputRefs>
+        </bpmn2:inputSet>
+      </bpmn2:ioSpecification>
+      <bpmn2:dataInputAssociation>
+        <bpmn2:targetRef>_7_TaskNameInputX</bpmn2:targetRef>
+        <bpmn2:assignment>
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression"><![CDATA[Task]]></bpmn2:from>
+          <bpmn2:to xsi:type="bpmn2:tFormalExpression"><![CDATA[_7_TaskNameInputX]]></bpmn2:to>
+        </bpmn2:assignment>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation>
+        <bpmn2:targetRef>_7_SkippableInputX</bpmn2:targetRef>
+        <bpmn2:assignment>
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression"><![CDATA[false]]></bpmn2:from>
+          <bpmn2:to xsi:type="bpmn2:tFormalExpression"><![CDATA[_7_SkippableInputX]]></bpmn2:to>
+        </bpmn2:assignment>
+      </bpmn2:dataInputAssociation>
+    </bpmn2:userTask>
+  </bpmn2:process>
+  <bpmndi:BPMNDiagram>
+    <bpmndi:BPMNPlane bpmnElement="BP003">
+      <bpmndi:BPMNShape id="shape__7" bpmnElement="_7">
+        <dc:Bounds height="80" width="120" x="1215" y="524"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape__end" bpmnElement="_end">
+        <dc:Bounds height="56" width="56" x="1414" y="536"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape__5" bpmnElement="_5">
+        <dc:Bounds height="80" width="120" x="876" y="326"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape__gateway2" bpmnElement="_gateway2">
+        <dc:Bounds height="56" width="56" x="1054" y="402"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape__reject" bpmnElement="_reject">
+        <dc:Bounds height="80" width="120" x="646" y="397"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape__6" bpmnElement="_6">
+        <dc:Bounds height="80" width="120" x="1184" y="365"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape__event1" bpmnElement="_event1">
+        <dc:Bounds height="56" width="56" x="1078" y="548"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape__start" bpmnElement="_start">
+        <dc:Bounds height="56" width="56" x="181" y="206"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape__1" bpmnElement="_1">
+        <dc:Bounds height="80" width="120" x="264" y="136"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape__2" bpmnElement="_2">
+        <dc:Bounds height="80" width="120" x="427" y="152"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape__3" bpmnElement="_3">
+        <dc:Bounds height="80" width="120" x="590" y="160"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape__gateway1" bpmnElement="_gateway1">
+        <dc:Bounds height="56" width="56" x="762" y="172"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape__4" bpmnElement="_4">
+        <dc:Bounds height="80" width="120" x="887" y="160"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape__lane_accounting" bpmnElement="_lane_accounting">
+        <dc:Bounds height="200" width="1400" x="100" y="500"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape__lane_warehouse" bpmnElement="_lane_warehouse">
+        <dc:Bounds height="200" width="1400" x="100" y="300"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape__lane_purchase" bpmnElement="_lane_purchase">
+        <dc:Bounds height="200" width="1400" x="100" y="100"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="edge_shape__event1_to_shape__7" bpmnElement="_flow12">
+        <di:waypoint x="1134" y="576"/>
+        <di:waypoint x="1215" y="564"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape__7_to_shape__end" bpmnElement="_flow13">
+        <di:waypoint x="1335" y="564"/>
+        <di:waypoint x="1414" y="564"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape__4_to_shape__5" bpmnElement="_flow6">
+        <di:waypoint x="947" y="240"/>
+        <di:waypoint x="936" y="326"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape__5_to_shape__gateway2" bpmnElement="_flow7">
+        <di:waypoint x="996" y="376"/>
+        <di:waypoint x="1054" y="427"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape__gateway2_to_shape__6" bpmnElement="_flow8">
+        <di:waypoint x="1104" y="427"/>
+        <di:waypoint x="1184" y="405"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape__gateway2_to_shape__reject" bpmnElement="_flow9">
+        <di:waypoint x="1054" y="427"/>
+        <di:waypoint x="766" y="437"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape__reject_to_shape__4" bpmnElement="_flow10">
+        <di:waypoint x="706" y="397"/>
+        <di:waypoint x="790" y="280"/>
+        <di:waypoint x="920" y="280"/>
+        <di:waypoint x="947" y="240"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape__6_to_shape__event1" bpmnElement="_flow11">
+        <di:waypoint x="1244" y="445"/>
+        <di:waypoint x="1106" y="548"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape__start_to_shape__1" bpmnElement="_flow1">
+        <di:waypoint x="237" y="234"/>
+        <di:waypoint x="264" y="176"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape__1_to_shape__2" bpmnElement="_flow2">
+        <di:waypoint x="384" y="176"/>
+        <di:waypoint x="427" y="192"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape__2_to_shape__3" bpmnElement="_flow3">
+        <di:waypoint x="547" y="192"/>
+        <di:waypoint x="590" y="200"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape__3_to_shape__gateway1" bpmnElement="_flow4">
+        <di:waypoint x="710" y="200"/>
+        <di:waypoint x="762" y="197"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape__gateway1_to_shape__4" bpmnElement="_flow5">
+        <di:waypoint x="812" y="197"/>
+        <di:waypoint x="887" y="200"/>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+  <bpmn2:relationship type="BPSimData">
+    <bpmn2:extensionElements>
+      <bpsim:BPSimData>
+        <bpsim:Scenario id="default" name="Simulationscenario">
+          <bpsim:ScenarioParameters/>
+          <bpsim:ElementParameters elementRef="_7">
+            <bpsim:TimeParameters>
+              <bpsim:ProcessingTime>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+              </bpsim:ProcessingTime>
+            </bpsim:TimeParameters>
+            <bpsim:ResourceParameters>
+              <bpsim:Availability>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Availability>
+              <bpsim:Quantity>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Quantity>
+            </bpsim:ResourceParameters>
+            <bpsim:CostParameters>
+              <bpsim:UnitCost>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:UnitCost>
+            </bpsim:CostParameters>
+          </bpsim:ElementParameters>
+          <bpsim:ElementParameters elementRef="_5">
+            <bpsim:TimeParameters>
+              <bpsim:ProcessingTime>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+              </bpsim:ProcessingTime>
+            </bpsim:TimeParameters>
+            <bpsim:ResourceParameters>
+              <bpsim:Availability>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Availability>
+              <bpsim:Quantity>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Quantity>
+            </bpsim:ResourceParameters>
+            <bpsim:CostParameters>
+              <bpsim:UnitCost>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:UnitCost>
+            </bpsim:CostParameters>
+          </bpsim:ElementParameters>
+          <bpsim:ElementParameters elementRef="_reject">
+            <bpsim:TimeParameters>
+              <bpsim:ProcessingTime>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+              </bpsim:ProcessingTime>
+            </bpsim:TimeParameters>
+            <bpsim:ResourceParameters>
+              <bpsim:Availability>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Availability>
+              <bpsim:Quantity>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Quantity>
+            </bpsim:ResourceParameters>
+            <bpsim:CostParameters>
+              <bpsim:UnitCost>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:UnitCost>
+            </bpsim:CostParameters>
+          </bpsim:ElementParameters>
+          <bpsim:ElementParameters elementRef="_6">
+            <bpsim:TimeParameters>
+              <bpsim:ProcessingTime>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+              </bpsim:ProcessingTime>
+            </bpsim:TimeParameters>
+            <bpsim:ResourceParameters>
+              <bpsim:Availability>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Availability>
+              <bpsim:Quantity>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Quantity>
+            </bpsim:ResourceParameters>
+            <bpsim:CostParameters>
+              <bpsim:UnitCost>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:UnitCost>
+            </bpsim:CostParameters>
+          </bpsim:ElementParameters>
+          <bpsim:ElementParameters elementRef="_start">
+            <bpsim:TimeParameters>
+              <bpsim:ProcessingTime>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+              </bpsim:ProcessingTime>
+            </bpsim:TimeParameters>
+          </bpsim:ElementParameters>
+          <bpsim:ElementParameters elementRef="_1">
+            <bpsim:TimeParameters>
+              <bpsim:ProcessingTime>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+              </bpsim:ProcessingTime>
+            </bpsim:TimeParameters>
+            <bpsim:ResourceParameters>
+              <bpsim:Availability>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Availability>
+              <bpsim:Quantity>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Quantity>
+            </bpsim:ResourceParameters>
+            <bpsim:CostParameters>
+              <bpsim:UnitCost>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:UnitCost>
+            </bpsim:CostParameters>
+          </bpsim:ElementParameters>
+          <bpsim:ElementParameters elementRef="_2">
+            <bpsim:TimeParameters>
+              <bpsim:ProcessingTime>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+              </bpsim:ProcessingTime>
+            </bpsim:TimeParameters>
+            <bpsim:ResourceParameters>
+              <bpsim:Availability>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Availability>
+              <bpsim:Quantity>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Quantity>
+            </bpsim:ResourceParameters>
+            <bpsim:CostParameters>
+              <bpsim:UnitCost>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:UnitCost>
+            </bpsim:CostParameters>
+          </bpsim:ElementParameters>
+          <bpsim:ElementParameters elementRef="_3">
+            <bpsim:TimeParameters>
+              <bpsim:ProcessingTime>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+              </bpsim:ProcessingTime>
+            </bpsim:TimeParameters>
+            <bpsim:ResourceParameters>
+              <bpsim:Availability>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Availability>
+              <bpsim:Quantity>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Quantity>
+            </bpsim:ResourceParameters>
+            <bpsim:CostParameters>
+              <bpsim:UnitCost>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:UnitCost>
+            </bpsim:CostParameters>
+          </bpsim:ElementParameters>
+          <bpsim:ElementParameters elementRef="_4">
+            <bpsim:TimeParameters>
+              <bpsim:ProcessingTime>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+              </bpsim:ProcessingTime>
+            </bpsim:TimeParameters>
+            <bpsim:ResourceParameters>
+              <bpsim:Availability>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Availability>
+              <bpsim:Quantity>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Quantity>
+            </bpsim:ResourceParameters>
+            <bpsim:CostParameters>
+              <bpsim:UnitCost>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:UnitCost>
+            </bpsim:CostParameters>
+          </bpsim:ElementParameters>
+        </bpsim:Scenario>
+      </bpsim:BPSimData>
+    </bpmn2:extensionElements>
+    <bpmn2:source>_WTvZ8B91ED62MrjtXcZQeg</bpmn2:source>
+    <bpmn2:target>_WTvZ8B91ED62MrjtXcZQeg</bpmn2:target>
+  </bpmn2:relationship>
+</bpmn2:definitions>

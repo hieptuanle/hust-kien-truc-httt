@@ -1,0 +1,585 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn2:definitions xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:bpsim="http://www.bpsim.org/schemas/1.0" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:drools="http://www.jboss.org/drools" xmlns:xsi="xsi" id="_5jHV8B9uED6FksEPB2DfrQ" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd http://www.jboss.org/drools drools.xsd http://www.bpsim.org/schemas/1.0 bpsim.xsd http://www.omg.org/spec/DD/20100524/DC DC.xsd http://www.omg.org/spec/DD/20100524/DI DI.xsd " exporter="jBPM Process Modeler" exporterVersion="2.0" targetNamespace="http://www.omg.org/bpmn20">
+  <bpmn2:collaboration id="_30636564-A566-4D74-B541-A79DD308F3BC" name="Default Collaboration">
+    <bpmn2:participant id="_B605F00E-302F-48A9-8961-408D6E9355AD" name="Pool Participant" processRef="BP001"/>
+  </bpmn2:collaboration>
+  <bpmn2:process id="BP001" drools:packageName="com.example" drools:version="1.0" drools:adHoc="false" name="BP001" processType="Public">
+    <bpmn2:sequenceFlow id="Flow_StartToReception" sourceRef="StartEvent_CustomerArrival" targetRef="Task_StaffReception"/>
+    <bpmn2:sequenceFlow id="Flow_ReceptionToUnderstand" sourceRef="Task_StaffReception" targetRef="Task_UnderstandNeeds"/>
+    <bpmn2:sequenceFlow id="Flow_UnderstandToConsult" sourceRef="Task_UnderstandNeeds" targetRef="Task_ProductConsultation"/>
+    <bpmn2:sequenceFlow id="Flow_ConsultToDecision" sourceRef="Task_ProductConsultation" targetRef="Gateway_CustomerDecision"/>
+    <bpmn2:sequenceFlow id="Flow_DecisionToChoose" name="Có" sourceRef="Gateway_CustomerDecision" targetRef="Task_ChooseProduct">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Có]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="Flow_DecisionToFarewell" name="Không" sourceRef="Gateway_CustomerDecision" targetRef="Task_ThankAndFarewell">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Không]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="Flow_ChooseToInventory" sourceRef="Task_ChooseProduct" targetRef="Task_CheckInventory"/>
+    <bpmn2:sequenceFlow id="Flow_InventoryToStock" sourceRef="Task_CheckInventory" targetRef="Gateway_StockAvailable"/>
+    <bpmn2:sequenceFlow id="Flow_AlternativeToDecision" sourceRef="Task_SuggestAlternative" targetRef="Gateway_CustomerDecision"/>
+    <bpmn2:sequenceFlow id="Flow_StockToAlternative" name="Không" sourceRef="Gateway_StockAvailable" targetRef="Task_SuggestAlternative">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Không]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="Flow_StockToCalculate" name="Có" sourceRef="Gateway_StockAvailable" targetRef="Task_CalculatePrice">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Có]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="Flow_CalculateToPayment" sourceRef="Task_CalculatePrice" targetRef="Task_Payment"/>
+    <bpmn2:sequenceFlow id="Flow_PaymentToInvoice" sourceRef="Task_Payment" targetRef="Task_IssueInvoice"/>
+    <bpmn2:sequenceFlow id="Flow_InvoiceToPackaging" sourceRef="Task_IssueInvoice" targetRef="Task_PackageGoods"/>
+    <bpmn2:sequenceFlow id="Flow_PackagingToDelivery" sourceRef="Task_PackageGoods" targetRef="Task_DeliverToCustomer"/>
+    <bpmn2:sequenceFlow id="Flow_DeliveryToComplete" sourceRef="Task_DeliverToCustomer" targetRef="EndEvent_TransactionComplete"/>
+    <bpmn2:sequenceFlow id="Flow_FarewellToEnd" sourceRef="Task_ThankAndFarewell" targetRef="EndEvent_NoTransaction"/>
+    <bpmn2:startEvent id="StartEvent_CustomerArrival" name="Khách hàng đến cửa hàng">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Khách hàng đến cửa hàng]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:outgoing>Flow_StartToReception</bpmn2:outgoing>
+    </bpmn2:startEvent>
+    <bpmn2:task id="Task_StaffReception" name="NV tiếp đón">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[NV tiếp đón]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>Flow_StartToReception</bpmn2:incoming>
+      <bpmn2:outgoing>Flow_ReceptionToUnderstand</bpmn2:outgoing>
+    </bpmn2:task>
+    <bpmn2:task id="Task_UnderstandNeeds" name="Tìm hiểu nhu cầu">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Tìm hiểu nhu cầu]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>Flow_ReceptionToUnderstand</bpmn2:incoming>
+      <bpmn2:outgoing>Flow_UnderstandToConsult</bpmn2:outgoing>
+    </bpmn2:task>
+    <bpmn2:task id="Task_ProductConsultation" name="Tư vấn sản phẩm">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Tư vấn sản phẩm]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>Flow_UnderstandToConsult</bpmn2:incoming>
+      <bpmn2:outgoing>Flow_ConsultToDecision</bpmn2:outgoing>
+    </bpmn2:task>
+    <bpmn2:exclusiveGateway id="Gateway_CustomerDecision" name="KH quyết định mua?">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[KH quyết định mua?]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>Flow_AlternativeToDecision</bpmn2:incoming>
+      <bpmn2:incoming>Flow_ConsultToDecision</bpmn2:incoming>
+      <bpmn2:outgoing>Flow_DecisionToFarewell</bpmn2:outgoing>
+      <bpmn2:outgoing>Flow_DecisionToChoose</bpmn2:outgoing>
+    </bpmn2:exclusiveGateway>
+    <bpmn2:task id="Task_ChooseProduct" name="Chọn sản phẩm">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Chọn sản phẩm]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>Flow_DecisionToChoose</bpmn2:incoming>
+      <bpmn2:outgoing>Flow_ChooseToInventory</bpmn2:outgoing>
+    </bpmn2:task>
+    <bpmn2:task id="Task_ThankAndFarewell" name="Cảm ơn &amp; tiễn khách">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Cảm ơn & tiễn khách]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>Flow_DecisionToFarewell</bpmn2:incoming>
+      <bpmn2:outgoing>Flow_FarewellToEnd</bpmn2:outgoing>
+    </bpmn2:task>
+    <bpmn2:task id="Task_CheckInventory" name="Kiểm tra tồn kho">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Kiểm tra tồn kho]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>Flow_ChooseToInventory</bpmn2:incoming>
+      <bpmn2:outgoing>Flow_InventoryToStock</bpmn2:outgoing>
+    </bpmn2:task>
+    <bpmn2:exclusiveGateway id="Gateway_StockAvailable" name="Có đủ hàng?" gatewayDirection="Diverging">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Có đủ hàng?]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>Flow_InventoryToStock</bpmn2:incoming>
+      <bpmn2:outgoing>Flow_StockToCalculate</bpmn2:outgoing>
+      <bpmn2:outgoing>Flow_StockToAlternative</bpmn2:outgoing>
+    </bpmn2:exclusiveGateway>
+    <bpmn2:task id="Task_SuggestAlternative" name="Đề xuất sản phẩm thay thế">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Đề xuất sản phẩm thay thế]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>Flow_StockToAlternative</bpmn2:incoming>
+      <bpmn2:outgoing>Flow_AlternativeToDecision</bpmn2:outgoing>
+    </bpmn2:task>
+    <bpmn2:task id="Task_CalculatePrice" name="Tính tiền">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Tính tiền]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>Flow_StockToCalculate</bpmn2:incoming>
+      <bpmn2:outgoing>Flow_CalculateToPayment</bpmn2:outgoing>
+    </bpmn2:task>
+    <bpmn2:task id="Task_Payment" name="Thanh toán">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Thanh toán]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>Flow_CalculateToPayment</bpmn2:incoming>
+      <bpmn2:outgoing>Flow_PaymentToInvoice</bpmn2:outgoing>
+    </bpmn2:task>
+    <bpmn2:task id="Task_IssueInvoice" name="Xuất hóa đơn">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Xuất hóa đơn]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>Flow_PaymentToInvoice</bpmn2:incoming>
+      <bpmn2:outgoing>Flow_InvoiceToPackaging</bpmn2:outgoing>
+    </bpmn2:task>
+    <bpmn2:task id="Task_PackageGoods" name="Đóng gói hàng">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Đóng gói hàng]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>Flow_InvoiceToPackaging</bpmn2:incoming>
+      <bpmn2:outgoing>Flow_PackagingToDelivery</bpmn2:outgoing>
+    </bpmn2:task>
+    <bpmn2:task id="Task_DeliverToCustomer" name="Giao hàng cho KH">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Giao hàng cho KH]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>Flow_PackagingToDelivery</bpmn2:incoming>
+      <bpmn2:outgoing>Flow_DeliveryToComplete</bpmn2:outgoing>
+    </bpmn2:task>
+    <bpmn2:endEvent id="EndEvent_TransactionComplete" name="Hoàn thành giao dịch">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Hoàn thành giao dịch]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>Flow_DeliveryToComplete</bpmn2:incoming>
+    </bpmn2:endEvent>
+    <bpmn2:endEvent id="EndEvent_NoTransaction" name="Kết thúc không mua">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Kết thúc không mua]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>Flow_FarewellToEnd</bpmn2:incoming>
+    </bpmn2:endEvent>
+  </bpmn2:process>
+  <bpmndi:BPMNDiagram>
+    <bpmndi:BPMNPlane bpmnElement="BP001">
+      <bpmndi:BPMNShape id="shape_EndEvent_NoTransaction" bpmnElement="EndEvent_NoTransaction">
+        <dc:Bounds height="56" width="56" x="814" y="292"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_EndEvent_TransactionComplete" bpmnElement="EndEvent_TransactionComplete">
+        <dc:Bounds height="56" width="56" x="1712" y="150"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_Task_DeliverToCustomer" bpmnElement="Task_DeliverToCustomer">
+        <dc:Bounds height="80" width="100" x="1550" y="138"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_Task_PackageGoods" bpmnElement="Task_PackageGoods">
+        <dc:Bounds height="80" width="100" x="1420" y="138"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_Task_IssueInvoice" bpmnElement="Task_IssueInvoice">
+        <dc:Bounds height="80" width="100" x="1290" y="138"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_Task_Payment" bpmnElement="Task_Payment">
+        <dc:Bounds height="80" width="100" x="1160" y="138"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_Task_CalculatePrice" bpmnElement="Task_CalculatePrice">
+        <dc:Bounds height="80" width="100" x="1030" y="138"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_Task_SuggestAlternative" bpmnElement="Task_SuggestAlternative">
+        <dc:Bounds height="80" width="100" x="878" y="1"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_Gateway_StockAvailable" bpmnElement="Gateway_StockAvailable">
+        <dc:Bounds height="56" width="56" x="900" y="150"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_Task_CheckInventory" bpmnElement="Task_CheckInventory">
+        <dc:Bounds height="80" width="100" x="770" y="138"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_Task_ThankAndFarewell" bpmnElement="Task_ThankAndFarewell">
+        <dc:Bounds height="80" width="100" x="640" y="280"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_Task_ChooseProduct" bpmnElement="Task_ChooseProduct">
+        <dc:Bounds height="80" width="100" x="640" y="138"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_Gateway_CustomerDecision" bpmnElement="Gateway_CustomerDecision">
+        <dc:Bounds height="56" width="56" x="540" y="150"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_Task_ProductConsultation" bpmnElement="Task_ProductConsultation">
+        <dc:Bounds height="80" width="100" x="410" y="138"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_Task_UnderstandNeeds" bpmnElement="Task_UnderstandNeeds">
+        <dc:Bounds height="80" width="100" x="280" y="138"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_Task_StaffReception" bpmnElement="Task_StaffReception">
+        <dc:Bounds height="80" width="100" x="150" y="138"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_StartEvent_CustomerArrival" bpmnElement="StartEvent_CustomerArrival">
+        <dc:Bounds height="56" width="56" x="50" y="150"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="edge_shape_Task_ThankAndFarewell_to_shape_EndEvent_NoTransaction" bpmnElement="Flow_FarewellToEnd">
+        <di:waypoint x="740" y="320"/>
+        <di:waypoint x="814" y="320"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_Task_DeliverToCustomer_to_shape_EndEvent_TransactionComplete" bpmnElement="Flow_DeliveryToComplete">
+        <di:waypoint x="1650" y="178"/>
+        <di:waypoint x="1712" y="178"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_Task_PackageGoods_to_shape_Task_DeliverToCustomer" bpmnElement="Flow_PackagingToDelivery">
+        <di:waypoint x="1520" y="178"/>
+        <di:waypoint x="1550" y="178"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_Task_IssueInvoice_to_shape_Task_PackageGoods" bpmnElement="Flow_InvoiceToPackaging">
+        <di:waypoint x="1390" y="178"/>
+        <di:waypoint x="1420" y="178"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_Task_Payment_to_shape_Task_IssueInvoice" bpmnElement="Flow_PaymentToInvoice">
+        <di:waypoint x="1260" y="178"/>
+        <di:waypoint x="1290" y="178"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_Task_CalculatePrice_to_shape_Task_Payment" bpmnElement="Flow_CalculateToPayment">
+        <di:waypoint x="1130" y="178"/>
+        <di:waypoint x="1160" y="178"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_Gateway_StockAvailable_to_shape_Task_CalculatePrice" bpmnElement="Flow_StockToCalculate">
+        <di:waypoint x="956" y="178"/>
+        <di:waypoint x="1030" y="178"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_Gateway_StockAvailable_to_shape_Task_SuggestAlternative" bpmnElement="Flow_StockToAlternative">
+        <di:waypoint x="928" y="150"/>
+        <di:waypoint x="928" y="81"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_Task_SuggestAlternative_to_shape_Gateway_CustomerDecision" bpmnElement="Flow_AlternativeToDecision">
+        <di:waypoint x="878" y="41"/>
+        <di:waypoint x="568" y="41"/>
+        <di:waypoint x="568" y="150"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_Task_CheckInventory_to_shape_Gateway_StockAvailable" bpmnElement="Flow_InventoryToStock">
+        <di:waypoint x="870" y="178"/>
+        <di:waypoint x="900" y="178"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_Task_ChooseProduct_to_shape_Task_CheckInventory" bpmnElement="Flow_ChooseToInventory">
+        <di:waypoint x="740" y="178"/>
+        <di:waypoint x="770" y="178"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_Gateway_CustomerDecision_to_shape_Task_ThankAndFarewell" bpmnElement="Flow_DecisionToFarewell">
+        <di:waypoint x="568" y="206"/>
+        <di:waypoint x="568" y="320"/>
+        <di:waypoint x="640" y="320"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_Gateway_CustomerDecision_to_shape_Task_ChooseProduct" bpmnElement="Flow_DecisionToChoose">
+        <di:waypoint x="596" y="178"/>
+        <di:waypoint x="640" y="178"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_Task_ProductConsultation_to_shape_Gateway_CustomerDecision" bpmnElement="Flow_ConsultToDecision">
+        <di:waypoint x="510" y="178"/>
+        <di:waypoint x="540" y="178"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_Task_UnderstandNeeds_to_shape_Task_ProductConsultation" bpmnElement="Flow_UnderstandToConsult">
+        <di:waypoint x="380" y="178"/>
+        <di:waypoint x="410" y="178"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_Task_StaffReception_to_shape_Task_UnderstandNeeds" bpmnElement="Flow_ReceptionToUnderstand">
+        <di:waypoint x="250" y="178"/>
+        <di:waypoint x="280" y="178"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_StartEvent_CustomerArrival_to_shape_Task_StaffReception" bpmnElement="Flow_StartToReception">
+        <di:waypoint x="106" y="178"/>
+        <di:waypoint x="150" y="178"/>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+  <bpmn2:relationship type="BPSimData">
+    <bpmn2:extensionElements>
+      <bpsim:BPSimData>
+        <bpsim:Scenario id="default" name="Simulationscenario">
+          <bpsim:ScenarioParameters/>
+          <bpsim:ElementParameters elementRef="Task_DeliverToCustomer">
+            <bpsim:TimeParameters>
+              <bpsim:ProcessingTime>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+              </bpsim:ProcessingTime>
+            </bpsim:TimeParameters>
+            <bpsim:ResourceParameters>
+              <bpsim:Availability>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Availability>
+              <bpsim:Quantity>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Quantity>
+            </bpsim:ResourceParameters>
+            <bpsim:CostParameters>
+              <bpsim:UnitCost>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:UnitCost>
+            </bpsim:CostParameters>
+          </bpsim:ElementParameters>
+          <bpsim:ElementParameters elementRef="Task_PackageGoods">
+            <bpsim:TimeParameters>
+              <bpsim:ProcessingTime>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+              </bpsim:ProcessingTime>
+            </bpsim:TimeParameters>
+            <bpsim:ResourceParameters>
+              <bpsim:Availability>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Availability>
+              <bpsim:Quantity>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Quantity>
+            </bpsim:ResourceParameters>
+            <bpsim:CostParameters>
+              <bpsim:UnitCost>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:UnitCost>
+            </bpsim:CostParameters>
+          </bpsim:ElementParameters>
+          <bpsim:ElementParameters elementRef="Task_IssueInvoice">
+            <bpsim:TimeParameters>
+              <bpsim:ProcessingTime>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+              </bpsim:ProcessingTime>
+            </bpsim:TimeParameters>
+            <bpsim:ResourceParameters>
+              <bpsim:Availability>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Availability>
+              <bpsim:Quantity>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Quantity>
+            </bpsim:ResourceParameters>
+            <bpsim:CostParameters>
+              <bpsim:UnitCost>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:UnitCost>
+            </bpsim:CostParameters>
+          </bpsim:ElementParameters>
+          <bpsim:ElementParameters elementRef="Task_Payment">
+            <bpsim:TimeParameters>
+              <bpsim:ProcessingTime>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+              </bpsim:ProcessingTime>
+            </bpsim:TimeParameters>
+            <bpsim:ResourceParameters>
+              <bpsim:Availability>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Availability>
+              <bpsim:Quantity>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Quantity>
+            </bpsim:ResourceParameters>
+            <bpsim:CostParameters>
+              <bpsim:UnitCost>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:UnitCost>
+            </bpsim:CostParameters>
+          </bpsim:ElementParameters>
+          <bpsim:ElementParameters elementRef="Task_CalculatePrice">
+            <bpsim:TimeParameters>
+              <bpsim:ProcessingTime>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+              </bpsim:ProcessingTime>
+            </bpsim:TimeParameters>
+            <bpsim:ResourceParameters>
+              <bpsim:Availability>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Availability>
+              <bpsim:Quantity>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Quantity>
+            </bpsim:ResourceParameters>
+            <bpsim:CostParameters>
+              <bpsim:UnitCost>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:UnitCost>
+            </bpsim:CostParameters>
+          </bpsim:ElementParameters>
+          <bpsim:ElementParameters elementRef="Task_SuggestAlternative">
+            <bpsim:TimeParameters>
+              <bpsim:ProcessingTime>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+              </bpsim:ProcessingTime>
+            </bpsim:TimeParameters>
+            <bpsim:ResourceParameters>
+              <bpsim:Availability>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Availability>
+              <bpsim:Quantity>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Quantity>
+            </bpsim:ResourceParameters>
+            <bpsim:CostParameters>
+              <bpsim:UnitCost>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:UnitCost>
+            </bpsim:CostParameters>
+          </bpsim:ElementParameters>
+          <bpsim:ElementParameters elementRef="Task_CheckInventory">
+            <bpsim:TimeParameters>
+              <bpsim:ProcessingTime>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+              </bpsim:ProcessingTime>
+            </bpsim:TimeParameters>
+            <bpsim:ResourceParameters>
+              <bpsim:Availability>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Availability>
+              <bpsim:Quantity>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Quantity>
+            </bpsim:ResourceParameters>
+            <bpsim:CostParameters>
+              <bpsim:UnitCost>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:UnitCost>
+            </bpsim:CostParameters>
+          </bpsim:ElementParameters>
+          <bpsim:ElementParameters elementRef="Task_ThankAndFarewell">
+            <bpsim:TimeParameters>
+              <bpsim:ProcessingTime>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+              </bpsim:ProcessingTime>
+            </bpsim:TimeParameters>
+            <bpsim:ResourceParameters>
+              <bpsim:Availability>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Availability>
+              <bpsim:Quantity>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Quantity>
+            </bpsim:ResourceParameters>
+            <bpsim:CostParameters>
+              <bpsim:UnitCost>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:UnitCost>
+            </bpsim:CostParameters>
+          </bpsim:ElementParameters>
+          <bpsim:ElementParameters elementRef="Task_ChooseProduct">
+            <bpsim:TimeParameters>
+              <bpsim:ProcessingTime>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+              </bpsim:ProcessingTime>
+            </bpsim:TimeParameters>
+            <bpsim:ResourceParameters>
+              <bpsim:Availability>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Availability>
+              <bpsim:Quantity>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Quantity>
+            </bpsim:ResourceParameters>
+            <bpsim:CostParameters>
+              <bpsim:UnitCost>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:UnitCost>
+            </bpsim:CostParameters>
+          </bpsim:ElementParameters>
+          <bpsim:ElementParameters elementRef="Task_ProductConsultation">
+            <bpsim:TimeParameters>
+              <bpsim:ProcessingTime>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+              </bpsim:ProcessingTime>
+            </bpsim:TimeParameters>
+            <bpsim:ResourceParameters>
+              <bpsim:Availability>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Availability>
+              <bpsim:Quantity>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Quantity>
+            </bpsim:ResourceParameters>
+            <bpsim:CostParameters>
+              <bpsim:UnitCost>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:UnitCost>
+            </bpsim:CostParameters>
+          </bpsim:ElementParameters>
+          <bpsim:ElementParameters elementRef="Task_UnderstandNeeds">
+            <bpsim:TimeParameters>
+              <bpsim:ProcessingTime>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+              </bpsim:ProcessingTime>
+            </bpsim:TimeParameters>
+            <bpsim:ResourceParameters>
+              <bpsim:Availability>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Availability>
+              <bpsim:Quantity>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Quantity>
+            </bpsim:ResourceParameters>
+            <bpsim:CostParameters>
+              <bpsim:UnitCost>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:UnitCost>
+            </bpsim:CostParameters>
+          </bpsim:ElementParameters>
+          <bpsim:ElementParameters elementRef="Task_StaffReception">
+            <bpsim:TimeParameters>
+              <bpsim:ProcessingTime>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+              </bpsim:ProcessingTime>
+            </bpsim:TimeParameters>
+            <bpsim:ResourceParameters>
+              <bpsim:Availability>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Availability>
+              <bpsim:Quantity>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Quantity>
+            </bpsim:ResourceParameters>
+            <bpsim:CostParameters>
+              <bpsim:UnitCost>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:UnitCost>
+            </bpsim:CostParameters>
+          </bpsim:ElementParameters>
+          <bpsim:ElementParameters elementRef="StartEvent_CustomerArrival">
+            <bpsim:TimeParameters>
+              <bpsim:ProcessingTime>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+              </bpsim:ProcessingTime>
+            </bpsim:TimeParameters>
+          </bpsim:ElementParameters>
+        </bpsim:Scenario>
+      </bpsim:BPSimData>
+    </bpmn2:extensionElements>
+    <bpmn2:source>_5jHV8B9uED6FksEPB2DfrQ</bpmn2:source>
+    <bpmn2:target>_5jHV8B9uED6FksEPB2DfrQ</bpmn2:target>
+  </bpmn2:relationship>
+</bpmn2:definitions>
